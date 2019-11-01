@@ -10,5 +10,6 @@
             fx:controller="sample.Controller">
     <children>
         <Label text="Hello"/>
+        <Label text="Hello"/>
     </children>
 </AnchorPane>
