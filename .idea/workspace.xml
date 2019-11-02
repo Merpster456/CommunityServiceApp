@@ -1,21 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc445480-d086-479a-890a-c90d40725123" name="Default Changelist" comment="" />
+    <list default="true" id="cc445480-d086-479a-890a-c90d40725123" name="Default Changelist" comment="Added Label to test git">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_27_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AdminInterface/NextController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AdminInterface/new.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Database/dbConnect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Login/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Login/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FBLA-Coding.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FBLA-Coding.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/sample/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/sample/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/sample/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="JavaFXApplication" />
+        <option value="XSLT Stylesheet" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Szjxu4v0nyLv0o0qvDM11ETN4Y" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -31,7 +60,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Javafx" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="sample.Main" />
+      <option name="MAIN_CLASS_NAME" value="Login.Main" />
       <module name="FBLA-Coding" />
       <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/Downloads/javafx-sdk-13/lib --add-modules=javafx.controls,javafx.fxml" />
       <method v="2">
@@ -57,6 +86,29 @@
       <option name="presentableId" value="Default" />
       <updated>1572573567795</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added Label to test git">
+      <created>1572574880019</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1572574880019</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added Label to test git" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Label to test git" />
   </component>
 </project>
