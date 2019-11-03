@@ -1,0 +1,11 @@
+.root {
+
+    -fx-font-family: "Arial";
+
+}
+
+#topheader {
+
+    -fx-font-weight: bold;
+
+}

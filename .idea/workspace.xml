@@ -1,22 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc445480-d086-479a-890a-c90d40725123" name="Default Changelist" comment="Added Label to test git">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_27_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AdminInterface/NextController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AdminInterface/new.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Database/dbConnect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Login/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Login/sample.fxml" afterDir="false" />
+    <list default="true" id="cc445480-d086-479a-890a-c90d40725123" name="Default Changelist" comment="changed some names, commented out database file for now">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Database/dataCon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FBLA-Coding.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FBLA-Coding.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/sample/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/sample/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/sample/sample.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminInterface/NextController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminInterface/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminInterface/new.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminInterface/AdminUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Database/dbConnect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/Controller.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572574880019</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added Label to test git">
+      <created>1572715600363</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1572715600363</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,7 +100,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -109,6 +110,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added Label to test git" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Label to test git" />
+    <MESSAGE value="changed some names, commented out database file for now" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed some names, commented out database file for now" />
   </component>
 </project>

@@ -9,19 +9,14 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import static javafx.scene.paint.Color.CRIMSON;
 
-import java.sql.*;
-
 
 public class Controller {
 
-    @FXML
-    private Button button;
-    @FXML
-    private TextField textField;
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private Label errorMessage;
+
+    @FXML private Button button;
+    @FXML private TextField textField;
+    @FXML private PasswordField passwordField;
+    @FXML private Label errorMessage;
 
     /** This is executed when the button is pressed
         It gets value of User and Pass fields then
@@ -40,8 +35,8 @@ public class Controller {
             stage.close();
             Stage nextStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
-            Pane root = (Pane)loader.load(getClass().getResource("/AdminInterface/new.fxml"));
-            Scene scene = new Scene(root, 1400,900);
+            Pane root = (Pane)loader.load(getClass().getResource("/AdminInterface/AdminUI.fxml"));
+            Scene scene = new Scene(root);
             nextStage.setResizable(false );
             nextStage.setTitle("Community Service");
             nextStage.setScene(scene);
