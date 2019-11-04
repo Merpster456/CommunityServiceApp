@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc445480-d086-479a-890a-c90d40725123" name="Default Changelist" comment="changed some names, commented out database file for now">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Database/dataCon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StudentInterface/StudentUI.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminInterface/NextController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminInterface/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminInterface/new.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminInterface/AdminUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Database/dbConnect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommunityService.db" beforeDir="false" afterPath="$PROJECT_DIR$/CommunityService.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/Login/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/Login/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/Login/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Database/dataCon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/dataConnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/LoginApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/Login.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,10 +22,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="JavaFXApplication" />
         <option value="XSLT Stylesheet" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -33,6 +36,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -52,7 +56,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Javafx" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Login.Main" />
+      <option name="MAIN_CLASS_NAME" value="Login.LoginApp" />
       <module name="FBLA-Coding" />
       <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/Downloads/javafx-sdk-13/lib --add-modules=javafx.controls,javafx.fxml" />
       <method v="2">

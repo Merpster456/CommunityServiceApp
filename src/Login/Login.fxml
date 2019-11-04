@@ -13,10 +13,10 @@
 
 
 
-<GridPane fx:controller="Login.Controller" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<GridPane fx:controller="Login.LoginController" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
     <padding><Insets top="25" right="50" bottom="25" left="50"/></padding>
     <Label fx:id="topheader" text="Community Service!" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" />
-    <Label text="User:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <Label text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
     <TextField fx:id="textField" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
     <Label text="Pass:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
     <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.halignment="CENTER"/>

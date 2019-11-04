@@ -1,0 +1,33 @@
+package Database;
+
+import java.sql.*;
+
+
+public class dataConnect {
+
+    private static final String URL = "jdbc:sqlite:CommunityService.db";
+
+    /** Creates a connection object with the SQLite database
+     *
+     * @return
+     * @throws SQLException
+     */
+    public static Connection getConnection()throws SQLException {
+
+        Connection conn = null;
+
+        try{
+
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection(URL);
+            return conn;
+
+        }
+        catch(SQLException | ClassNotFoundException e) {
+
+            System.err.println("Error " + e);
+        }
+        return null;
+    }
+
+}
