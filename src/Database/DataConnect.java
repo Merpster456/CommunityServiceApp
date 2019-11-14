@@ -3,7 +3,7 @@ package Database;
 import java.sql.*;
 
 
-public class dataConnect {
+public class DataConnect {
 
     private static final String URL = "jdbc:sqlite:CommunityService.db";
 

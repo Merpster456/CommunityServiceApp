@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.text.Text?>
+<AnchorPane minHeight="768" minWidth="1366" prefHeight="768" prefWidth="1366" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminInterface.SubWindows.ManageUsers">
+    <HBox fx:id="Box" alignment="CENTER" prefHeight="125" prefWidth="1366">
+        <children>
+            <Label fx:id="TopLabel" contentDisplay="CENTER" text="Manage Users" />
+        </children>
+    </HBox>
+    <Button fx:id="Back" layoutX="20" layoutY="35" onAction="#back" text="Back" />
+    <HBox fx:id="Grid" prefHeight="500.0" prefWidth="900.0" layoutY="184" layoutX="233" >
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </padding>
+        <TableView fx:id="studentTable" editable="true" prefWidth="880" prefHeight="480" tableMenuButtonVisible="true">
+            <columns>
+                <TableColumn fx:id="idCol" text="ID" editable="false" prefWidth="30"/>
+                <TableColumn fx:id="gradeCol" text="Grade"/>
+                <TableColumn fx:id="emailCol" text="Email"/>
+                <TableColumn fx:id="firstCol" text="First Name"/>
+                <TableColumn fx:id="lastCol" text="Last Name"/>
+            </columns>
+        </TableView>
+        <VBox prefWidth="600">
+            <TabPane prefWidth="600" tabMinWidth="125">
+                <Tab text="Add User">
+                    <VBox alignment="CENTER">
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <padding>
+                                <Insets bottom="10" left="30" right="10" top="50"/>
+                            </padding>
+                            <Label text="First Name:"/>
+                            <TextField fx:id="newFirst"/>
+                        </HBox>
+                        <Label fx:id="firstErr"  text="" textFill="crimson"/>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <padding>
+                                <Insets bottom="10" left="30" right="10" top="10"/>
+                            </padding>
+                            <Label text="Last Name:"/>
+                            <TextField fx:id="newLast"/>
+                        </HBox>
+                        <Label fx:id="lastErr"  text="" textFill="crimson"/>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <padding>
+                                <Insets bottom="10" left="30" right="10" top="10"/>
+                            </padding>
+                            <Label text="Grade:      "/>
+                            <TextField fx:id="newGrade" prefWidth="30"/>
+                        </HBox>
+                        <Label fx:id="gradeErr"  text="" textFill="crimson"/>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <padding>
+                                <Insets bottom="10" left="30" right="10" top="10"/>
+                            </padding>
+                            <Label text="Email:       "/>
+                            <TextField fx:id="newEmail"/>
+                        </HBox>
+                        <Label fx:id="emailErr"  text="" textFill="crimson"/>
+                        <HBox spacing="70" alignment="CENTER">
+                            <padding>
+                                <Insets bottom="10" left="30" right="10" top="20"/>
+                            </padding>
+                            <Button fx:id="cancelB" text="Cancel" onAction="#cancel"/>
+                            <Button fx:id="submitB" text="Submit" defaultButton="true" onAction="#submit"/>
+                        </HBox>
+                    </VBox>
+                </Tab>
+                <Tab text="Delete User">
+
+                </Tab>
+            </TabPane>
+        </VBox>
+    </HBox>
+    <stylesheets>
+        <URL value="@../AdminCSS.css" />
+    </stylesheets>
+</AnchorPane>

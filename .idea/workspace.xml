@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc445480-d086-479a-890a-c90d40725123" name="Default Changelist" comment="changed some names, commented out database file for now">
-      <change afterPath="$PROJECT_DIR$/src/StudentInterface/StudentUI.fxml" afterDir="false" />
+    <list default="true" id="cc445480-d086-479a-890a-c90d40725123" name="Default Changelist" comment="Worrked on alooooot of stuff, I added the pages of the Admin UI and navigation between them, I still need to do the content part of the pages however.&#10;&#10;Student UI also needs to be done&#10;&#10;Fun side projects could be:&#10;Hashing passwords&#10;ID generator&#10;...">
+      <change afterPath="$PROJECT_DIR$/src/AdminInterface/AdminCSS.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AdminInterface/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AdminInterface/SubWindows/ContactUsers.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AdminInterface/SubWindows/ContactUsers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AdminInterface/SubWindows/ManageUsers.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AdminInterface/SubWindows/ManageUsers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AdminInterface/SubWindows/StudentHours.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AdminInterface/SubWindows/StudentHours.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AdminInterface/SubWindows/StudentProgress.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AdminInterface/SubWindows/StudentProgress.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Database/DataUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CommunityService.db" beforeDir="false" afterPath="$PROJECT_DIR$/CommunityService.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/Login/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/Login/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/Login/sample.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Database/dataCon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/dataConnect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/LoginApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdminInterface/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdminInterface/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdminInterface/AdminUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdminInterface/AdminUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Practice/sample/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminInterface/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminInterface/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminInterface/AdminUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminInterface/AdminUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Database/dataConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/DataConnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/LoginController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,13 +29,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="221" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaFXApplication" />
         <option value="XSLT Stylesheet" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -41,6 +54,11 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/AdminInterface/SubWindows" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -96,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572715600363</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="HUUUGE development&#10;Database in&#10;&#10;Maybe Hash for passwds&#10;need connection check for sqlite db&#10;&#10;Need to work on dashboards">
+      <created>1572904045475</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1572904045475</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -115,6 +140,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added Label to test git" />
     <MESSAGE value="changed some names, commented out database file for now" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed some names, commented out database file for now" />
+    <MESSAGE value="HUUUGE development&#10;Database in&#10;&#10;Maybe Hash for passwds&#10;need connection check for sqlite db&#10;&#10;Need to work on dashboards" />
+    <MESSAGE value="Worrked on alooooot of stuff, I added the pages of the Admin UI and navigation between them, I still need to do the content part of the pages however.&#10;&#10;Student UI also needs to be done&#10;&#10;Fun side projects could be:&#10;Hashing passwords&#10;ID generator&#10;..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Worrked on alooooot of stuff, I added the pages of the Admin UI and navigation between them, I still need to do the content part of the pages however.&#10;&#10;Student UI also needs to be done&#10;&#10;Fun side projects could be:&#10;Hashing passwords&#10;ID generator&#10;..." />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/FBLA_Coding$Javafx.ic" NAME="Javafx Coverage Results" MODIFIED="1572904544846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
