@@ -52,9 +52,11 @@ public class LoginController implements Initializable {
     }
 
     /**
-     * This is executed when the button is pressed
-     * It gets value of User and Pass fields then
-     * checks if it matches login credentials
+     * Gets value of the login fields,
+     * then calls the login function
+     *
+     * @param event
+     * @throws Exception
      */
     @FXML
     protected void reactToClick(ActionEvent event) throws Exception {
@@ -65,12 +67,22 @@ public class LoginController implements Initializable {
         findUser(id, password);
     }
 
-    private void findUser(String id, String password) {
+    /**
+     * Checks for user with given
+     * credentials then logs into
+     * respective interfaces
+     *
+     * @param id
+     * @param password
+     * @throws IOException
+     */
+    private void findUser(String id, String password) throws IOException {
 
         ResultSet rs = null;
 
         String sql = "SELECT * FROM Persons WHERE id = '" + id + "' and password = '" + password + "';";
         LoginController.id = id;
+        boolean control = false;
 
         try {
 
@@ -79,45 +91,61 @@ public class LoginController implements Initializable {
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
             String admin = rs.getString(7);
-            String deleted = rs.getString(8);
             System.out.println(admin);
-            System.out.println(deleted);
 
             try {
 
-                if (deleted.equals("true")) {
-                    errorMessage.setText("User Deleted...");
-                    errorMessage.setTextFill(CRIMSON);
-                } else if (admin.equals("1")) adminLogin();
-                else studentLogin();
+                if (admin.equals("1")) advisorLogin();
+                else if (admin.equals("0")) studentLogin();
             } catch (IOException e) {
 
                 System.err.println("Error: " + e);
                 errorMessage.setText("Error!");
                 errorMessage.setTextFill(CRIMSON);
             }
-        } catch (SQLException e) {
+        } catch (SQLException ignored) {
 
-            System.err.println(e.getStackTrace()[0].getLineNumber());
-            System.out.println("Error: "+ e);
+            try {
 
-            errorMessage.setText("Wrong User or Pass");
-            errorMessage.setTextFill(CRIMSON);
+                sql = "SELECT * FROM Admin WHERE user='" + id + "' and pass='" + password + "';";
+
+                DataUtil.close(rs);
+                rs = statement.executeQuery(sql);
+
+                if (rs.getString(1).equals(id)) {
+
+                    control = true;
+                }
+            } catch (SQLException e) {
+
+                System.err.println(e.getStackTrace()[0].getLineNumber());
+                System.out.println("Error: "+ e);
+
+                errorMessage.setText("Wrong User or Pass");
+                errorMessage.setTextFill(CRIMSON);
+            }
+
         } finally {
-            DataUtil.close(rs);
+
+            if (rs != null) DataUtil.close(rs);
             DataUtil.close(statement);
             DataUtil.close(connection);
+            if (control) adminLogin();
         }
     }
 
-
-    private void adminLogin() throws IOException {
+    /**
+     * Logs into advisor interface
+     *
+     * @throws IOException
+     */
+    private void advisorLogin() throws IOException {
 
         Stage stage = (Stage) button.getScene().getWindow();
 
         stage.close();
         Stage nextStage = new Stage();
-        Pane root = FXMLLoader.load(getClass().getResource("/AdminInterface/AdminUI.fxml"));
+        Pane root = FXMLLoader.load(getClass().getResource("/AdvisorInterface/AdvisorUI.fxml"));
         Scene scene = new Scene(root);
         nextStage.setResizable(false);
         nextStage.setTitle("Community Service");
@@ -125,6 +153,11 @@ public class LoginController implements Initializable {
         nextStage.show();
     }
 
+    /**
+     * Logs into student interface
+     *
+     * @throws IOException
+     */
     private void studentLogin() throws IOException {
 
         Stage stage = (Stage) button.getScene().getWindow();
@@ -135,6 +168,25 @@ public class LoginController implements Initializable {
         Scene scene = new Scene(root);
         nextStage.setResizable(false);
         nextStage.setTitle("Community Service");
+        nextStage.setScene(scene);
+        nextStage.show();
+    }
+
+    /**
+     * Logs int0 with admin interface
+     *
+     * @throws IOException
+     */
+    private void adminLogin() throws IOException {
+
+        Stage stage = (Stage) button.getScene().getWindow();
+
+        stage.close();
+        Stage nextStage = new Stage();
+        Pane root = FXMLLoader.load(getClass().getResource("/AdminInterface/AdminUI.fxml"));
+        Scene scene = new Scene(root);
+        nextStage.setResizable(false);
+        nextStage.setTitle("Admin");
         nextStage.setScene(scene);
         nextStage.show();
     }

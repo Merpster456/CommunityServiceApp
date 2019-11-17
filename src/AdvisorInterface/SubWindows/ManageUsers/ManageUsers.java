@@ -1,4 +1,4 @@
-package AdminInterface;
+package AdvisorInterface.SubWindows.ManageUsers;
 
 import AdvisorInterface.Student;
 import Database.DataUtil;
@@ -32,24 +32,17 @@ import java.util.ResourceBundle;
 import Database.DataConnect;
 import javafx.stage.StageStyle;
 
-public class AdminController implements Initializable {
+public class ManageUsers implements Initializable {
 
+    @FXML private Button Back;
     @FXML private ChoiceBox choiceBox;
     @FXML private ChoiceBox changeBox;
-    @FXML private TableView<Person> personTable;
-    @FXML private TableView<Person> delTable;
-    @FXML private TableColumn<Person, String> idCol;
-    @FXML private TableColumn<Person, String> firstCol;
-    @FXML private TableColumn<Person, String> lastCol;
-    @FXML private TableColumn<Person, String> gradeCol;
-    @FXML private TableColumn<Person, String> emailCol;
-    @FXML private TableColumn<Person, String> isAdvisorCol;
-    @FXML private TableColumn<Person, String> delID;
-    @FXML private TableColumn<Person, String> delGrade;
-    @FXML private TableColumn<Person, String> delEmail;
-    @FXML private TableColumn<Person, String> delFirst;
-    @FXML private TableColumn<Person, String> delLast;
-    @FXML private TableColumn<Person, String> delIsAdvisor;
+    @FXML private TableView<Student> studentTable;
+    @FXML private TableColumn<Student, String> idCol;
+    @FXML private TableColumn<Student, String> firstCol;
+    @FXML private TableColumn<Student, String> lastCol;
+    @FXML private TableColumn<Student, String> gradeCol;
+    @FXML private TableColumn<Student, String> emailCol;
     @FXML private TextField newFirst;
     @FXML private TextField newLast;
     @FXML private TextField newGrade;
@@ -73,81 +66,22 @@ public class AdminController implements Initializable {
     private Connection connection;
     private Statement statement;
 
-    public AdminController() {
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb){
 
         setTable();
-        setDelTable();
 
         setBox();
 
     }
 
-    private void setDelTable(){
-
-        String SQL = "SELECT * FROM Deleted";
-        ResultSet rs = null;
-        List<Person> list = new ArrayList<Person>();
-        Person person = null;
-        ObservableList<Person> persons = FXCollections.observableArrayList();
-
-        try {
-
-            Connection connection = DataConnect.getConnection();
-            assert connection != null;
-            statement = connection.createStatement();
-            rs = statement.executeQuery(SQL);
-
-            while (rs.next()) {
-
-                persons.add(new Person(rs.getString(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5),
-                        rs.getString(7)));
-            }
-
-            this.delID.setCellValueFactory(new PropertyValueFactory<Person, String>("Id"));
-            this.delFirst.setCellValueFactory(new PropertyValueFactory<Person, String>("First"));
-            this.delLast.setCellValueFactory(new PropertyValueFactory<Person, String>("Last"));
-            this.delGrade.setCellValueFactory(new PropertyValueFactory<Person, String>("Grade"));
-            this.delEmail.setCellValueFactory(new PropertyValueFactory<Person, String>("Email"));
-            this.delIsAdvisor.setCellValueFactory(new PropertyValueFactory<Person, String>( "IsAdmin"));
-
-            delID.setCellFactory(TextFieldTableCell.forTableColumn());
-            delFirst.setCellFactory(TextFieldTableCell.forTableColumn());
-            delLast.setCellFactory(TextFieldTableCell.forTableColumn());
-            delGrade.setCellFactory(TextFieldTableCell.forTableColumn());
-            delEmail.setCellFactory(TextFieldTableCell.forTableColumn());
-            delIsAdvisor.setCellFactory(TextFieldTableCell.forTableColumn());
-
-            delTable.setItems(null);
-            delTable.setItems(persons);
-
-        } catch (SQLException e) {
-
-            System.out.println("Error: " + e);
-            System.err.println(e.getStackTrace()[0].getLineNumber());
-        } finally {
-
-            DataUtil.close(rs);
-            DataUtil.close(statement);
-            DataUtil.close(connection);
-        }
-
-    }
-
     private void setTable(){
 
-        String SQL = "SELECT * FROM Persons";
+        String SQL = "SELECT * FROM Persons WHERE isAdmin = false;";
         ResultSet rs = null;
-        List<Person> list = new ArrayList<Person>();
-        Person person = null;
-        ObservableList<Person> persons = FXCollections.observableArrayList();
+        List<Student> list = new ArrayList<Student>();
+        Student student = null;
+        ObservableList<Student> students = FXCollections.observableArrayList();
 
         try {
 
@@ -158,33 +92,29 @@ public class AdminController implements Initializable {
 
             while (rs.next()) {
 
-                persons.add(new Person(rs.getString(1),
+                students.add(new Student(rs.getString(1),
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getString(5),
-                        rs.getString(7)));
+                        rs.getString(5)));
             }
 
-            this.idCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Id"));
-            this.firstCol.setCellValueFactory(new PropertyValueFactory<Person, String>("First"));
-            this.lastCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Last"));
-            this.gradeCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Grade"));
-            this.emailCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Email"));
-            this.isAdvisorCol.setCellValueFactory(new PropertyValueFactory<Person, String>( "IsAdmin"));
+            this.idCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Id"));
+            this.firstCol.setCellValueFactory(new PropertyValueFactory<Student, String>("First"));
+            this.lastCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Last"));
+            this.gradeCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Grade"));
+            this.emailCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Email"));
 
             idCol.setCellFactory(TextFieldTableCell.forTableColumn());
             firstCol.setCellFactory(TextFieldTableCell.forTableColumn());
             lastCol.setCellFactory(TextFieldTableCell.forTableColumn());
             gradeCol.setCellFactory(TextFieldTableCell.forTableColumn());
             emailCol.setCellFactory(TextFieldTableCell.forTableColumn());
-            isAdvisorCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
-            personTable.setItems(null);
-            personTable.setItems(persons);
+            studentTable.setItems(null);
+            studentTable.setItems(students);
 
             setBox();
-
         } catch (SQLException e) {
 
             System.out.println("Error: " + e);
@@ -195,6 +125,17 @@ public class AdminController implements Initializable {
             DataUtil.close(statement);
             DataUtil.close(connection);
         }
+
+    }
+
+    @FXML
+    protected void back(ActionEvent event) throws IOException {
+
+        Stage stage = (Stage) Back.getScene().getWindow();
+        Pane root = FXMLLoader.load(getClass().getResource("/AdvisorInterface/AdvisorUI.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
 
     }
 
@@ -234,7 +175,13 @@ public class AdminController implements Initializable {
 
             err.setText("Need to Fill Required Field!");
         }
+        if (grade.length() < 1) {
 
+            gradeErr.setText("Grade is Required!");
+            control = false;
+
+            err.setText("Need to Fill Required Field!");
+        }
         if (email.length() < 1) {
 
             emailErr.setText("Email is Required!");
@@ -317,7 +264,7 @@ public class AdminController implements Initializable {
     }
     private void setBox(){
 
-        String sql = "SELECT id FROM Persons;";
+        String sql = "SELECT id FROM Persons WHERE isAdmin=false;";
         ResultSet rs = null;
 
         try{
@@ -326,7 +273,6 @@ public class AdminController implements Initializable {
             changeBox.getItems().clear();
 
             connection = DataConnect.getConnection();
-            assert connection != null;
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
 
@@ -346,6 +292,12 @@ public class AdminController implements Initializable {
             DataUtil.close(connection);
         }
     }
+
+    /**
+     * Method to delete users from Persons table
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void Delete(ActionEvent event) throws IOException{
 
@@ -406,35 +358,134 @@ public class AdminController implements Initializable {
             DataUtil.close(connection);
         }
     }
+
+    /**
+     * Method to change user data!
+     * @param event
+     */
     @FXML
     protected void Change(ActionEvent event) {
 
+        String id = (String) changeBox.getValue();
+        String grade = changeGrade.getText();
+        String email = changeGrade.getText();
+        String first = changeFirst.getText();
+        String last = changeLast.getText();
 
+        if (grade.length() > 0) {
+
+            try {
+
+                int numCheck = Integer.parseInt(grade);
+
+                String sql = "UPDATE Persons SET grade = " + grade + " WHERE id = '" + id + "';";
+
+                try {
+
+                    connection = DataConnect.getConnection();
+                    statement = connection.createStatement();
+                    try {
+                        statement.executeQuery(sql);
+                    } catch (SQLException ignore) {}
+                } catch (SQLException e) {
+
+                    System.err.println(e.getStackTrace()[0].getLineNumber());
+                    System.out.println("Error: " + e);
+                }
+            } catch (NumberFormatException e) {
+
+                gradeCErr.setText("Need a Numerical Value!");
+                changeErr.setText("Change Needed Fields!");
+            }
+        } if (email.length() > 0) {
+
+            String sql = "UPDATE Persons SET email = '" + email + "' WHERE id = '" + id + "';";
+
+            try {
+
+                connection = DataConnect.getConnection();
+                statement = connection.createStatement();
+                try {
+                    statement.executeQuery(sql);
+                } catch (SQLException ignore) {}
+            } catch (SQLException e) {
+
+                System.err.println(e.getStackTrace()[0].getLineNumber());
+                System.out.println("Error: " + e);
+            }
+        } if (first.length() > 0) {
+
+            String sql = "UPDATE Persons SET first = '" + first + "' WHERE id = '" + id + "';";
+
+            try {
+
+                connection = DataConnect.getConnection();
+                statement = connection.createStatement();
+                try {
+
+                    statement.executeQuery(sql);
+                } catch (SQLException ignore) {}
+            } catch (SQLException e) {
+
+                System.err.println(e.getStackTrace()[0].getLineNumber());
+                System.out.println("Error: " + e);
+            } finally {
+
+                DataUtil.close(statement);
+                DataUtil.close(connection);
+            }
+        } if (last.length() > 0) {
+
+            String sql = "UPDATE Persons SET last = '" + last + "' WHERE id = '" + id + "';";
+
+            try {
+
+                connection = DataConnect.getConnection();
+                statement = connection.createStatement();
+                try {
+                    statement.executeQuery(sql);
+                } catch (SQLException ignore) {
+                }
+            } catch (SQLException e) {
+
+                System.err.println(e.getStackTrace()[0].getLineNumber());
+                System.out.println("Error: " + e);
+            }
+        }
+        setTable();
     }
+
+    /**
+     * Quality of life auto-fill function
+     * @param event
+     */
     @FXML
     protected void Autofill(ActionEvent event) {
 
-        String id = changeBox.getValue().toString();
+        if (changeBox.getValue() != null) {
 
-        String sql = "SELECT * FROM Persons WHERE id='" + id + "';";
-        ResultSet rs = null;
+            String id = changeBox.getValue().toString();
 
-        try {
+            String sql = "SELECT * FROM Persons WHERE id='" + id + "';";
+            ResultSet rs = null;
 
-            connection = DataConnect.getConnection();
-            assert connection != null;
-            statement = connection.createStatement();
-            rs = statement.executeQuery(sql);
+            try {
 
-            changeGrade.setText(rs.getString(2));
-            changeEmail.setText(rs.getString(3));
-            changeFirst.setText(rs.getString(4));
-            changeLast.setText(rs.getString(5));
+                connection = DataConnect.getConnection();
+                assert connection != null;
+                statement = connection.createStatement();
+                rs = statement.executeQuery(sql);
 
-        } catch (SQLException e) {
+                changeGrade.setText(rs.getString(2));
+                changeEmail.setText(rs.getString(3));
+                changeFirst.setText(rs.getString(4));
+                changeLast.setText(rs.getString(5));
 
-            System.out.println("Error: " + e);
-            System.err.println(e.getStackTrace()[0].getLineNumber());
+            } catch (SQLException e) {
+
+                System.out.println("Error: " + e);
+                System.err.println(e.getStackTrace()[0].getLineNumber());
+            }
         }
     }
     @FXML

@@ -1,4 +1,4 @@
-package AdminInterface.SubWindows;
+package AdvisorInterface.SubWindows;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +26,7 @@ public class StudentProgress implements Initializable {
     protected void back(ActionEvent event) throws IOException {
 
         Stage stage = (Stage) Back.getScene().getWindow();
-        Pane root = FXMLLoader.load(getClass().getResource("/AdminInterface/AdminUI.fxml"));
+        Pane root = FXMLLoader.load(getClass().getResource("/AdvisorInterface/AdvisorUI.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }

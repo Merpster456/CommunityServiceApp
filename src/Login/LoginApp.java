@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * Starts the application
+ */
 public class LoginApp extends Application {
 
     @Override

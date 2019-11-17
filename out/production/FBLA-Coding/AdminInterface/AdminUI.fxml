@@ -1,19 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane minHeight="768" minWidth="1366" prefHeight="768" prefWidth="1366" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminInterface.AdminController">
-    <HBox fx:id="Box" alignment="CENTER" prefHeight="125" prefWidth="1366" />
-        <Label fx:id="TopLabel" layoutX="20" layoutY="35" textAlignment="LEFT" />
-    <VBox fx:id="boox" layoutY="125" prefHeight="643" prefWidth="225.0" />
-        <Button fx:id="studentHours" layoutY="125"  prefHeight="160.75" prefWidth="225" styleClass="Columns" text="Student&#10;Hours" textAlignment="CENTER" onAction="#studentHours" />
-        <Button fx:id="studentProgress" layoutY="285.75" prefHeight="160.75" prefWidth="225" styleClass="Columns" text="Student&#10;Progress" textAlignment="CENTER" onAction="#studentProgress" />
-        <Button fx:id="manageUsers" layoutY="446.5" prefHeight="160.75" prefWidth="225" styleClass="Columns" text="Manage&#10;Users" textAlignment="CENTER" onAction="#manageUsers" />
-        <Button fx:id="contactUsers" layoutY="607.25" prefHeight="160.75" prefWidth="225" styleClass="Columns" text="Contact&#10;Users" textAlignment="CENTER" onAction="#contactUsers" />
-
-    <stylesheets>
-    <URL value="@AdminCSS.css" />
-    </stylesheets>
+<?import javafx.geometry.Insets?>
+<AnchorPane minHeight="768" minWidth="1366" prefHeight="768" prefWidth="1366" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="AdminInterface.AdminController">
+    <VBox alignment="CENTER">
+        <TabPane >
+            <Tab text="Manage Users">
+                <HBox>
+                    <padding>
+                        <Insets top="10" bottom="10" right="10" left="10"/>
+                    </padding>
+                    <TableView fx:id="personTable">
+                        <columns>
+                            <TableColumn fx:id="idCol" text="ID" prefWidth="125"/>
+                            <TableColumn fx:id="gradeCol" text="Grade" prefWidth="60"/>
+                            <TableColumn fx:id="emailCol" text="Email" prefWidth="175"/>
+                            <TableColumn fx:id="firstCol" text="First Name" prefWidth="102"/>
+                            <TableColumn fx:id="lastCol" text="Last Name" prefWidth="102"/>
+                            <TableColumn fx:id="isAdvisorCol" text="Is Advisor" prefWidth="102"/>
+                        </columns>
+                    </TableView>
+                    <VBox>
+                        <VBox prefWidth="600">
+                            <TabPane prefWidth="600" tabMinWidth="80.5">
+                                <Tab text="Add User">
+                                    <VBox alignment="CENTER">
+                                        <HBox spacing="10" alignment="CENTER_LEFT">
+                                            <padding>
+                                                <Insets bottom="10" left="30" right="10" top="50"/>
+                                            </padding>
+                                            <Label text="First Name:"/>
+                                            <TextField fx:id="newFirst"/>
+                                        </HBox>
+                                        <Label fx:id="firstErr"  text="" textFill="crimson"/>
+                                        <HBox spacing="10" alignment="CENTER_LEFT">
+                                            <padding>
+                                                <Insets bottom="10" left="30" right="10" top="10"/>
+                                            </padding>
+                                            <Label text="Last Name:"/>
+                                            <TextField fx:id="newLast"/>
+                                        </HBox>
+                                        <Label fx:id="lastErr"  text="" textFill="crimson"/>
+                                        <HBox spacing="10" alignment="CENTER_LEFT">
+                                            <padding>
+                                                <Insets bottom="10" left="30" right="10" top="10"/>
+                                            </padding>
+                                            <Label text="Grade:      "/>
+                                            <TextField fx:id="newGrade" prefWidth="40"/>
+                                        </HBox>
+                                        <Label fx:id="gradeErr"  text="" textFill="crimson"/>
+                                        <HBox spacing="10" alignment="CENTER_LEFT">
+                                            <padding>
+                                                <Insets bottom="10" left="30" right="10" top="10"/>
+                                            </padding>
+                                            <Label text="Email:       "/>
+                                            <TextField fx:id="newEmail"/>
+                                        </HBox>
+                                        <Label fx:id="emailErr"  text="" textFill="crimson"/>
+                                        <HBox spacing="50">
+                                            <padding>
+                                                <Insets bottom="10" left="30" right="10" top="10"/>
+                                            </padding>
+                                            <RadioButton text="Student"/>
+                                            <RadioButton text="Advisor"/>
+                                        </HBox>
+                                        <HBox spacing="70" alignment="CENTER_LEFT">
+                                            <padding>
+                                                <Insets bottom="10" left="30" right="10" top="20"/>
+                                            </padding>
+                                            <Button fx:id="cancelB" text="Cancel" onAction="#cancel"/>
+                                            <Button fx:id="submitB" text="Submit" defaultButton="true" onAction="#submit"/>
+                                        </HBox>
+                                        <Label fx:id="err" text="" textFill="crimson"/>
+                                    </VBox>
+                                </Tab>
+                                <Tab text="Delete User">
+                                    <VBox alignment="CENTER_LEFT" spacing="50">
+                                        <padding>
+                                            <Insets bottom="10" top="50" left="30" right="30"/>
+                                        </padding>
+                                        <Label fx:id="selectUser" text="Select User"/>
+                                        <ChoiceBox fx:id="choiceBox" prefWidth="150"/>
+                                        <Label fx:id="delErr" text=""/>
+                                        <Button text="Delete" onAction="#Delete"/>
+                                    </VBox>
+                                </Tab>
+                                <Tab text="Change User">
+                                    <VBox alignment="CENTER">
+                                        <VBox alignment="CENTER_LEFT" spacing="15">
+                                            <padding>
+                                                <Insets top="30" bottom="20" left="30" right="10"/>
+                                            </padding>
+                                            <Label text="Select User to Change"/>
+                                            <ChoiceBox fx:id="changeBox" prefWidth="150" onAction="#Autofill"/>
+                                        </VBox>
+                                        <HBox spacing="10" alignment="CENTER_LEFT">
+                                            <padding>
+                                                <Insets bottom="10" left="30" right="10" top="20"/>
+                                            </padding>
+                                            <Label text="First Name:"/>
+                                            <TextField fx:id="changeFirst"/>
+                                        </HBox>
+                                        <Label fx:id="firstCErr"  text="" textFill="crimson"/>
+                                        <HBox spacing="10" alignment="CENTER_LEFT">
+                                            <padding>
+                                                <Insets bottom="10" left="30" right="10" top="10"/>
+                                            </padding>
+                                            <Label text="Last Name:"/>
+                                            <TextField fx:id="changeLast"/>
+                                        </HBox>
+                                        <Label fx:id="lastCErr"  text="" textFill="crimson"/>
+                                        <HBox spacing="10" alignment="CENTER_LEFT">
+                                            <padding>
+                                                <Insets bottom="10" left="30" right="10" top="10"/>
+                                            </padding>
+                                            <Label text="Grade:      "/>
+                                            <TextField fx:id="changeGrade" prefWidth="40"/>
+                                        </HBox>
+                                        <Label fx:id="gradeCErr"  text="" textFill="crimson"/>
+                                        <HBox spacing="10" alignment="CENTER_LEFT">
+                                            <padding>
+                                                <Insets bottom="10" left="30" right="10" top="10"/>
+                                            </padding>
+                                            <Label text="Email:       "/>
+                                            <TextField fx:id="changeEmail"/>
+                                        </HBox>
+                                        <Label fx:id="emailCErr"  text="" textFill="crimson"/>
+                                        <HBox spacing="70" alignment="CENTER_LEFT">
+                                            <padding>
+                                                <Insets bottom="10" left="30" right="10" top="20"/>
+                                            </padding>
+                                            <Button text="Cancel" onAction="#changeCancel"/>
+                                            <Button text="Change" defaultButton="true" onAction="#Change"/>
+                                        </HBox>
+                                        <Label fx:id="changeErr" text="" textFill="crimson"/>
+                                    </VBox>
+                                </Tab>
+                            </TabPane>
+                        </VBox>
+                    </VBox>
+                </HBox>
+            </Tab>
+            <Tab text="Deleted Users">
+                <HBox>
+                    <padding>
+                        <Insets top="10" bottom="10" left="10" right="10"/>
+                    </padding>
+                    <TableView fx:id="delTable">
+                        <columns>
+                            <TableColumn fx:id="delID" text="ID"/>
+                            <TableColumn fx:id="delGrade" text="Grade" prefWidth="60"/>
+                            <TableColumn fx:id="delEmail" text="Email" prefWidth="175"/>
+                            <TableColumn fx:id="delFirst" text="First Name" prefWidth="102"/>
+                            <TableColumn fx:id="delLast" text="Last Name" prefWidth="102"/>
+                            <TableColumn fx:id="delIsAdvisor" text="Is Advisor" prefWidth="102"/>
+                        </columns>
+                    </TableView>
+                </HBox>
+            </Tab>
+        </TabPane>
+    </VBox>
 </AnchorPane>

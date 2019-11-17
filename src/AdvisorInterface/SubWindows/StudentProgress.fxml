@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane minHeight="768" minWidth="1366" prefHeight="768" prefWidth="1366" xmlns="http://javafx.com/javafx/10.0.2-internal"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminInterface.SubWindows.StudentProgress">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdvisorInterface.SubWindows.StudentProgress">
     <HBox fx:id="Box" alignment="CENTER" prefHeight="125" prefWidth="1366">
         <children>
             <Label fx:id="TopLabel" contentDisplay="CENTER" text="Student CSA Progress" />
@@ -13,6 +13,6 @@
     </HBox>
     <Button fx:id="Back" layoutX="20" layoutY="35" text="Back" onAction="#back" />
     <stylesheets>
-        <URL value="@../AdminCSS.css" />
+        <URL value="@../Advisor.css" />
     </stylesheets>
 </AnchorPane>

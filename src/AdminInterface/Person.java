@@ -11,14 +11,14 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
-public class Student {
+public class Person {
 
     private StringProperty id;
     private StringProperty grade;
     private StringProperty email;
     private StringProperty firstName;
     private StringProperty lastName;
-    private BooleanProperty isDeleted;
+    private StringProperty isAdmin;
 
     public void setId(String id) {
 
@@ -60,70 +60,51 @@ public class Student {
 
         return lastName.get();
     }
-    public void setIsDeleted(Boolean isDeleted){
+    public void setIsAdmin(String isAdmin){
 
-        this.isDeleted = new SimpleBooleanProperty(isDeleted);
+        this.isAdmin = new SimpleStringProperty(isAdmin);
     }
-    public Boolean getIsDeleted(){
+    public String getIsAdmin(){
 
-        return isDeleted.get();
+        return isAdmin.get();
     }
 
-
-    public Student(String id, String grade, String email, String first, String last, Boolean isDeleted){
+    public Person(String id, String grade, String email, String first, String last, String isAdmin){
 
         this.id = new SimpleStringProperty(id);
         this.grade = new SimpleStringProperty(grade);
         this.email = new SimpleStringProperty(email);
         this.firstName = new SimpleStringProperty(first);
         this.lastName = new SimpleStringProperty(last);
-        this.isDeleted = new SimpleBooleanProperty(isDeleted);
+
+        if (isAdmin.equals("1")) this.isAdmin = new SimpleStringProperty("True");
+        else this.isAdmin = new SimpleStringProperty("False");
+
     }
 
-    public static String GenerateID(String first, String last) {
+    public static String GenerateID(String First, String Last) {
 
         Connection connection = null;
         Statement statement = null;
         ResultSet rs = null;
         Random rand = new Random();
+        Boolean control = true;
+        String result = null;
 
-        while (true) {
+        String first = First.toLowerCase();
+        String last = Last.toLowerCase();
 
-            int n = rand.nextInt(8);
-            n = n + 1;
-            int n2 = rand.nextInt(8);
-            n2 = n2 + 1;
-            int n3 = rand.nextInt(8);
-            n3 = n3 + 1;
+        int n = rand.nextInt(8);
+        n = n + 1;
+        int n2 = rand.nextInt(8);
+        n2 = n2 + 1;
+        int n3 = rand.nextInt(8);
+        n3 = n3 + 1;
 
-            String ID = first + "." + last + n + n2 + n3;
+        String ID = first + "." + last + n + n2 + n3;
 
-            try {
-
-                connection = DataConnect.getConnection();
-                assert connection != null;
-                statement = connection.createStatement();
-
-                try {
-
-                    String sql = "Select * FROM Persons WHERE id='" + ID + "';";
-
-                    rs = statement.executeQuery(sql);
-
-                } catch (SQLException e) {
-
-                    return ID;
-                }
-            } catch (SQLException e) {
-
-                e.printStackTrace();
-            } finally {
-
-                DataUtil.close(rs);
-                DataUtil.close(statement);
-                DataUtil.close(connection);
-            }
-        }
+        if (check(ID)) return ID;
+        else return GenerateID(first, last);
     }
 
     public static String GeneratePass(){
@@ -142,5 +123,38 @@ public class Student {
         String pass = "0000" + n + n2 + n3 + n4;
 
         return pass;
+    }
+
+    private static Boolean check(String ID) {
+
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet rs = null;
+        String result = null;
+        int test = 0;
+
+        try {
+
+            connection = DataConnect.getConnection();
+            assert connection != null;
+            statement = connection.createStatement();
+
+            String sql = "Select * FROM Persons WHERE id='" + ID + "';";
+
+            rs = statement.executeQuery(sql);
+
+            result = rs.getString(1);
+
+            return false;
+
+        } catch (SQLException e) {
+
+            return true;
+        } finally {
+
+            DataUtil.close(rs);
+            DataUtil.close(statement);
+            DataUtil.close(connection);
+        }
     }
 }
