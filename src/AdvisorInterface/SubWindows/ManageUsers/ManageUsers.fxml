@@ -30,7 +30,7 @@
             </columns>
         </TableView>
         <VBox prefWidth="600">
-            <TabPane prefWidth="600" tabMinWidth="80.5">
+            <TabPane prefWidth="600" tabMinWidth="79">
                 <Tab text="Add User">
                     <VBox alignment="CENTER">
                         <HBox spacing="10" alignment="CENTER_LEFT">
@@ -93,7 +93,7 @@
                                 <Insets top="30" bottom="20" left="30" right="10"/>
                             </padding>
                             <Label text="Select User to Change"/>
-                            <ChoiceBox fx:id="changeBox" prefWidth="150" onAction="#Autofill"/>
+                            <ChoiceBox fx:id="changeBox" prefWidth="150"/>
                         </VBox>
                         <HBox spacing="10" alignment="CENTER_LEFT">
                             <padding>

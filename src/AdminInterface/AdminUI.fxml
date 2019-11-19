@@ -66,8 +66,8 @@
                                             <padding>
                                                 <Insets bottom="10" left="30" right="10" top="10"/>
                                             </padding>
-                                            <RadioButton text="Student"/>
-                                            <RadioButton text="Advisor"/>
+                                            <ToggleButton text="Student"/>
+                                            <ToggleButton text="Advisor"/>
                                         </HBox>
                                         <HBox spacing="70" alignment="CENTER_LEFT">
                                             <padding>

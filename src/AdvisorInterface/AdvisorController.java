@@ -50,7 +50,7 @@ public class AdvisorController implements Initializable {
     protected void studentHours(ActionEvent event) throws Exception {
 
         Stage stage = (Stage) studentHours.getScene().getWindow();
-        Pane root = FXMLLoader.load(getClass().getResource("/AdvisorInterface/SubWindows/StudentHours.fxml"));
+        Pane root = FXMLLoader.load(getClass().getResource("/AdvisorInterface/SubWindows/StudentHours/StudentHours.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
@@ -59,7 +59,7 @@ public class AdvisorController implements Initializable {
     protected void studentProgress(ActionEvent event) throws IOException {
 
         Stage stage = (Stage) studentHours.getScene().getWindow();
-        Pane root = FXMLLoader.load(getClass().getResource("/AdvisorInterface/SubWindows/StudentHours.fxml"));
+        Pane root = FXMLLoader.load(getClass().getResource("/AdvisorInterface/SubWindows/StudentHours/StudentProgress.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }

@@ -1,5 +1,3 @@
-package AdvisorInterface;
-
 import javafx.beans.property.*;
 
 import java.sql.SQLException;
@@ -15,9 +13,10 @@ public class Student {
 
     private StringProperty id;
     private StringProperty grade;
-    private StringProperty email;
+    private StringProperty emailOrDate;
     private StringProperty firstName;
     private StringProperty lastName;
+    private StringProperty hours;
 
     public void setId(String id) {
 
@@ -27,6 +26,10 @@ public class Student {
 
         return id.get();
     }
+    public StringProperty idProperty() {
+
+        return id;
+    }
     public void setGrade(String grade){
 
         this.grade = new SimpleStringProperty(grade);
@@ -35,13 +38,21 @@ public class Student {
 
         return grade.get();
     }
-    public void setEmail(String email){
+    public StringProperty gradeProperty() {
 
-        this.email = new SimpleStringProperty(email);
+        return grade;
     }
-    public String getEmail(){
+    public void setEmailOrDate(String emailOrDate){
 
-        return email.get();
+        this.emailOrDate = new SimpleStringProperty(emailOrDate);
+    }
+    public String getEmailOrDate(){
+
+        return emailOrDate.get();
+    }
+    public StringProperty emailOrDateProperty() {
+
+        return emailOrDate;
     }
     public void setFirst(String first){
 
@@ -51,6 +62,10 @@ public class Student {
 
         return firstName.get();
     }
+    public StringProperty firstNameProperty() {
+
+        return firstName;
+    }
     public void setLast(String last){
 
         this.lastName = new SimpleStringProperty(last);
@@ -59,15 +74,53 @@ public class Student {
 
         return lastName.get();
     }
+    public StringProperty lastNameProperty() {
+
+        return lastName;
+    }
+    public void setHours(String numHours){
+
+        this.hours = new SimpleStringProperty(numHours);
+    }
+    public String getHours(){
+
+        return hours.get();
+    }
+    public StringProperty hoursProperty() {
+
+        return hours;
+    }
 
     public Student(String id, String grade, String email, String first, String last){
 
         this.id = new SimpleStringProperty(id);
         this.grade = new SimpleStringProperty(grade);
-        this.email = new SimpleStringProperty(email);
+        this.emailOrDate = new SimpleStringProperty(email);
         this.firstName = new SimpleStringProperty(first);
         this.lastName = new SimpleStringProperty(last);
     }
+
+    public Student(String id, String grade, String emailOrDate, String first, String last, String hours){
+
+        this.id = new SimpleStringProperty(id);
+        this.grade = new SimpleStringProperty(grade);
+        this.emailOrDate = new SimpleStringProperty(emailOrDate);
+        this.firstName = new SimpleStringProperty(first);
+        this.lastName = new SimpleStringProperty(last);
+        this.hours = new SimpleStringProperty(hours);
+
+    }
+/*
+    public Student(String id, String grade, String first, String last, String hours, String date){
+
+        this.id = new SimpleStringProperty(id);
+        this.grade = new SimpleStringProperty(grade);
+        this.firstName = new SimpleStringProperty(first);
+        this.lastName = new SimpleStringProperty(last);
+        this.hours = new SimpleStringProperty(hours);
+        this.date = new SimpleStringProperty(date);
+    }
+ */
 
     public static String GenerateID(String First, String Last) {
 

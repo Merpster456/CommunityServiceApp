@@ -1,6 +1,6 @@
 package AdvisorInterface.SubWindows.ManageUsers;
 
-import AdvisorInterface.Student;
+import Student;
 import Database.DataUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -262,6 +262,7 @@ public class ManageUsers implements Initializable {
         newStage.setScene(scene);
         newStage.show();
     }
+
     private void setBox(){
 
         String sql = "SELECT id FROM Persons WHERE isAdmin=false;";
@@ -384,6 +385,13 @@ public class ManageUsers implements Initializable {
 
                     connection = DataConnect.getConnection();
                     statement = connection.createStatement();
+
+                    /**
+                     * There will always be an exception thrown
+                     * here saying "No result set" however this
+                     * is completely fine and expected therefore
+                     * we ignore the exception
+                     */
                     try {
                         statement.executeQuery(sql);
                     } catch (SQLException ignore) {}
@@ -405,6 +413,7 @@ public class ManageUsers implements Initializable {
 
                 connection = DataConnect.getConnection();
                 statement = connection.createStatement();
+
                 try {
                     statement.executeQuery(sql);
                 } catch (SQLException ignore) {}
@@ -421,8 +430,8 @@ public class ManageUsers implements Initializable {
 
                 connection = DataConnect.getConnection();
                 statement = connection.createStatement();
-                try {
 
+                try {
                     statement.executeQuery(sql);
                 } catch (SQLException ignore) {}
             } catch (SQLException e) {
@@ -442,6 +451,7 @@ public class ManageUsers implements Initializable {
 
                 connection = DataConnect.getConnection();
                 statement = connection.createStatement();
+
                 try {
                     statement.executeQuery(sql);
                 } catch (SQLException ignore) {
@@ -459,6 +469,7 @@ public class ManageUsers implements Initializable {
      * Quality of life auto-fill function
      * @param event
      */
+    /*
     @FXML
     protected void Autofill(ActionEvent event) {
 
@@ -488,6 +499,7 @@ public class ManageUsers implements Initializable {
             }
         }
     }
+     */
     @FXML
     protected void changeCancel(ActionEvent event) {
 

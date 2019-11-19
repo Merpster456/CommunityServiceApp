@@ -2,31 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc445480-d086-479a-890a-c90d40725123" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AdminInterface/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AdvisorInterface/AdvisorController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AdvisorInterface/AdvisorUI.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ContactUsers/ContactUsers.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ContactUsers/ContactUsers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CommunityService.db" beforeDir="false" afterPath="$PROJECT_DIR$/CommunityService.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdminInterface/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdminInterface/AdminController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdminInterface/AdminUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdminInterface/AdminUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminInterface/AdminCSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/Advisor.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdminInterface/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminInterface/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdminInterface/AdminUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminInterface/AdminUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminInterface/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminInterface/SubWindows/ContactUsers.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminInterface/SubWindows/ContactUsers.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminInterface/SubWindows/ManageUsers.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminInterface/SubWindows/ManageUsers.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminInterface/SubWindows/StudentHours.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminInterface/SubWindows/StudentHours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminInterface/SubWindows/StudentProgress.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentProgress.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminInterface/SubWindows/StudentProgress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentProgress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login/LoginApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/LoginApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/AdvisorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/AdvisorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/StudentHours.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/StudentHours.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,8 +38,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Szjxu4v0nyLv0o0qvDM11ETN4Y" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -62,6 +52,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours" />
       <recent name="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ContactUsers" />
       <recent name="$PROJECT_DIR$/src/AdminInterface/SubWindows/ManageUsers" />
       <recent name="$PROJECT_DIR$/src/AdminInterface/SubWindows" />
@@ -135,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573705097955</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="made design for add users tab, created id generator and password generator,&#10;&#10;made the way to insert into db &#10;&#10;much more work to be done">
+      <created>1573975769744</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1573975769745</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -152,6 +150,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added Label to test git" />
     <MESSAGE value="changed some names, commented out database file for now" />
     <MESSAGE value="HUUUGE development&#10;Database in&#10;&#10;Maybe Hash for passwds&#10;need connection check for sqlite db&#10;&#10;Need to work on dashboards" />
