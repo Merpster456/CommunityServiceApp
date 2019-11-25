@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<AnchorPane minHeight="768" minWidth="1366" prefHeight="768" prefWidth="1366" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentInterface.SubWindows.PersonalProgress.PersonalProgress">
+    <HBox fx:id="Box" alignment="CENTER" prefHeight="125" prefWidth="1366">
+        <children>
+            <Label fx:id="TopLabel" contentDisplay="CENTER" text="Personal Progress" />
+        </children>
+    </HBox>
+    <Button fx:id="Back" layoutX="20" layoutY="35" text="Back" onAction="#back" />
+    <HBox fx:id="v" prefHeight="500.0" prefWidth="1000.0" layoutY="184" layoutX="183" spacing="50">
+        <padding>
+            <Insets topRightBottomLeft="30"/>
+        </padding>
+        <VBox spacing="20" alignment="TOP_CENTER">
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="Total Hours:"/>
+                <Label fx:id="hours"/>
+            </HBox>
+            <TableView fx:id="personalTable" prefWidth="200">
+                <columns>
+                    <TableColumn fx:id="hoursCol" text="Hours Gained" prefWidth="100"/>
+                    <TableColumn fx:id="dateCol" text="Date of Event" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+        <VBox spacing="20" alignment="TOP_RIGHT">
+            <VBox spacing="10" alignment="CENTER">
+                <Label text="Achievement Progress"/>
+                <ProgressBar fx:id="achievementProgress"/>
+                <HBox spacing="10">
+                    <Label fx:id="achievementHours"/>
+                    <Label fx:id="achievementLabel" text="more hours needed!"/>
+                </HBox>
+            </VBox>
+            <VBox spacing="10" alignment="CENTER">
+                <Label text="Service Progress"/>
+                <ProgressBar fx:id="serviceProgress"/>
+                <HBox spacing="10">
+                    <Label fx:id="serviceHours"/>
+                    <Label fx:id="serviceLabel" text="more hours needed!"/>
+                </HBox>
+            </VBox>
+            <VBox spacing="10" alignment="CENTER">
+                <Label text="Community Progress"/>
+                <ProgressBar fx:id="communityProgress"/>
+                <HBox spacing="10">
+                    <Label fx:id="communityHours"/>
+                    <Label fx:id="communityLabel" text="more hours needed!"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </HBox>
+    <stylesheets>
+        <URL value="@../../Student.css" />
+    </stylesheets>
+</AnchorPane>

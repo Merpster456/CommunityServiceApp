@@ -1,0 +1,55 @@
+.root {
+
+    -fx-font-family: 'Tahoma', Arial, sans-serif;
+}
+
+#Box {
+
+    -fx-background-color: red;
+
+}
+#boox {
+
+    -fx-background-color: blue;
+
+}
+.Columns {
+
+    -fx-background-color: transparent;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-style: solid;
+    -fx-font-size: 35px;
+    -fx-font-weight: bold;
+
+
+}
+
+#TopLabel {
+
+    -fx-font-size: 66px;
+    -fx-font-weight: bold;
+
+
+}
+#Back {
+
+    -fx-background-color: transparent;
+    -fx-font-size: 35px;
+    -fx-font-weight: bold;
+
+
+}
+
+#v {
+
+    -fx-background-color: red;
+
+}
+
+.achievementLabels {
+
+    -fx-font-size: 19px;
+    -fx-font-weight: bold;
+
+}
