@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<AnchorPane minHeight="768" minWidth="1366" prefHeight="768" prefWidth="1366" xmlns="http://javafx.com/javafx/10.0.2-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentInterface.SubWindows.StudentContact.StudentContact">
+    <HBox fx:id="Box" alignment="CENTER" prefHeight="125" prefWidth="1366">
+        <children>
+            <Label fx:id="TopLabel" contentDisplay="CENTER" text="Contact Users" />
+        </children>
+    </HBox>
+    <Button fx:id="Back" layoutX="20" layoutY="35" text="Back" onAction="#back" />
+    <VBox fx:id="v" prefHeight="500.0" prefWidth="900.0" layoutY="184" layoutX="233" alignment="TOP_CENTER" spacing="30">
+        <padding>
+            <Insets top="20" bottom="10" left="50" right="50"/>
+        </padding>
+        <Label text="Select Recipient"/>
+        <ChoiceBox fx:id="recipients" prefWidth="150"/>
+        <Label text="Subject"/>
+        <TextField fx:id="subjectF" prefWidth="200"/>
+        <Label text="Body"/>
+        <TextArea fx:id="bodyF"/>
+    </VBox>
+    <Button fx:id="send" layoutX="950" layoutY="250" text="Send" onAction="#send"/>
+    <stylesheets>
+        <URL value="@../../Student.css" />
+    </stylesheets>
+</AnchorPane>

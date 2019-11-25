@@ -1,8 +1,8 @@
 package AdvisorInterface.SubWindows.StudentHours;
 
-import Student;
 import Database.DataConnect;
 import Database.DataUtil;
+import Objects.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -115,8 +115,6 @@ public class StudentHours implements Initializable {
             DataUtil.close(statement);
             DataUtil.close(connection);
         }
-
-
     }
 
     @FXML
@@ -377,6 +375,7 @@ public class StudentHours implements Initializable {
         }
 
         setTable();
+        setDelBoxes();
     }
 }
 

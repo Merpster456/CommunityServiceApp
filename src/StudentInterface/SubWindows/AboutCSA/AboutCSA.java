@@ -1,4 +1,4 @@
-package AdvisorInterface.SubWindows;
+package StudentInterface.SubWindows.AboutCSA;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,21 +13,24 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class StudentProgress implements Initializable {
+public class AboutCSA implements Initializable {
 
-    @FXML private Button Back;
+    @FXML private Button back;
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle rb) {
+
 
     }
+
 
     @FXML
     protected void back(ActionEvent event) throws IOException {
 
-        Stage stage = (Stage) Back.getScene().getWindow();
-        Pane root = FXMLLoader.load(getClass().getResource("/AdvisorInterface/AdvisorUI.fxml"));
+        Stage stage = (Stage) back.getScene().getWindow();
+        Pane root = FXMLLoader.load(getClass().getResource("/StudentInterface/StudentUI.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
 }
+

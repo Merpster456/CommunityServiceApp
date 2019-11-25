@@ -1,7 +1,7 @@
 package AdvisorInterface.SubWindows.ManageUsers;
 
-import Student;
 import Database.DataUtil;
+import Objects.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -103,7 +103,7 @@ public class ManageUsers implements Initializable {
             this.firstCol.setCellValueFactory(new PropertyValueFactory<Student, String>("First"));
             this.lastCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Last"));
             this.gradeCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Grade"));
-            this.emailCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Email"));
+            this.emailCol.setCellValueFactory(new PropertyValueFactory<Student, String>("EmailOrDate"));
 
             idCol.setCellFactory(TextFieldTableCell.forTableColumn());
             firstCol.setCellFactory(TextFieldTableCell.forTableColumn());

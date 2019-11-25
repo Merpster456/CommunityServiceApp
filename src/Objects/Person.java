@@ -1,4 +1,4 @@
-package AdminInterface;
+package Objects;
 
 import javafx.beans.property.*;
 
@@ -18,7 +18,9 @@ public class Person {
     private StringProperty email;
     private StringProperty firstName;
     private StringProperty lastName;
+    private StringProperty pass;
     private StringProperty isAdmin;
+    private StringProperty hours;
 
     public void setId(String id) {
 
@@ -28,6 +30,10 @@ public class Person {
 
         return id.get();
     }
+    public StringProperty idProperty() {
+
+        return id;
+    }
     public void setGrade(String grade){
 
         this.grade = new SimpleStringProperty(grade);
@@ -35,6 +41,10 @@ public class Person {
     public String getGrade(){
 
         return grade.get();
+    }
+    public StringProperty gradeProperty() {
+
+        return grade;
     }
     public void setEmail(String email){
 
@@ -44,6 +54,10 @@ public class Person {
 
         return email.get();
     }
+    public StringProperty emailProperty() {
+
+        return email;
+    }
     public void setFirst(String first){
 
         this.firstName = new SimpleStringProperty(first);
@@ -51,6 +65,10 @@ public class Person {
     public String getFirst(){
 
         return firstName.get();
+    }
+    public StringProperty firstNameProperty() {
+
+        return firstName;
     }
     public void setLast(String last){
 
@@ -60,6 +78,10 @@ public class Person {
 
         return lastName.get();
     }
+    public StringProperty lastNameProperty() {
+
+        return lastName;
+    }
     public void setIsAdmin(String isAdmin){
 
         this.isAdmin = new SimpleStringProperty(isAdmin);
@@ -68,19 +90,63 @@ public class Person {
 
         return isAdmin.get();
     }
+    public StringProperty isAdminProperty() {
 
-    public Person(String id, String grade, String email, String first, String last, String isAdmin){
+        return isAdmin;
+    }
+    public void setPass(String pass){
+
+        this.pass = new SimpleStringProperty(pass);
+    }
+    public String getPass(){
+
+        return pass.get();
+    }
+    public StringProperty passProperty() {
+
+        return pass;
+    }
+    public void setHours(String hours){
+
+        this.hours = new SimpleStringProperty(hours);
+    }
+    public String getHours(){
+
+        return hours .get();
+    }
+    public StringProperty hoursProperty() {
+
+        return hours;
+    }
+
+    /**
+    public Person(String id, String grade, String email, String first, String last, String pass, String isAdmin){
 
         this.id = new SimpleStringProperty(id);
         this.grade = new SimpleStringProperty(grade);
         this.email = new SimpleStringProperty(email);
         this.firstName = new SimpleStringProperty(first);
         this.lastName = new SimpleStringProperty(last);
+        this.pass = new SimpleStringProperty(pass);
 
         if (isAdmin.equals("1")) this.isAdmin = new SimpleStringProperty("True");
         else this.isAdmin = new SimpleStringProperty("False");
-
     }
+    */
+    public Person(String id, String grade, String email, String first, String last, String pass, String isAdmin, String hours){
+
+        this.id = new SimpleStringProperty(id);
+        this.grade = new SimpleStringProperty(grade);
+        this.email = new SimpleStringProperty(email);
+        this.firstName = new SimpleStringProperty(first);
+        this.lastName = new SimpleStringProperty(last);
+        this.pass = new SimpleStringProperty(pass);
+        this.hours = new SimpleStringProperty(hours);
+
+        if (isAdmin.equals("1")) this.isAdmin = new SimpleStringProperty("True");
+        else this.isAdmin = new SimpleStringProperty("False");
+    }
+
 
     public static String GenerateID(String First, String Last) {
 

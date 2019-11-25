@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<AnchorPane minHeight="768" minWidth="1366" prefHeight="768" prefWidth="1366" xmlns="http://javafx.com/javafx/10.0.2-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentInterface.SubWindows.AboutCSA.AboutCSA">
+    <HBox fx:id="Box" alignment="CENTER" prefHeight="125" prefWidth="1366">
+        <children>
+            <Label fx:id="TopLabel" contentDisplay="CENTER" text="About Community Service Awards" />
+        </children>
+    </HBox>
+    <Button fx:id="back" layoutX="20" layoutY="35" text="Back" onAction="#back" />
+
+    <stylesheets>
+        <URL value="@../../Student.css"/>
+    </stylesheets>
+</AnchorPane>

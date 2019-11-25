@@ -22,6 +22,8 @@
                             <TableColumn fx:id="emailCol" text="Email" prefWidth="175"/>
                             <TableColumn fx:id="firstCol" text="First Name" prefWidth="102"/>
                             <TableColumn fx:id="lastCol" text="Last Name" prefWidth="102"/>
+                            <TableColumn fx:id="passCol" text="Password" prefWidth="102"/>
+                            <TableColumn fx:id="hoursCol" text="Hours" prefWidth="60"/>
                             <TableColumn fx:id="isAdvisorCol" text="Is Advisor" prefWidth="102"/>
                         </columns>
                     </TableView>
@@ -66,8 +68,8 @@
                                             <padding>
                                                 <Insets bottom="10" left="30" right="10" top="10"/>
                                             </padding>
-                                            <ToggleButton text="Student"/>
-                                            <ToggleButton text="Advisor"/>
+                                            <ToggleButton text="Student" onAction="#setStudent"/>
+                                            <ToggleButton text="Advisor" onAction="#setAdvisor"/>
                                         </HBox>
                                         <HBox spacing="70" alignment="CENTER_LEFT">
                                             <padding>
@@ -151,16 +153,25 @@
                     <padding>
                         <Insets top="10" bottom="10" left="10" right="10"/>
                     </padding>
-                    <TableView fx:id="delTable">
-                        <columns>
-                            <TableColumn fx:id="delID" text="ID"/>
-                            <TableColumn fx:id="delGrade" text="Grade" prefWidth="60"/>
-                            <TableColumn fx:id="delEmail" text="Email" prefWidth="175"/>
-                            <TableColumn fx:id="delFirst" text="First Name" prefWidth="102"/>
-                            <TableColumn fx:id="delLast" text="Last Name" prefWidth="102"/>
-                            <TableColumn fx:id="delIsAdvisor" text="Is Advisor" prefWidth="102"/>
-                        </columns>
-                    </TableView>
+                        <TableView fx:id="delAccTable">
+                            <columns>
+                                <TableColumn fx:id="accID" text="ID" prefWidth="125"/>
+                                <TableColumn fx:id="accGrade" text="Grade" prefWidth="60"/>
+                                <TableColumn fx:id="accEmail" text="Email" prefWidth="175"/>
+                                <TableColumn fx:id="accFirst" text="First Name" prefWidth="102"/>
+                                <TableColumn fx:id="accLast" text="Last Name" prefWidth="102"/>
+                                <TableColumn fx:id="accPass" text="Password" prefWidth="102"/>
+                                <TableColumn fx:id="accHours" text="Hours" prefWidth="60"/>
+                                <TableColumn fx:id="accIsAdvisor" text="Is Advisor" prefWidth="102"/>
+                            </columns>
+                        </TableView>
+                    <VBox spacing="10">
+                        <padding>
+                            <Insets top="50" left="30" bottom="10" right="10"/>
+                        </padding>
+
+
+                    </VBox>
                 </HBox>
             </Tab>
         </TabPane>

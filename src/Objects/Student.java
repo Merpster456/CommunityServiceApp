@@ -1,3 +1,5 @@
+package Objects;
+
 import javafx.beans.property.*;
 
 import java.sql.SQLException;
@@ -17,6 +19,8 @@ public class Student {
     private StringProperty firstName;
     private StringProperty lastName;
     private StringProperty hours;
+
+    private int Hours;
 
     public void setId(String id) {
 
@@ -110,6 +114,18 @@ public class Student {
         this.hours = new SimpleStringProperty(hours);
 
     }
+
+    public Student(String id, String hours) {
+
+        this.id =  new SimpleStringProperty(id);
+        this.hours = new SimpleStringProperty(hours);
+    }
+
+    public Student(String id, int Hours) {
+
+        this.id = new SimpleStringProperty(id);
+        this.Hours = Hours;
+    }
 /*
     public Student(String id, String grade, String first, String last, String hours, String date){
 
@@ -196,5 +212,34 @@ public class Student {
             DataUtil.close(statement);
             DataUtil.close(connection);
         }
+    }
+
+    public boolean isCommunity() {
+
+        String Hours = hours.getValue();
+        int hours = Integer.parseInt(Hours);
+
+        return hours >= 50;
+    }
+
+    public boolean isService() {
+
+        String Hours = hours.getValue();
+        int hours = Integer.parseInt(Hours);
+
+        return hours >= 200;
+    }
+
+    public boolean isAchievement() {
+
+        String Hours = hours.getValue();
+        int hours = Integer.parseInt(Hours);
+
+        return hours >= 500;
+    }
+
+    public int getIntHours() {
+
+        return Hours;
     }
 }

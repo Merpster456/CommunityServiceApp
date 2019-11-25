@@ -21,9 +21,6 @@ public class AdvisorController implements Initializable {
 
     @FXML private Label TopLabel;
     @FXML private Button studentHours;
-    @FXML private Button studentProgress;
-    @FXML private Button manageUsers;
-    @FXML private Button contactUsers;
 
     private final String id = LoginController.id;
 
@@ -59,7 +56,7 @@ public class AdvisorController implements Initializable {
     protected void studentProgress(ActionEvent event) throws IOException {
 
         Stage stage = (Stage) studentHours.getScene().getWindow();
-        Pane root = FXMLLoader.load(getClass().getResource("/AdvisorInterface/SubWindows/StudentHours/StudentProgress.fxml"));
+        Pane root = FXMLLoader.load(getClass().getResource("/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }

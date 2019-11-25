@@ -1,7 +1,9 @@
 package AdminInterface;
 
-import Student;
 import Database.DataUtil;
+
+import Objects.Person;
+import Objects.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,19 +37,24 @@ public class AdminController implements Initializable {
     @FXML private ChoiceBox choiceBox;
     @FXML private ChoiceBox changeBox;
     @FXML private TableView<Person> personTable;
-    @FXML private TableView<Person> delTable;
+    @FXML private TableView<Person> delAccTable;
+    @FXML private TableView<Person> delHoursTable;
     @FXML private TableColumn<Person, String> idCol;
     @FXML private TableColumn<Person, String> firstCol;
     @FXML private TableColumn<Person, String> lastCol;
     @FXML private TableColumn<Person, String> gradeCol;
     @FXML private TableColumn<Person, String> emailCol;
+    @FXML private TableColumn<Person, String> passCol;
+    @FXML private TableColumn<Person, String> hoursCol;
     @FXML private TableColumn<Person, String> isAdvisorCol;
-    @FXML private TableColumn<Person, String> delID;
-    @FXML private TableColumn<Person, String> delGrade;
-    @FXML private TableColumn<Person, String> delEmail;
-    @FXML private TableColumn<Person, String> delFirst;
-    @FXML private TableColumn<Person, String> delLast;
-    @FXML private TableColumn<Person, String> delIsAdvisor;
+    @FXML private TableColumn<Person, String> accID;
+    @FXML private TableColumn<Person, String> accGrade;
+    @FXML private TableColumn<Person, String> accEmail;
+    @FXML private TableColumn<Person, String> accFirst;
+    @FXML private TableColumn<Person, String> accLast;
+    @FXML private TableColumn<Person, String> accPass;
+    @FXML private TableColumn<Person, String> accHours;
+    @FXML private TableColumn<Person, String> accIsAdvisor;
     @FXML private TextField newFirst;
     @FXML private TextField newLast;
     @FXML private TextField newGrade;
@@ -70,6 +77,7 @@ public class AdminController implements Initializable {
 
     private Connection connection;
     private Statement statement;
+    private boolean isAdvisor;
 
     public AdminController() {
     }
@@ -106,25 +114,31 @@ public class AdminController implements Initializable {
                         rs.getString(3),
                         rs.getString(4),
                         rs.getString(5),
-                        rs.getString(7)));
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8)));
             }
 
-            this.delID.setCellValueFactory(new PropertyValueFactory<Person, String>("Id"));
-            this.delFirst.setCellValueFactory(new PropertyValueFactory<Person, String>("First"));
-            this.delLast.setCellValueFactory(new PropertyValueFactory<Person, String>("Last"));
-            this.delGrade.setCellValueFactory(new PropertyValueFactory<Person, String>("Grade"));
-            this.delEmail.setCellValueFactory(new PropertyValueFactory<Person, String>("Email"));
-            this.delIsAdvisor.setCellValueFactory(new PropertyValueFactory<Person, String>( "IsAdmin"));
+            this.accID.setCellValueFactory(new PropertyValueFactory<Person, String>("Id"));
+            this.accFirst.setCellValueFactory(new PropertyValueFactory<Person, String>("First"));
+            this.accLast.setCellValueFactory(new PropertyValueFactory<Person, String>("Last"));
+            this.accGrade.setCellValueFactory(new PropertyValueFactory<Person, String>("Grade"));
+            this.accEmail.setCellValueFactory(new PropertyValueFactory<Person, String>("Email"));
+            this.accPass.setCellValueFactory(new PropertyValueFactory<Person, String>("Pass"));
+            this.accHours.setCellValueFactory(new PropertyValueFactory<Person, String>("Hours"));
+            this.accIsAdvisor.setCellValueFactory(new PropertyValueFactory<Person, String>( "IsAdmin"));
 
-            delID.setCellFactory(TextFieldTableCell.forTableColumn());
-            delFirst.setCellFactory(TextFieldTableCell.forTableColumn());
-            delLast.setCellFactory(TextFieldTableCell.forTableColumn());
-            delGrade.setCellFactory(TextFieldTableCell.forTableColumn());
-            delEmail.setCellFactory(TextFieldTableCell.forTableColumn());
-            delIsAdvisor.setCellFactory(TextFieldTableCell.forTableColumn());
+            accID.setCellFactory(TextFieldTableCell.forTableColumn());
+            accFirst.setCellFactory(TextFieldTableCell.forTableColumn());
+            accLast.setCellFactory(TextFieldTableCell.forTableColumn());
+            accGrade.setCellFactory(TextFieldTableCell.forTableColumn());
+            accEmail.setCellFactory(TextFieldTableCell.forTableColumn());
+            accPass.setCellFactory(TextFieldTableCell.forTableColumn());
+            accHours.setCellFactory(TextFieldTableCell.forTableColumn());
+            accIsAdvisor.setCellFactory(TextFieldTableCell.forTableColumn());
 
-            delTable.setItems(null);
-            delTable.setItems(persons);
+            delAccTable.setItems(null);
+            delAccTable.setItems(persons);
 
         } catch (SQLException e) {
 
@@ -141,7 +155,9 @@ public class AdminController implements Initializable {
 
     private void setTable(){
 
-        String SQL = "SELECT * FROM Persons";
+        String SQL = "SELECT Persons.id, Persons.grade, Persons.email, Persons.first, " +
+                "Persons.last, Persons.password, Persons.isAdmin, SUM(Hours.hours) " +
+                "FROM Persons LEFT JOIN Hours ON Persons.id=Hours.id GROUP BY Persons.id;";
         ResultSet rs = null;
         List<Person> list = new ArrayList<Person>();
         Person person = null;
@@ -161,7 +177,9 @@ public class AdminController implements Initializable {
                         rs.getString(3),
                         rs.getString(4),
                         rs.getString(5),
-                        rs.getString(7)));
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8)));
             }
 
             this.idCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Id"));
@@ -169,6 +187,8 @@ public class AdminController implements Initializable {
             this.lastCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Last"));
             this.gradeCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Grade"));
             this.emailCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Email"));
+            this.passCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Pass"));
+            this.hoursCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Hours"));
             this.isAdvisorCol.setCellValueFactory(new PropertyValueFactory<Person, String>( "IsAdmin"));
 
             idCol.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -176,6 +196,8 @@ public class AdminController implements Initializable {
             lastCol.setCellFactory(TextFieldTableCell.forTableColumn());
             gradeCol.setCellFactory(TextFieldTableCell.forTableColumn());
             emailCol.setCellFactory(TextFieldTableCell.forTableColumn());
+            passCol.setCellFactory(TextFieldTableCell.forTableColumn());
+            hoursCol.setCellFactory(TextFieldTableCell.forTableColumn());
             isAdvisorCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
             personTable.setItems(null);
@@ -193,7 +215,6 @@ public class AdminController implements Initializable {
             DataUtil.close(statement);
             DataUtil.close(connection);
         }
-
     }
 
     @FXML
@@ -206,39 +227,41 @@ public class AdminController implements Initializable {
         String last = (String) this.newLast.getText();
         String grade = (String) this.newGrade.getText();
         String email = (String) this.newEmail.getText();
+        String isAdmin = String.valueOf(isAdvisor);
 
-        try {
+        if (isAdvisor == false) {
 
-            int numCheck = Integer.parseInt(grade);
-        } catch (NumberFormatException e) {
+            if (grade.length() < 1 ) {
 
-            gradeErr.setText("Need a Numerical Value!");
-            control = false;
+                gradeErr.setText("Grade is Required!");
+                control = false;
+            }
+            try {
 
-            err.setText("Change Needed Fields!");
+                int numCheck = Integer.parseInt(grade);
+            } catch (NumberFormatException e) {
+
+
+                gradeErr.setText("Need a Numerical Value!");
+                control = false;
+            }
+
         }
-
         if (first.length() < 1) {
 
             firstErr.setText("First Name is Required!");
             control = false;
-
-            err.setText("Need to Fill Required Field!");
         }
         if (last.length() < 1) {
 
             lastErr.setText("Last Name is Required!");
             control = false;
-
-            err.setText("Need to Fill Required Field!");
         }
 
         if (email.length() < 1) {
 
             emailErr.setText("Email is Required!");
             control = false;
-
-            err.setText("Need to Fill Required Field!");
         }
         if (control) {
 
@@ -248,11 +271,10 @@ public class AdminController implements Initializable {
                 String pass = Student.GeneratePass();
 
                 String sql = "INSERT INTO Persons VALUES ('" + id + "', " + grade + ", '" +
-                        email + "', '" + first + "', '" + last + "', '" + pass + "', false);";
+                        email + "', '" + first + "', '" + last + "', '" + pass + "', " + isAdmin + ");";
                 try {
 
                     connection = DataConnect.getConnection();
-                    assert connection != null;
                     statement = connection.createStatement();
 
                     statement.executeQuery(sql);
@@ -273,8 +295,21 @@ public class AdminController implements Initializable {
                 DataUtil.close(statement);
                 DataUtil.close(connection);
             }
-        }
+        } else err.setText("Change Needed Fields");
     }
+
+    @FXML
+    protected void setStudent(ActionEvent event) {
+
+        isAdvisor = false;
+    }
+
+    @FXML
+    protected void setAdvisor(ActionEvent event) {
+
+        isAdvisor = true;
+    }
+
     @FXML
     protected void cancel(ActionEvent event) throws IOException{
 
@@ -348,13 +383,15 @@ public class AdminController implements Initializable {
     protected void Delete(ActionEvent event) throws IOException{
 
         String id = (String) choiceBox.getValue();
-        String sql = "SELECT * FROM Persons WHERE id='" + id + "';";
+        String sql = "SELECT  Persons.grade, Persons.email, Persons.first, " +
+                "Persons.last, Persons.password, Persons.isAdmin, SUM(Hours.hours) " +
+                "FROM Persons, Hours WHERE Persons.id='" + id + "' and Hours.id='" + id + "';";
+
         ResultSet rs = null;
 
         try {
 
             connection = DataConnect.getConnection();
-            assert connection != null;
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
 
@@ -363,15 +400,20 @@ public class AdminController implements Initializable {
             String first = rs.getString(4);
             String last = rs.getString(5);
             String pass = rs.getString(6);
+            String isAdmin = rs.getString(6);
+            int hours = rs.getInt(7);
+
+            if (isAdmin.equals("0")) isAdmin = "false";
+            else if (isAdmin.equals("1")) isAdmin = "true";
 
             DataUtil.close(rs);
 
             sql = "INSERT INTO Deleted VALUES ('" + id + "', '" + grade + "', '" + email + "', '" +
-                    first + "', '" + last + "', '" + pass + "', false);";
+                    first + "', '" + last + "', '" + pass + "'," +  isAdmin + ", " + hours + ");";
 
             try{
                 statement.executeQuery(sql);
-            } catch (SQLException e) {}
+            } catch (SQLException ignored) {}
 
             sql = "SELECT * FROM Deleted WHERE id='" + id + "';";
 
@@ -385,9 +427,14 @@ public class AdminController implements Initializable {
 
                 try {
                     statement.executeQuery(sql);
-                } catch (SQLException e){}
+                } catch (SQLException ignored){}
 
-                setTable();
+                sql = "DELETE FROM Hours WHERE id='" + id + "';";
+
+                try {
+                    statement.executeQuery(sql);
+                } catch (SQLException ignored){}
+
             } else {
 
                 delErr.setText("Error Deleting User!");
@@ -398,6 +445,9 @@ public class AdminController implements Initializable {
             System.out.println("Error: " + e);
             System.err.println(e.getStackTrace()[0].getLineNumber());
         } finally {
+
+            setTable();
+            setDelTable();
 
             DataUtil.close(rs);
             DataUtil.close(statement);
@@ -420,7 +470,6 @@ public class AdminController implements Initializable {
         try {
 
             connection = DataConnect.getConnection();
-            assert connection != null;
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
 

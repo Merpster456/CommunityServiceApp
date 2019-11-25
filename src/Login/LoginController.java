@@ -87,11 +87,9 @@ public class LoginController implements Initializable {
         try {
 
             connection = DataConnect.getConnection();
-            assert connection != null;
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
             String admin = rs.getString(7);
-            System.out.println(admin);
 
             try {
 
@@ -173,7 +171,7 @@ public class LoginController implements Initializable {
     }
 
     /**
-     * Logs int0 with admin interface
+     * Logs into admin interface
      *
      * @throws IOException
      */

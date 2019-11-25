@@ -9,10 +9,9 @@
         <Label fx:id="TopLabel" layoutX="20" layoutY="35" textAlignment="LEFT" />
     <VBox fx:id="boox" layoutY="125" prefHeight="643" prefWidth="225.0" />
         <Button fx:id="studentHours" layoutY="125"  prefHeight="160.75" prefWidth="225" styleClass="Columns" text="Student&#10;Hours" textAlignment="CENTER" onAction="#studentHours" />
-        <Button fx:id="studentProgress" layoutY="285.75" prefHeight="160.75" prefWidth="225" styleClass="Columns" text="Student&#10;Progress" textAlignment="CENTER" onAction="#studentProgress" />
+        <Button fx:id="chapterProgress" layoutY="285.75" prefHeight="160.75" prefWidth="225" styleClass="Columns" text="Chapter&#10;Progress" textAlignment="CENTER" onAction="#studentProgress" />
         <Button fx:id="manageUsers" layoutY="446.5" prefHeight="160.75" prefWidth="225" styleClass="Columns" text="Manage&#10;Users" textAlignment="CENTER" onAction="#manageUsers" />
         <Button fx:id="contactUsers" layoutY="607.25" prefHeight="160.75" prefWidth="225" styleClass="Columns" text="Contact&#10;Users" textAlignment="CENTER" onAction="#contactUsers" />
-
     <stylesheets>
     <URL value="@Advisor.css" />
     </stylesheets>
