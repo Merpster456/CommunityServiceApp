@@ -8,10 +8,17 @@
     <HBox fx:id="Box" alignment="CENTER" prefHeight="125" prefWidth="1366" />
     <Label fx:id="TopLabel" layoutX="20" layoutY="35" textAlignment="LEFT" />
     <VBox fx:id="boox" layoutY="125" prefHeight="643" prefWidth="225.0" />
-    <Button fx:id="personalProgress" layoutY="125"  prefHeight="160.75" prefWidth="225" styleClass="Columns" text="Personal&#10;Progress" textAlignment="CENTER" onAction="#PersonalProgress" />
-    <Button fx:id="studentProgress" layoutY="285.75" prefHeight="160.75" prefWidth="225" styleClass="Columns" text="Peers&#10;Progress" textAlignment="CENTER" onAction="#PeersProgress" />
-    <Button fx:id="contactUsers" layoutY="446.5" prefHeight="160.75" prefWidth="225" styleClass="Columns" text="Contact&#10;Users" textAlignment="CENTER" onAction="#ContactUsers" />
-    <Button fx:id="aboutCSA" layoutY="607.25" prefHeight="160.75" prefWidth="225" styleClass="Columns" text="About&#10;CSA" textAlignment="CENTER" onAction="#AboutCSA" />
+    <Button fx:id="personalProgress" layoutY="125"  prefHeight="160.75" prefWidth="225" styleClass="Columns" text="Personal&#10;Progress" textAlignment="CENTER" onAction="#PersonalProgress"/>
+    <Button fx:id="studentProgress" layoutY="285.75" prefHeight="160.75" prefWidth="225" styleClass="Columns" text="Peers&#10;Progress" textAlignment="CENTER" onAction="#PeersProgress"/>
+    <Button fx:id="contactUsers" layoutY="446.5" prefHeight="160.75" prefWidth="225" styleClass="Columns" text="Contact&#10;Users" textAlignment="CENTER" onAction="#ContactUsers"/>
+    <Button fx:id="aboutCSA" layoutY="607.25" prefHeight="160.75" prefWidth="225" styleClass="Columns" text="About&#10;CSA" textAlignment="CENTER" onAction="#AboutCSA"/>
+    <HBox fx:id="inbox" layoutY="193" layoutX="300" prefWidth="1000" prefHeight="507">
+        <ListView prefWidth="250">
+        </ListView>
+        <VBox>
+
+        </VBox>
+    </HBox>
 
     <stylesheets>
         <URL value="@Student.css" />

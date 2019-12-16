@@ -6,9 +6,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.sql.*;
@@ -17,20 +20,69 @@ import java.util.ResourceBundle;
 
 import Database.DataConnect;
 
+import static Login.LoginController.*;
+
 public class AdvisorController implements Initializable {
 
-    @FXML private Label TopLabel;
+    @FXML private Label topLabel;
     @FXML private Button studentHours;
+    @FXML private Button chapterProgress;
+    @FXML private Button manageUsers;
+    @FXML private Button contactUsers;
+    @FXML private HBox box;
 
     private final String id = LoginController.id;
 
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            this.TopLabel.setText("Welcome " + getName(id));
+            String label = "Welcome " + getName(id) + "!";
+            this.topLabel.setText(label);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        refresh(null);
+        box.setStyle(primaryDark);
+        topLabel.setTextFill(Color.WHITE);
+    }
 
+    @FXML
+    protected void setStudentHours(MouseEvent event) {
+
+        studentHours.setStyle(primaryLight);
+        studentHours.setTextFill(Color.BLACK);
+
+    }
+    @FXML
+    protected void setChapterProgress(MouseEvent event) {
+
+        chapterProgress.setStyle(primaryLight);
+        chapterProgress.setTextFill(Color.BLACK);
+
+    }
+    @FXML
+    protected void setManageUsers(MouseEvent event) {
+
+        manageUsers.setStyle(primaryLight);
+        manageUsers.setTextFill(Color.BLACK);
+    }
+    @FXML
+    protected void setContactUsers(MouseEvent event) {
+
+        contactUsers.setStyle(primaryLight);
+        contactUsers.setTextFill(Color.BLACK);
+
+    }
+    @FXML
+    protected void refresh(MouseEvent event) {
+        studentHours.setStyle(primary);
+        chapterProgress.setStyle(primary);
+        manageUsers.setStyle(primary);
+        contactUsers.setStyle(primary);
+
+        studentHours.setTextFill(Color.WHITE);
+        chapterProgress.setTextFill(Color.WHITE);
+        manageUsers.setTextFill(Color.WHITE);
+        contactUsers.setTextFill(Color.WHITE);
     }
 
     private String getName(String id) throws SQLException {

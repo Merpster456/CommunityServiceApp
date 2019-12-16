@@ -10,7 +10,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,7 +25,7 @@ import java.util.ResourceBundle;
 
 public class ChapterProgress implements Initializable {
 
-    @FXML private Button Back;
+    @FXML private Button back;
     @FXML private Label communityNum;
     @FXML private Label serviceNum;
     @FXML private Label achievementNum;
@@ -244,9 +246,16 @@ public class ChapterProgress implements Initializable {
     @FXML
     protected void back(ActionEvent event) throws IOException {
 
-        Stage stage = (Stage) Back.getScene().getWindow();
-        Pane root = FXMLLoader.load(getClass().getResource("/StudentInterface/StudentUI.fxml"));
+        Stage stage = (Stage) back.getScene().getWindow();
+        Pane root = FXMLLoader.load(getClass().getResource("/AdvisorInterface/AdvisorUI.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+    }
+
+    @FXML
+    protected void backChange(MouseEvent event) { back.setStyle("-fx-text-fill: black"); }
+    @FXML
+    protected void refresh(MouseEvent event) {
+        back.setStyle("-fx-text-fill: white");
     }
 }

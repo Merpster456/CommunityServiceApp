@@ -23,13 +23,16 @@ public class StudentController implements Initializable {
 
     @FXML private Label TopLabel;
     @FXML private Button personalProgress;
+    @FXML private Button peersProgress;
+    @FXML private Button contactUsers;
+    @FXML private Button aboutCSA;
 
     private final String id = LoginController.id;
 
     public void initialize(URL url, ResourceBundle rb){
 
         try {
-            this.TopLabel.setText("Welcome " + getName(id));
+            this.TopLabel.setText("Welcome " + getName(id) + "!");
         } catch (SQLException e) {
 
             System.err.println(e.getStackTrace()[0].getLineNumber());
@@ -82,5 +85,4 @@ public class StudentController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-
 }

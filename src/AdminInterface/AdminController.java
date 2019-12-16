@@ -17,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -36,19 +37,21 @@ public class AdminController implements Initializable {
 
     @FXML private ChoiceBox choiceBox;
     @FXML private ChoiceBox changeBox;
+    @FXML private ChoiceBox recoverBox;
+    @FXML private ChoiceBox permanentBox;
     @FXML private TableView<Person> personTable;
     @FXML private TableView<Person> delAccTable;
     @FXML private TableView<Person> delHoursTable;
     @FXML private TableColumn<Person, String> idCol;
     @FXML private TableColumn<Person, String> firstCol;
     @FXML private TableColumn<Person, String> lastCol;
-    @FXML private TableColumn<Person, String> gradeCol;
+    @FXML private TableColumn<Person, String> gradYearCol;
     @FXML private TableColumn<Person, String> emailCol;
     @FXML private TableColumn<Person, String> passCol;
     @FXML private TableColumn<Person, String> hoursCol;
     @FXML private TableColumn<Person, String> isAdvisorCol;
     @FXML private TableColumn<Person, String> accID;
-    @FXML private TableColumn<Person, String> accGrade;
+    @FXML private TableColumn<Person, String> accGradYear;
     @FXML private TableColumn<Person, String> accEmail;
     @FXML private TableColumn<Person, String> accFirst;
     @FXML private TableColumn<Person, String> accLast;
@@ -57,23 +60,26 @@ public class AdminController implements Initializable {
     @FXML private TableColumn<Person, String> accIsAdvisor;
     @FXML private TextField newFirst;
     @FXML private TextField newLast;
-    @FXML private TextField newGrade;
+    @FXML private TextField newGradYear;
     @FXML private TextField newEmail;
     @FXML private TextField changeFirst;
     @FXML private TextField changeLast;
-    @FXML private TextField changeGrade;
+    @FXML private TextField changeGradYear;
     @FXML private TextField changeEmail;
     @FXML private Label firstErr;
     @FXML private Label lastErr;
-    @FXML private Label gradeErr;
+    @FXML private Label gradErr;
     @FXML private Label emailErr;
     @FXML private Label err;
     @FXML private Label delErr;
     @FXML private Label firstCErr;
     @FXML private Label lastCErr;
-    @FXML private Label gradeCErr;
+    @FXML private Label gradCErr;
     @FXML private Label emailCErr;
     @FXML private Label changeErr;
+    @FXML private Label idCErr;
+    @FXML private Label recoverErr;
+    @FXML private Label permErr;
 
     private Connection connection;
     private Statement statement;
@@ -89,6 +95,7 @@ public class AdminController implements Initializable {
         setDelTable();
 
         setBox();
+        setDelBox();
 
     }
 
@@ -122,7 +129,7 @@ public class AdminController implements Initializable {
             this.accID.setCellValueFactory(new PropertyValueFactory<Person, String>("Id"));
             this.accFirst.setCellValueFactory(new PropertyValueFactory<Person, String>("First"));
             this.accLast.setCellValueFactory(new PropertyValueFactory<Person, String>("Last"));
-            this.accGrade.setCellValueFactory(new PropertyValueFactory<Person, String>("Grade"));
+            this.accGradYear.setCellValueFactory(new PropertyValueFactory<Person, String>("GradYear"));
             this.accEmail.setCellValueFactory(new PropertyValueFactory<Person, String>("Email"));
             this.accPass.setCellValueFactory(new PropertyValueFactory<Person, String>("Pass"));
             this.accHours.setCellValueFactory(new PropertyValueFactory<Person, String>("Hours"));
@@ -131,7 +138,7 @@ public class AdminController implements Initializable {
             accID.setCellFactory(TextFieldTableCell.forTableColumn());
             accFirst.setCellFactory(TextFieldTableCell.forTableColumn());
             accLast.setCellFactory(TextFieldTableCell.forTableColumn());
-            accGrade.setCellFactory(TextFieldTableCell.forTableColumn());
+            accGradYear.setCellFactory(TextFieldTableCell.forTableColumn());
             accEmail.setCellFactory(TextFieldTableCell.forTableColumn());
             accPass.setCellFactory(TextFieldTableCell.forTableColumn());
             accHours.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -146,6 +153,8 @@ public class AdminController implements Initializable {
             System.err.println(e.getStackTrace()[0].getLineNumber());
         } finally {
 
+            setDelBox();
+
             DataUtil.close(rs);
             DataUtil.close(statement);
             DataUtil.close(connection);
@@ -155,7 +164,7 @@ public class AdminController implements Initializable {
 
     private void setTable(){
 
-        String SQL = "SELECT Persons.id, Persons.grade, Persons.email, Persons.first, " +
+        String SQL = "SELECT Persons.id, Persons.gradYear, Persons.email, Persons.first, " +
                 "Persons.last, Persons.password, Persons.isAdmin, SUM(Hours.hours) " +
                 "FROM Persons LEFT JOIN Hours ON Persons.id=Hours.id GROUP BY Persons.id;";
         ResultSet rs = null;
@@ -185,7 +194,7 @@ public class AdminController implements Initializable {
             this.idCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Id"));
             this.firstCol.setCellValueFactory(new PropertyValueFactory<Person, String>("First"));
             this.lastCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Last"));
-            this.gradeCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Grade"));
+            this.gradYearCol.setCellValueFactory(new PropertyValueFactory<Person, String>("GradYear"));
             this.emailCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Email"));
             this.passCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Pass"));
             this.hoursCol.setCellValueFactory(new PropertyValueFactory<Person, String>("Hours"));
@@ -194,7 +203,7 @@ public class AdminController implements Initializable {
             idCol.setCellFactory(TextFieldTableCell.forTableColumn());
             firstCol.setCellFactory(TextFieldTableCell.forTableColumn());
             lastCol.setCellFactory(TextFieldTableCell.forTableColumn());
-            gradeCol.setCellFactory(TextFieldTableCell.forTableColumn());
+            gradYearCol.setCellFactory(TextFieldTableCell.forTableColumn());
             emailCol.setCellFactory(TextFieldTableCell.forTableColumn());
             passCol.setCellFactory(TextFieldTableCell.forTableColumn());
             hoursCol.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -225,24 +234,24 @@ public class AdminController implements Initializable {
 
         String first = (String) this.newFirst.getText();
         String last = (String) this.newLast.getText();
-        String grade = (String) this.newGrade.getText();
+        String grad = (String) this.newGradYear.getText();
         String email = (String) this.newEmail.getText();
         String isAdmin = String.valueOf(isAdvisor);
 
-        if (isAdvisor == false) {
+        if (!isAdvisor) {
 
-            if (grade.length() < 1 ) {
+            if (grad.length() < 1 ) {
 
-                gradeErr.setText("Grade is Required!");
+                gradErr.setText("Graduation Year is Required!");
                 control = false;
             }
             try {
 
-                int numCheck = Integer.parseInt(grade);
+                int numCheck = Integer.parseInt(grad);
             } catch (NumberFormatException e) {
 
 
-                gradeErr.setText("Need a Numerical Value!");
+                gradErr.setText("Need a Numerical Value!");
                 control = false;
             }
 
@@ -270,7 +279,7 @@ public class AdminController implements Initializable {
                 String id = Student.GenerateID(first, last);
                 String pass = Student.GeneratePass();
 
-                String sql = "INSERT INTO Persons VALUES ('" + id + "', " + grade + ", '" +
+                String sql = "INSERT INTO Persons VALUES ('" + id + "', " + grad + ", '" +
                         email + "', '" + first + "', '" + last + "', '" + pass + "', " + isAdmin + ");";
                 try {
 
@@ -282,6 +291,7 @@ public class AdminController implements Initializable {
                 } catch (SQLException e) {
 
                     setTable();
+
                     showCreds(id, pass);
                 }
             } catch (Exception e){
@@ -315,7 +325,7 @@ public class AdminController implements Initializable {
 
         newFirst.setText("");
         newLast.setText("");
-        newGrade.setText("");
+        newGradYear.setText("");
         newEmail.setText("");
     }
     private void showCreds(String id, String pass) {
@@ -348,7 +358,39 @@ public class AdminController implements Initializable {
         newStage.setScene(scene);
         newStage.show();
     }
-    private void setBox(){
+
+    private void setDelBox() {
+
+        String sql = "SELECT id FROM Deleted;";
+        ResultSet rs = null;
+
+        try {
+
+            recoverBox.getItems().clear();
+            permanentBox.getItems().clear();
+
+            connection = DataConnect.getConnection();
+            statement = connection.createStatement();
+            rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+
+                recoverBox.getItems().add(rs.getString(1));
+                permanentBox.getItems().add(rs.getString(1));
+            }
+        } catch (SQLException e) {
+
+            System.err.println(e.getStackTrace()[0].getLineNumber());
+            System.out.println("Error: " + e);
+        } finally {
+
+            DataUtil.close(rs);
+            DataUtil.close(statement);
+            DataUtil.close(connection);
+        }
+    }
+
+    private void setBox() {
 
         String sql = "SELECT id FROM Persons;";
         ResultSet rs = null;
@@ -359,7 +401,6 @@ public class AdminController implements Initializable {
             changeBox.getItems().clear();
 
             connection = DataConnect.getConnection();
-            assert connection != null;
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
 
@@ -379,67 +420,168 @@ public class AdminController implements Initializable {
             DataUtil.close(connection);
         }
     }
-    @FXML
-    protected void Delete(ActionEvent event) throws IOException{
 
-        String id = (String) choiceBox.getValue();
-        String sql = "SELECT  Persons.grade, Persons.email, Persons.first, " +
-                "Persons.last, Persons.password, Persons.isAdmin, SUM(Hours.hours) " +
-                "FROM Persons, Hours WHERE Persons.id='" + id + "' and Hours.id='" + id + "';";
+    private String getAdmin(String id) {
 
-        ResultSet rs = null;
+        String sql = "SELECT isAdmin FROM Persons WHERE id='" + id + "';";
 
         try {
 
             connection = DataConnect.getConnection();
             statement = connection.createStatement();
-            rs = statement.executeQuery(sql);
+            int isAdmin = statement.executeQuery(sql).getInt(1);
 
-            int grade = rs.getInt(2);
-            String email = rs.getString(3);
-            String first = rs.getString(4);
-            String last = rs.getString(5);
-            String pass = rs.getString(6);
-            String isAdmin = rs.getString(6);
-            int hours = rs.getInt(7);
+            if (isAdmin == 1) return "true";
+            else if (isAdmin == 0) return "false";
+            else return "error";
 
-            if (isAdmin.equals("0")) isAdmin = "false";
-            else if (isAdmin.equals("1")) isAdmin = "true";
+        } catch (SQLException e) {
 
-            DataUtil.close(rs);
+            System.err.println(e.getStackTrace()[0].getLineNumber());
+            System.out.println("Error: " + e);
+            return "error";
+        } finally {
 
-            sql = "INSERT INTO Deleted VALUES ('" + id + "', '" + grade + "', '" + email + "', '" +
-                    first + "', '" + last + "', '" + pass + "'," +  isAdmin + ", " + hours + ");";
+            DataUtil.close(statement);
+            DataUtil.close(connection);
+        }
+    }
 
-            try{
-                statement.executeQuery(sql);
-            } catch (SQLException ignored) {}
+    private int getHours(String id) {
 
-            sql = "SELECT * FROM Deleted WHERE id='" + id + "';";
+        int hours;
+        String sql = "SELECT hours FROM Hours WHERE id='" + id + "';";
 
-            rs = statement.executeQuery(sql);
+        try {
 
-            if (rs.getString(1).equals(id)) {
+            connection = DataConnect.getConnection();
+            statement = connection.createStatement();
 
-                DataUtil.close(rs);
+            try {
+                hours = statement.executeQuery(sql).getInt(1);
+                return hours;
+            } catch (SQLException ignore) { return 0; }
+        } catch (SQLException e) {
 
-                sql = "DELETE FROM Persons WHERE id='" + id + "';";
+            System.err.println(e.getStackTrace()[0].getLineNumber());
+            System.err.println("Error: " + e);
+            return 0;
+        } finally {
 
-                try {
-                    statement.executeQuery(sql);
-                } catch (SQLException ignored){}
+            DataUtil.close(statement);
+            DataUtil.close(connection);
+        }
+    }
 
-                sql = "DELETE FROM Hours WHERE id='" + id + "';";
+    @FXML
+    protected void Delete(ActionEvent event) throws IOException {
 
-                try {
-                    statement.executeQuery(sql);
-                } catch (SQLException ignored){}
+        String id = (String) choiceBox.getValue();
 
-            } else {
+        String sql;
+        String isAdmin;
+        int hours;
+        int grad;
+        String email;
+        String first;
+        String last;
+        String pass;
 
-                delErr.setText("Error Deleting User!");
+        ResultSet rs = null;
+
+        try {
+
+            isAdmin = getAdmin(id);
+            if (isAdmin.equals("error")) delErr.setText("Error Deleting User!");
+
+            else {
+
+                if (isAdmin.equals("true")) {
+
+                    grad = 0;
+                    sql = "SELECT email, first, last, password FROM Persons WHERE id='" + id + "';";
+
+                    connection = DataConnect.getConnection();
+                    statement = connection.createStatement();
+                    rs = statement.executeQuery(sql);
+
+                    email = rs.getString(1);
+                    first = rs.getString(2);
+                    last = rs.getString(3);
+                    pass = rs.getString(4);
+
+                    DataUtil.close(rs);
+
+                    sql = "INSERT INTO Deleted VALUES ('" + id + "', 0, '" + email + "', '"
+                            + first + "', '" + last + "', '" + pass + "', true, 0);";
+
+                    try {
+                        statement.executeQuery(sql);
+                    } catch (SQLException ignored) {
+                    }
+
+                    sql = "SELECT id FROM Deleted WHERE id='" + id + "';";
+                    try {
+                        statement.executeQuery(sql);
+
+                        sql = "DELETE FROM Persons WHERE id='" + id + "';";
+                        try {
+                            statement.executeQuery(sql);
+                        } catch (SQLException ignored) {
+                        }
+
+                    } catch (SQLException ignore) {
+                        delErr.setText("Error Deleting User!");
+                    }
+                } else if (isAdmin.equals("false")) {
+
+                    hours = getHours(id);
+
+                    sql = "SELECT grad, email, first, last, password FROM Persons WHERE id='" + id + "';";
+
+                    connection = DataConnect.getConnection();
+                    statement = connection.createStatement();
+                    rs = statement.executeQuery(sql);
+
+                    grad = rs.getInt(1);
+                    email = rs.getString(2);
+                    first = rs.getString(3);
+                    last = rs.getString(4);
+                    pass = rs.getString(5);
+
+                    DataUtil.close(rs);
+
+                    sql = "INSERT INTO Deleted VALUES ('" + id + "', '" + grad + "', '" + email + "', '" +
+                            first + "', '" + last + "', '" + pass + "', false, " + hours + ");";
+
+                    try {
+                        statement.executeQuery(sql);
+                    } catch (SQLException ignored) {}
+
+                    // Checks that user was moved to the deleted database before actually deleting data
+                    sql = "SELECT * FROM Deleted WHERE id='" + id + "';";
+
+                    try {
+                        statement.executeQuery(sql);
+                        sql = "DELETE FROM Persons WHERE id='" + id + "';";
+
+                        try {
+                            statement.executeQuery(sql);
+                        } catch (SQLException ignore) {}
+
+                        if (hours > 0) {
+                            sql = "DELETE FROM Hours WHERE id='" + id + "';";
+
+                            try {
+                                statement.executeQuery(sql);
+                            } catch(SQLException ignore){}
+                        }
+                    } catch (SQLException ignore) {
+
+                        delErr.setText("Error Deleting User!");
+                    }
+                }
             }
-
         } catch (SQLException e) {
 
             System.out.println("Error: " + e);
@@ -457,8 +599,88 @@ public class AdminController implements Initializable {
     @FXML
     protected void Change(ActionEvent event) {
 
+        gradCErr.setText("");
+        idCErr.setText("");
+        changeErr.setText("");
 
+        String id = (String) changeBox.getValue();
+        String first = changeFirst.getText();
+        String last = changeLast.getText();
+        String grad = changeGradYear.getText();
+        String email = changeEmail.getText();
+        String sql;
+
+        if (id != null) {
+            try {
+
+                connection = DataConnect.getConnection();
+                statement = connection.createStatement();
+
+                if (first.length() > 0) {
+
+                    sql = "UPDATE Persons SET first='" + first + "' WHERE id='" + id + "';";
+
+                    try {
+                        statement.executeQuery(sql);
+                    } catch (SQLException ignore) {
+                    }
+                }
+                if (last.length() > 0) {
+
+                    sql = "UPDATE Persons SET last='" + last + "' WHERE id='" + id + "';";
+
+                    try {
+                        statement.executeQuery(sql);
+                    } catch (SQLException ignore) {
+                    }
+                }
+                if (grad.length() > 0) {
+
+                    try {
+
+                        int numCheck = Integer.parseInt(grad);
+
+                        sql = "UPDATE Persons SET gradYear='" + grad + "' WHERE id='" + id + "';";
+
+                        try {
+                            statement.executeQuery(sql);
+                        } catch (SQLException ignore) {}
+
+                    } catch (NumberFormatException e) {
+
+                        gradCErr.setText("Need Numerical Value!");
+
+                        changeErr.setText("Change Needed Fields!");
+                    }
+                }
+                if (email.length() > 0) {
+
+                    sql = "UPDATE Persons SET email='" + email + "' WHERE id='" + id + "';";
+
+                    try {
+                        statement.executeQuery(sql);
+                    } catch (SQLException ignore) {}
+                }
+            } catch (SQLException e) {
+
+                System.err.println(e.getStackTrace()[0].getLineNumber());
+                System.out.println("Error: " + e);
+            } finally {
+
+                DataUtil.close(statement);
+                DataUtil.close(connection);
+
+                setTable();
+                setBox();
+            }
+        } else {
+
+            idCErr.setText("Need to Select User");
+
+            changeErr.setText("Change Needed Fields!");
+        }
     }
+    /*
     @FXML
     protected void Autofill(ActionEvent event) {
 
@@ -484,6 +706,7 @@ public class AdminController implements Initializable {
             System.err.println(e.getStackTrace()[0].getLineNumber());
         }
     }
+     */
     @FXML
     protected void changeCancel(ActionEvent event) {
 
@@ -492,7 +715,114 @@ public class AdminController implements Initializable {
 
         changeFirst.setText("");
         changeLast.setText("");
-        changeGrade.setText("");
+        changeGradYear.setText("");
         changeEmail.setText("");
+    }
+
+    @FXML
+    protected void recover(ActionEvent event) {
+
+        recoverErr.setText("");
+
+        String id = (String) recoverBox.getValue();
+        ResultSet rs = null;
+        String sql;
+
+        if (id != null) {
+
+            try {
+
+                sql = "SELECT * FROM Deleted";
+
+                connection = DataConnect.getConnection();
+                statement = connection.createStatement();
+                rs = statement.executeQuery(sql);
+
+                int gradYear = rs.getInt(2);
+                String email = rs.getString(3);
+                String first = rs.getString(3);
+                String last = rs.getString(4);
+                String pass = rs.getString(5);
+                boolean isAdmin = rs.getBoolean(6);
+                int hours = rs.getInt(7);
+
+                DataUtil.close(rs);
+
+                sql = "INSERT INTO Persons VALUES ('" + id + "', " + gradYear + ", '" + email +
+                        "', '" + first + "', '" + last + "', '" + pass + "', " + isAdmin + ");";
+
+                try {
+                    statement.executeQuery(sql);
+                } catch (SQLException ignore) {}
+
+                if (!isAdmin || hours > 0) {
+
+                    sql = "INSERT INTO Hours VALUES('" + id + "', " + hours + ", '1999-9-9');";
+
+                    try {
+                        statement.executeQuery(sql);
+                    } catch (SQLException ignore) {
+                    }
+                }
+
+                sql = "DELETE FROM Deleted WHERE id='" + id + "';";
+
+                try {
+                    statement.executeQuery(sql);
+                } catch (SQLException ignore) {}
+            } catch (SQLException e) {
+
+                System.err.println(e.getStackTrace()[0].getLineNumber());
+                System.out.println("Error: " + e);
+            } finally {
+
+                DataUtil.close(statement);
+                DataUtil.close(connection);
+
+                setTable();
+                setDelTable();
+            }
+        } else {
+
+            recoverErr.setText("Select Account!");
+        }
+    }
+
+    @FXML
+    protected void permDelete(ActionEvent event) {
+
+        permErr.setText("");
+
+        String id = (String) permanentBox.getValue();
+        String sql;
+
+        if (id != null) {
+
+            try {
+
+                sql = "DELETE FROM Deleted WHERE id='" + id + "';";
+
+                connection = DataConnect.getConnection();
+                statement = connection.createStatement();
+
+                try { statement.executeQuery(sql); }
+                catch (SQLException ignore) {}
+
+            } catch (SQLException e) {
+
+                System.err.println(e.getStackTrace()[0].getLineNumber());
+                System.out.println("Error: " + e);
+            } finally {
+
+                setTable();
+                setDelTable();
+
+                DataUtil.close(statement);
+                DataUtil.close(connection);
+            }
+        } else {
+
+            permErr.setText("Select Account!");
+        }
     }
 }

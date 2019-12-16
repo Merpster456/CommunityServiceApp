@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 public class Person {
 
     private StringProperty id;
-    private StringProperty grade;
+    private StringProperty gradYear;
     private StringProperty email;
     private StringProperty firstName;
     private StringProperty lastName;
@@ -34,17 +34,17 @@ public class Person {
 
         return id;
     }
-    public void setGrade(String grade){
+    public void setGradYear(String gradYear){
 
-        this.grade = new SimpleStringProperty(grade);
+        this.gradYear = new SimpleStringProperty(gradYear);
     }
-    public String getGrade(){
+    public String getGradYear(){
 
-        return grade.get();
+        return gradYear.get();
     }
-    public StringProperty gradeProperty() {
+    public StringProperty gradYearProperty() {
 
-        return grade;
+        return gradYear;
     }
     public void setEmail(String email){
 
@@ -133,10 +133,10 @@ public class Person {
         else this.isAdmin = new SimpleStringProperty("False");
     }
     */
-    public Person(String id, String grade, String email, String first, String last, String pass, String isAdmin, String hours){
+    public Person(String id, String gradYear, String email, String first, String last, String pass, String isAdmin, String hours){
 
         this.id = new SimpleStringProperty(id);
-        this.grade = new SimpleStringProperty(grade);
+        this.gradYear = new SimpleStringProperty(gradYear);
         this.email = new SimpleStringProperty(email);
         this.firstName = new SimpleStringProperty(first);
         this.lastName = new SimpleStringProperty(last);

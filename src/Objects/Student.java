@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 public class Student {
 
     private StringProperty id;
-    private StringProperty grade;
+    private StringProperty gradYear;
     private StringProperty emailOrDate;
     private StringProperty firstName;
     private StringProperty lastName;
@@ -34,17 +34,17 @@ public class Student {
 
         return id;
     }
-    public void setGrade(String grade){
+    public void setGradYear(String gradYear){
 
-        this.grade = new SimpleStringProperty(grade);
+        this.gradYear = new SimpleStringProperty(gradYear);
     }
-    public String getGrade(){
+    public String getGradYear(){
 
-        return grade.get();
+        return gradYear.get();
     }
-    public StringProperty gradeProperty() {
+    public StringProperty gradYearProperty() {
 
-        return grade;
+        return gradYear;
     }
     public void setEmailOrDate(String emailOrDate){
 
@@ -95,19 +95,19 @@ public class Student {
         return hours;
     }
 
-    public Student(String id, String grade, String email, String first, String last){
+    public Student(String id, String gradYear, String email, String first, String last){
 
         this.id = new SimpleStringProperty(id);
-        this.grade = new SimpleStringProperty(grade);
+        this.gradYear = new SimpleStringProperty(gradYear);
         this.emailOrDate = new SimpleStringProperty(email);
         this.firstName = new SimpleStringProperty(first);
         this.lastName = new SimpleStringProperty(last);
     }
 
-    public Student(String id, String grade, String emailOrDate, String first, String last, String hours){
+    public Student(String id, String gradYear, String emailOrDate, String first, String last, String hours){
 
         this.id = new SimpleStringProperty(id);
-        this.grade = new SimpleStringProperty(grade);
+        this.gradYear = new SimpleStringProperty(gradYear);
         this.emailOrDate = new SimpleStringProperty(emailOrDate);
         this.firstName = new SimpleStringProperty(first);
         this.lastName = new SimpleStringProperty(last);

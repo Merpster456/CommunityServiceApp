@@ -245,7 +245,7 @@ public class PeersProgress implements Initializable {
     protected void back(ActionEvent event) throws IOException {
 
         Stage stage = (Stage) back.getScene().getWindow();
-        Pane root = FXMLLoader.load(getClass().getResource("/AdvisorInterface/AdvisorUI.fxml"));
+        Pane root = FXMLLoader.load(getClass().getResource("/StudentInterface/StudentUI.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }

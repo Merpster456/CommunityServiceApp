@@ -1,42 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.geometry.Insets?>
-<AnchorPane minHeight="768" minWidth="1366" prefHeight="768" prefWidth="1366" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdvisorInterface.SubWindows.StudentHours.StudentHours">
-    <HBox fx:id="Box" alignment="CENTER" prefHeight="125" prefWidth="1366">
-      <children>
-          <Label fx:id="TopLabel" contentDisplay="CENTER" text="Student Hours" />
-      </children>
+
+<AnchorPane minHeight="768" minWidth="1366" prefHeight="768" prefWidth="1366" xmlns="http://javafx.com/javafx/10.0.2-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdvisorInterface.SubWindows.StudentHours.StudentHours">
+    <HBox styleClass="primaryDark" alignment="CENTER" prefHeight="125" prefWidth="1366">
+        <Label styleClass="topLabel" contentDisplay="CENTER" text="Student Hours"/>
     </HBox>
-    <Button fx:id="Back" layoutX="20" layoutY="35" text="Back" onAction="#back" />
-    <HBox fx:id="v" prefHeight="500.0" prefWidth="1000.0" layoutY="184" layoutX="183" >
+    <Button styleClass="back" fx:id="Back" layoutX="20" layoutY="35" text="Back" onAction="#back" onMouseEntered="#backChange" onMouseExited="#refresh"/>
+    <HBox styleClass="primary" prefHeight="500.0" prefWidth="1150.0" layoutY="184" layoutX="118" >
         <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
         </padding>
-        <TableView fx:id="studentTable" editable="false" prefWidth="900" prefHeight="480" tableMenuButtonVisible="true">
+        <TableView fx:id="studentTable" prefWidth="900" prefHeight="480">
             <columns>
                 <TableColumn fx:id="idCol" text="ID" prefWidth="125"/>
                 <TableColumn fx:id="firstCol" text="First Name" prefWidth="102"/>
                 <TableColumn fx:id="lastCol" text="Last Name" prefWidth="102"/>
-                <TableColumn fx:id="gradeCol" text="Grade" prefWidth="102"/>
-                <TableColumn fx:id="hoursCol" text="Hours" prefWidth="102"/>
-                <TableColumn fx:id="dateCol" text="Date" prefWidth="102"/>
+                <TableColumn fx:id="gradCol" text="Graduation Year" prefWidth="140"/>
+                <TableColumn fx:id="hoursCol" text="Hours" prefWidth="60"/>
+                <TableColumn fx:id="dateCol" text="Date" prefWidth="108"/>
             </columns>
         </TableView>
         <VBox prefWidth="600">
             <TabPane  prefWidth="600" tabMinWidth="79">
-                <Tab text="View Options">
-                    <VBox alignment="CENTER" spacing="10">
+                <Tab text="View Options" closable="false">
+                    <VBox alignment="TOP_CENTER" spacing="20">
                         <padding>
-                            <Insets top="50" bottom="10" left="30" right="10"/>
+                            <Insets top="25" bottom="10" left="30" right="10"/>
                         </padding>
-                        <Label text="Data Organization"/>
+                        <Label styleClass="tabLabels" text="Data Organization"/>
                         <HBox spacing="50" alignment="TOP_CENTER">
-                            <ToggleButton fx:id="perEvent" text="Per Events" onAction="#setTable"/>
-                            <ToggleButton fx:id="perPerson" text="Per Person" onAction="#setPTable" />
+                            <Button styleClass="tabToggleButton" fx:id="perEvent" text="Per Events" onAction="#setTable"/>
+                            <Button styleClass="tabToggleButton" fx:id="perPerson" text="Per Person" onAction="#setPTable" />
                         </HBox>
                         <Label text="Specify Individuals"/>
                         <HBox spacing="10" alignment="CENTER">
@@ -49,12 +47,12 @@
                         </HBox>
                     </VBox>
                 </Tab>
-                <Tab text="Add Event">
+                <Tab text="Add Event" closable="false">
                     <VBox spacing="30" alignment="CENTER">
                         <padding>
                             <Insets top="50" bottom="10" left="30" right="10"/>
                         </padding>
-                        <HBox alignment="TOP_LEFT" spacing="10">
+                        <HBox spacing="10">
                             <Label text="ID:"/>
                             <ChoiceBox fx:id="addChoice"/>
                         </HBox>
@@ -74,13 +72,25 @@
                         </HBox>
                     </VBox>
                 </Tab>
-                <Tab text="Delete Event" >
+                <Tab text="Accept Event" closable="false">
+                    <VBox spacing="20" alignment="CENTER">
+                        <padding>
+                            <Insets topRightBottomLeft="30"/>
+                        </padding>
+                        <Label styleClass="blackLabel" text="Student Events"/>
+                        <HBox alignment="TOP_CENTER">
+                            <ListView fx:id="acceptList">
+                            </ListView>
+                        </HBox>
+                    </VBox>
+                </Tab>
+                <Tab text="Delete Event" closable="false">
                     <VBox spacing="30" alignment="CENTER">
                         <padding>
                             <Insets top="50" bottom="10" left="30" right="10"/>
                         </padding>
                         <HBox spacing="10">
-                            <Label text="ID:" alignment="CENTER_LEFT"/>
+                            <Label text="ID:"/>
                             <ChoiceBox fx:id="delChoice" onAction="#setDateChoice"/>
                         </HBox>
                         <HBox spacing="10" alignment="CENTER_LEFT">

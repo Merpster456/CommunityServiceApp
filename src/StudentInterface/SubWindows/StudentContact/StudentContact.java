@@ -26,7 +26,7 @@ import Login.LoginController;
 
 public class StudentContact implements Initializable {
 
-    @FXML private Button Back;
+    @FXML private Button back;
     @FXML private ChoiceBox recipients;
     @FXML private TextField subjectF;
     @FXML private TextArea bodyF;
@@ -61,7 +61,7 @@ public class StudentContact implements Initializable {
     @FXML
     protected void back(ActionEvent event) throws IOException {
 
-        Stage stage = (Stage) Back.getScene().getWindow();
+        Stage stage = (Stage) back.getScene().getWindow();
         Pane root = FXMLLoader.load(getClass().getResource("/StudentInterface/StudentUI.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);

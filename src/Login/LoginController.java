@@ -5,8 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.fxml.Initializable;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import static javafx.scene.paint.Color.CRIMSON;
 import static javafx.scene.paint.Color.GREEN;
@@ -22,14 +24,22 @@ import Database.DataUtil;
 
 public class LoginController implements Initializable {
 
+    @FXML private GridPane grid;
     @FXML private Button button;
     @FXML private TextField textField;
     @FXML private PasswordField passwordField;
     @FXML private Label errorMessage;
+    @FXML private Label topLabel;
+    @FXML private Label idLabel;
+    @FXML private Label passLabel;
+
     private Connection connection;
     private Statement statement;
 
     public static String id;
+    public static String primaryDark = "-fx-background-color: #3d5878";
+    public static String primary = "-fx-background-color: #5377a1";
+    public static String primaryLight = "-fx-background-color: #789cc7";
 
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -39,9 +49,11 @@ public class LoginController implements Initializable {
             if (connection == null) {
                 errorMessage.setText("Not Connected!");
                 errorMessage.setTextFill(CRIMSON);
+                errorMessage.setStyle("-fx-font-weight: bold;");
             } else {
                 errorMessage.setText("Database Connected!");
-                errorMessage.setTextFill(GREEN);
+                errorMessage.setTextFill(Color.WHITE);
+                errorMessage.setStyle("-fx-font-weight: bold;");
             }
         } catch (SQLException e) {
             System.err.println(e.getStackTrace()[0].getLineNumber());
@@ -49,6 +61,11 @@ public class LoginController implements Initializable {
         } finally {
             DataUtil.close(connection);
         }
+
+        grid.setStyle("-fx-background-color: #3d5878");
+        topLabel.setTextFill(Color.WHITE);
+        idLabel.setTextFill(Color.WHITE);
+        passLabel.setTextFill(Color.WHITE);
     }
 
     /**

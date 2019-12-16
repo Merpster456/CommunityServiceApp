@@ -2,6 +2,7 @@ package AdvisorInterface.SubWindows.StudentHours;
 
 import Database.DataConnect;
 import Database.DataUtil;
+import Objects.Event;
 import Objects.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -35,7 +37,7 @@ public class StudentHours implements Initializable {
     @FXML private TableColumn<Student, String> idCol;
     @FXML private TableColumn<Student, String> firstCol;
     @FXML private TableColumn<Student, String> lastCol;
-    @FXML private TableColumn<Student, String> gradeCol;
+    @FXML private TableColumn<Student, String> gradCol;
     @FXML private TableColumn<Student, String> hoursCol;
     @FXML private TableColumn<Student, String> dateCol;
     @FXML private TextField hoursField;
@@ -44,6 +46,8 @@ public class StudentHours implements Initializable {
     @FXML private ChoiceBox specifyChoice;
     @FXML private ChoiceBox delChoice;
     @FXML private ChoiceBox dateChoice;
+    @FXML private ObservableList<String> observableList;
+    @FXML private ListView<String> acceptList;
 
     private Connection connection;
     private Statement statement;
@@ -55,6 +59,14 @@ public class StudentHours implements Initializable {
         setTable();
         setBox();
         setDelBoxes();
+        setLists();
+
+    }
+
+    private void setLists() {
+
+
+
     }
 
     @FXML
@@ -89,14 +101,14 @@ public class StudentHours implements Initializable {
             this.idCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Id"));
             this.firstCol.setCellValueFactory(new PropertyValueFactory<Student, String>("First"));
             this.lastCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Last"));
-            this.gradeCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Grade"));
+            this.gradCol.setCellValueFactory(new PropertyValueFactory<Student, String>("GradYear"));
             this.hoursCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Hours"));
             this.dateCol.setCellValueFactory(new PropertyValueFactory<Student, String>("EmailOrDate"));
 
             idCol.setCellFactory(TextFieldTableCell.forTableColumn());
             firstCol.setCellFactory(TextFieldTableCell.forTableColumn());
             lastCol.setCellFactory(TextFieldTableCell.forTableColumn());
-            gradeCol.setCellFactory(TextFieldTableCell.forTableColumn());
+            gradCol.setCellFactory(TextFieldTableCell.forTableColumn());
             hoursCol.setCellFactory(TextFieldTableCell.forTableColumn());
             dateCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
@@ -120,7 +132,7 @@ public class StudentHours implements Initializable {
     @FXML
     protected void setPTable() {
 
-        String SQL = "SELECT Hours.id, SUM(Hours.hours), Persons.grade, Persons.first, Persons.last, Persons.email FROM Hours LEFT JOIN Persons ON Hours.id=Persons.id GROUP BY Hours.id;";
+        String SQL = "SELECT Hours.id, SUM(Hours.hours), Persons.gradYear, Persons.first, Persons.last, Persons.email FROM Hours LEFT JOIN Persons ON Hours.id=Persons.id GROUP BY Hours.id;";
         ResultSet rs = null;
         List<Student> list = new ArrayList<Student>();
         Student student = null;
@@ -150,14 +162,14 @@ public class StudentHours implements Initializable {
             this.idCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Id"));
             this.firstCol.setCellValueFactory(new PropertyValueFactory<Student, String>("First"));
             this.lastCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Last"));
-            this.gradeCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Grade"));
+            this.gradCol.setCellValueFactory(new PropertyValueFactory<Student, String>("GradYear"));
             this.hoursCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Hours"));
             this.dateCol.setCellValueFactory(null);
 
             idCol.setCellFactory(TextFieldTableCell.forTableColumn());
             firstCol.setCellFactory(TextFieldTableCell.forTableColumn());
             lastCol.setCellFactory(TextFieldTableCell.forTableColumn());
-            gradeCol.setCellFactory(TextFieldTableCell.forTableColumn());
+            gradCol.setCellFactory(TextFieldTableCell.forTableColumn());
             hoursCol.setCellFactory(TextFieldTableCell.forTableColumn());
             dateCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
@@ -287,7 +299,6 @@ public class StudentHours implements Initializable {
     protected void Specify(ActionEvent event) {
 
         id = (String) specifyChoice.getValue();
-
         setTable();
     }
 
@@ -298,6 +309,13 @@ public class StudentHours implements Initializable {
         Pane root = FXMLLoader.load(getClass().getResource("/AdvisorInterface/AdvisorUI.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+    }
+
+    @FXML
+    protected void backChange(MouseEvent event) { Back.setStyle("-fx-text-fill: black"); }
+    @FXML
+    protected void refresh(MouseEvent event) {
+        Back.setStyle("-fx-text-fill: white");
     }
 
     @FXML

@@ -1,17 +1,7 @@
 .root {
 
     -fx-font-family: 'Tahoma', Arial, sans-serif;
-}
-
-#Box {
-
-    -fx-background-color: red;
-
-}
-#boox {
-
-    -fx-background-color: blue;
-
+    -fx-text-fill: white;
 }
 .Columns {
 
@@ -24,31 +14,121 @@
 
 
 }
-
-#TopLabel {
-
+.topLabel {
     -fx-font-size: 66px;
     -fx-font-weight: bold;
-
-
+    -fx-text-fill: white;
 }
-#Back {
 
+.table-view .filler {
+    -fx-background-color: #5377a1;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: #5377a1;
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: #5377a1;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: white;
+}
+
+.table-view .table-cell:odd{
+    -fx-text-fill: white;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #789cc7;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #5377a1;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #005797;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+.table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track-background,
+.table-view > .virtual-flow > .scroll-bar:horizontal,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
+    -fx-background-color: #5377a1;
+}
+
+.tab-pane .tab {
+    -fx-background-color: #5377a1;
+    -fx-text-color: white;
+    -fx-font-weight: bold;
+}
+.tab-pane .tab-header-background {
+    -fx-background-color: #5377a1;
+}
+.tab-pane .tab-content-area {
+    -fx-background-color: #789cc7;
+}
+.tab-pane .tab:selected {
+    -fx-background-color: #789cc7;
+    -fx-background-insets: 0 0 -1 0, 1 1 -1 1;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0;
+    -fx-font-weight: bold;
+    -fx-text-color: black
+}
+.back {
     -fx-background-color: transparent;
     -fx-font-size: 35px;
     -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
 
+.tabLabels {
+
+    -fx-font-weight: bold;
+    -fx-text-color: black;
+    -fx-font-size: 20px;
 
 }
 
-#v {
-
-    -fx-background-color: red;
-
+.primaryDark {
+    -fx-background-color: #3d5878
 }
 
-.achievementLabels {
+.primaryLight {
+    -fx-background-color: #789cc7
+}
+
+.primary {
+    -fx-background-color: #5377a1;
+}
+
+.whiteLabels {
 
     -fx-font-size: 19px;
     -fx-font-weight: bold;
+    -fx-text-fill: white;
 }
+.blackLabels {
+
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
+.warning {
+
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: red;
+}
+

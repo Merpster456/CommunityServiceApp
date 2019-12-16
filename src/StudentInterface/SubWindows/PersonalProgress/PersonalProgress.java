@@ -66,54 +66,66 @@ public class PersonalProgress implements Initializable {
             connection = DataConnect.getConnection();
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
-            double hours = rs.getInt(1);
 
-            double achievementPercent = hours/ ((double) achievement);
-            double servicePercent = hours/ ((double) service);
-            double communityPercent = hours/((double) community);
+            try {
+                double hours = rs.getInt(1);
 
-            if (communityPercent >= 1) {
 
-                communityProgress.setProgress(1);
-                communityLabel.setText("AWARD ACCOMPLISHED!");
-                communityLabel.setTextFill(Color.GREEN);
-            } else {
+                double achievementPercent = hours / ((double) achievement);
+                double servicePercent = hours / ((double) service);
+                double communityPercent = hours / ((double) community);
 
-                communityProgress.setProgress(communityPercent);
-                double result = community - hours;
-                if (result % 2 == 0 || result % 2 == 5) {
-                    int result1 = (int) result;
-                    communityHours.setText(String.valueOf(result1));
-                } else communityHours.setText(String.valueOf(result));
-            }
+                if (communityPercent >= 1) {
 
-            if (servicePercent >= 1) {
+                    communityProgress.setProgress(1);
+                    communityLabel.setText("AWARD ACCOMPLISHED!");
+                    communityLabel.setTextFill(Color.GREEN);
+                } else {
 
-                serviceProgress.setProgress(1);
-                serviceLabel.setText("AWARD ACCOMPLISHED!");
-                serviceLabel.setTextFill(Color.GREEN);
-            } else {
+                    communityProgress.setProgress(communityPercent);
+                    double result = community - hours;
+                    if (result % 2 == 0 || result % 2 == 5) {
+                        int result1 = (int) result;
+                        communityHours.setText(String.valueOf(result1));
+                    } else communityHours.setText(String.valueOf(result));
+                }
 
-                serviceProgress.setProgress(servicePercent);
-                double result = service - hours;
-                if (result % 2 == 0 || result % 2 == 5) {
-                    int result1 = (int) result;
-                    serviceHours.setText(String.valueOf(result1));
-                } else serviceHours.setText(String.valueOf(result));
-            }
-            if (achievementPercent >= 1) {
+                if (servicePercent >= 1) {
 
-                achievementProgress.setProgress(1);
-                achievementLabel.setText("AWARD ACCOMPLISHED!");
-                achievementLabel.setTextFill(Color.GREEN);
-            } else {
+                    serviceProgress.setProgress(1);
+                    serviceLabel.setText("AWARD ACCOMPLISHED!");
+                    serviceLabel.setTextFill(Color.GREEN);
+                } else {
 
-                achievementProgress.setProgress(achievementPercent);
-                double result = achievement - hours;
-                if (result % 2 == 0 || result % 2 == 5) {
-                    int result1 = (int) result;
-                    achievementHours.setText(String.valueOf(result1));
-                } else achievementHours.setText(String.valueOf(result));
+                    serviceProgress.setProgress(servicePercent);
+                    double result = service - hours;
+                    if (result % 2 == 0 || result % 2 == 5) {
+                        int result1 = (int) result;
+                        serviceHours.setText(String.valueOf(result1));
+                    } else serviceHours.setText(String.valueOf(result));
+                }
+                if (achievementPercent >= 1) {
+
+                    achievementProgress.setProgress(1);
+                    achievementLabel.setText("AWARD ACCOMPLISHED!");
+                    achievementLabel.setTextFill(Color.GREEN);
+                } else {
+
+                    achievementProgress.setProgress(achievementPercent);
+                    double result = achievement - hours;
+                    if (result % 2 == 0 || result % 2 == 5) {
+                        int result1 = (int) result;
+                        achievementHours.setText(String.valueOf(result1));
+                    } else achievementHours.setText(String.valueOf(result));
+                }
+            } catch (SQLException ignored) {
+
+                achievementLabel.setText("No Hours Completed!");
+                achievementLabel.setTextFill(Color.RED);
+                serviceLabel.setText("No Hours Completed!");
+                serviceLabel.setTextFill(Color.RED);
+                communityLabel.setText("No Hours Completed!");
+                communityLabel.setTextFill(Color.RED);
             }
         } catch (SQLException e) {
 

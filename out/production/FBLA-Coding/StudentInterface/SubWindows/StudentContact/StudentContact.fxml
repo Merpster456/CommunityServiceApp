@@ -12,7 +12,7 @@
             <Label fx:id="TopLabel" contentDisplay="CENTER" text="Contact Users" />
         </children>
     </HBox>
-    <Button fx:id="Back" layoutX="20" layoutY="35" text="Back" onAction="#back" />
+    <Button fx:id="back" layoutX="20" layoutY="35" text="Back" onAction="#back" />
     <VBox fx:id="v" prefHeight="500.0" prefWidth="900.0" layoutY="184" layoutX="233" alignment="TOP_CENTER" spacing="30">
         <padding>
             <Insets top="20" bottom="10" left="50" right="50"/>

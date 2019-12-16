@@ -18,7 +18,7 @@
                     <TableView fx:id="personTable">
                         <columns>
                             <TableColumn fx:id="idCol" text="ID" prefWidth="125"/>
-                            <TableColumn fx:id="gradeCol" text="Grade" prefWidth="60"/>
+                            <TableColumn fx:id="gradYearCol" text="Graduation Year" prefWidth="60"/>
                             <TableColumn fx:id="emailCol" text="Email" prefWidth="175"/>
                             <TableColumn fx:id="firstCol" text="First Name" prefWidth="102"/>
                             <TableColumn fx:id="lastCol" text="Last Name" prefWidth="102"/>
@@ -52,10 +52,10 @@
                                             <padding>
                                                 <Insets bottom="10" left="30" right="10" top="10"/>
                                             </padding>
-                                            <Label text="Grade:      "/>
-                                            <TextField fx:id="newGrade" prefWidth="40"/>
+                                            <Label text="Graduation Year:      "/>
+                                            <TextField fx:id="newGradYear" prefWidth="40"/>
                                         </HBox>
-                                        <Label fx:id="gradeErr"  text="" textFill="crimson"/>
+                                        <Label fx:id="gradErr"  text="" textFill="crimson"/>
                                         <HBox spacing="10" alignment="CENTER_LEFT">
                                             <padding>
                                                 <Insets bottom="10" left="30" right="10" top="10"/>
@@ -99,7 +99,8 @@
                                                 <Insets top="30" bottom="20" left="30" right="10"/>
                                             </padding>
                                             <Label text="Select User to Change"/>
-                                            <ChoiceBox fx:id="changeBox" prefWidth="150" onAction="#Autofill"/>
+                                            <ChoiceBox fx:id="changeBox" prefWidth="150"/>
+                                            <Label fx:id="idCErr" textFill="crimson" alignment="CENTER_LEFT"/>
                                         </VBox>
                                         <HBox spacing="10" alignment="CENTER_LEFT">
                                             <padding>
@@ -116,15 +117,15 @@
                                             <Label text="Last Name:"/>
                                             <TextField fx:id="changeLast"/>
                                         </HBox>
-                                        <Label fx:id="lastCErr"  text="" textFill="crimson"/>
+                                        <Label fx:id="lastCErr" textFill="crimson"/>
                                         <HBox spacing="10" alignment="CENTER_LEFT">
                                             <padding>
                                                 <Insets bottom="10" left="30" right="10" top="10"/>
                                             </padding>
-                                            <Label text="Grade:      "/>
-                                            <TextField fx:id="changeGrade" prefWidth="40"/>
+                                            <Label text="Graduation Year:      "/>
+                                            <TextField fx:id="changeGradYear" prefWidth="40"/>
                                         </HBox>
-                                        <Label fx:id="gradeCErr"  text="" textFill="crimson"/>
+                                        <Label fx:id="gradCErr" textFill="crimson" alignment="BASELINE_LEFT"/>
                                         <HBox spacing="10" alignment="CENTER_LEFT">
                                             <padding>
                                                 <Insets bottom="10" left="30" right="10" top="10"/>
@@ -132,7 +133,7 @@
                                             <Label text="Email:       "/>
                                             <TextField fx:id="changeEmail"/>
                                         </HBox>
-                                        <Label fx:id="emailCErr"  text="" textFill="crimson"/>
+                                        <Label fx:id="emailCErr" textFill="crimson"/>
                                         <HBox spacing="70" alignment="CENTER_LEFT">
                                             <padding>
                                                 <Insets bottom="10" left="30" right="10" top="20"/>
@@ -140,7 +141,7 @@
                                             <Button text="Cancel" onAction="#changeCancel"/>
                                             <Button text="Change" defaultButton="true" onAction="#Change"/>
                                         </HBox>
-                                        <Label fx:id="changeErr" text="" textFill="crimson"/>
+                                        <Label fx:id="changeErr" textFill="crimson" alignment="BASELINE_LEFT"/>
                                     </VBox>
                                 </Tab>
                             </TabPane>
@@ -151,27 +152,45 @@
             <Tab text="Deleted Users">
                 <HBox>
                     <padding>
-                        <Insets top="10" bottom="10" left="10" right="10"/>
+                        <Insets topRightBottomLeft="10"/>
                     </padding>
-                        <TableView fx:id="delAccTable">
-                            <columns>
-                                <TableColumn fx:id="accID" text="ID" prefWidth="125"/>
-                                <TableColumn fx:id="accGrade" text="Grade" prefWidth="60"/>
-                                <TableColumn fx:id="accEmail" text="Email" prefWidth="175"/>
-                                <TableColumn fx:id="accFirst" text="First Name" prefWidth="102"/>
-                                <TableColumn fx:id="accLast" text="Last Name" prefWidth="102"/>
-                                <TableColumn fx:id="accPass" text="Password" prefWidth="102"/>
-                                <TableColumn fx:id="accHours" text="Hours" prefWidth="60"/>
-                                <TableColumn fx:id="accIsAdvisor" text="Is Advisor" prefWidth="102"/>
-                            </columns>
-                        </TableView>
-                    <VBox spacing="10">
-                        <padding>
-                            <Insets top="50" left="30" bottom="10" right="10"/>
-                        </padding>
-
-
-                    </VBox>
+                    <TableView fx:id="delAccTable">
+                        <columns>
+                            <TableColumn fx:id="accID" text="ID" prefWidth="125"/>
+                            <TableColumn fx:id="accGradYear" text="Graduation Year" prefWidth="60"/>
+                            <TableColumn fx:id="accEmail" text="Email" prefWidth="175"/>
+                            <TableColumn fx:id="accFirst" text="First Name" prefWidth="102"/>
+                            <TableColumn fx:id="accLast" text="Last Name" prefWidth="102"/>
+                            <TableColumn fx:id="accPass" text="Password" prefWidth="102"/>
+                            <TableColumn fx:id="accHours" text="Hours" prefWidth="60"/>
+                            <TableColumn fx:id="accIsAdvisor" text="Is Advisor" prefWidth="102"/>
+                        </columns>
+                    </TableView>
+                    <TabPane prefWidth="600">
+                        <Tab text="Recover User">
+                            <VBox alignment="CENTER_LEFT" spacing="50">
+                                <padding>
+                                    <Insets left="30" bottom="30"/>
+                                </padding>
+                                <Label text="Choose Account to Recover:"/>
+                                <ChoiceBox fx:id="recoverBox"/>
+                                <Button text="Recover" onAction="#recover"/>
+                                <Label fx:id="recoverErr" textFill="crimson"/>
+                            </VBox>
+                        </Tab>
+                        <Tab text="Permanent Deletion">
+                            <VBox alignment="CENTER_LEFT" spacing="50">
+                                <padding>
+                                    <Insets left="30" bottom="30"/>
+                                </padding>
+                                <Label text="!!WARNING THIS IS A PERMANENT ACTION!!" textFill="crimson"/>
+                                <Label text="Choose Account to Delete Forever:"/>
+                                <ChoiceBox fx:id="permanentBox"/>
+                                <Button text="Delete" onAction="#permDelete"/>
+                                <Label fx:id="permErr" textFill="crimson"/>
+                            </VBox>
+                        </Tab>
+                    </TabPane>
                 </HBox>
             </Tab>
         </TabPane>

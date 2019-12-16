@@ -1,23 +1,21 @@
 .root {
 
-    -fx-font-family: 'Tahoma', Arial, sans-serif;
+    -fx-font-family: 'Verdana', Arial, sans-serif;
 }
 
-#Box {
+#box {
 
-    -fx-background-color: red;
+    -fx-background-color: RoyalBlue;
 
 }
 #boox {
 
-    -fx-background-color: blue;
 
 }
 .Columns {
 
     -fx-background-color: transparent;
     -fx-border-color: black;
-    -fx-border-width: 1;
     -fx-border-style: solid;
     -fx-font-size: 35px;
     -fx-font-weight: bold;
@@ -25,7 +23,7 @@
 
 }
 
-#TopLabel {
+#topLabel {
 
     -fx-font-size: 66px;
     -fx-font-weight: bold;
@@ -43,7 +41,7 @@
 
 #v {
 
-    -fx-background-color: red;
+    -fx-background-color: blue;
 
 }
 
@@ -51,5 +49,21 @@
 
     -fx-font-size: 19px;
     -fx-font-weight: bold;
+
+}
+
+#inbox {
+
+    -fx-background-color: green;
+
+}
+
+.Buttons {
+
+}
+
+#about {
+
+    -fx-background-color: green;
 
 }

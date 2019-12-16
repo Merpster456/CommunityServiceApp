@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -34,33 +35,30 @@ import javafx.stage.StageStyle;
 
 public class ManageUsers implements Initializable {
 
-    @FXML private Button Back;
+    @FXML private Button back;
     @FXML private ChoiceBox choiceBox;
     @FXML private ChoiceBox changeBox;
     @FXML private TableView<Student> studentTable;
     @FXML private TableColumn<Student, String> idCol;
     @FXML private TableColumn<Student, String> firstCol;
     @FXML private TableColumn<Student, String> lastCol;
-    @FXML private TableColumn<Student, String> gradeCol;
+    @FXML private TableColumn<Student, String> gradCol;
     @FXML private TableColumn<Student, String> emailCol;
     @FXML private TextField newFirst;
     @FXML private TextField newLast;
-    @FXML private TextField newGrade;
+    @FXML private TextField newGradYear;
     @FXML private TextField newEmail;
     @FXML private TextField changeFirst;
     @FXML private TextField changeLast;
-    @FXML private TextField changeGrade;
+    @FXML private TextField changeGradYear;
     @FXML private TextField changeEmail;
     @FXML private Label firstErr;
     @FXML private Label lastErr;
-    @FXML private Label gradeErr;
+    @FXML private Label gradErr;
     @FXML private Label emailErr;
     @FXML private Label err;
     @FXML private Label delErr;
-    @FXML private Label firstCErr;
-    @FXML private Label lastCErr;
-    @FXML private Label gradeCErr;
-    @FXML private Label emailCErr;
+    @FXML private Label gradCErr;
     @FXML private Label changeErr;
 
     private Connection connection;
@@ -102,13 +100,13 @@ public class ManageUsers implements Initializable {
             this.idCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Id"));
             this.firstCol.setCellValueFactory(new PropertyValueFactory<Student, String>("First"));
             this.lastCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Last"));
-            this.gradeCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Grade"));
+            this.gradCol.setCellValueFactory(new PropertyValueFactory<Student, String>("GradYear"));
             this.emailCol.setCellValueFactory(new PropertyValueFactory<Student, String>("EmailOrDate"));
 
             idCol.setCellFactory(TextFieldTableCell.forTableColumn());
             firstCol.setCellFactory(TextFieldTableCell.forTableColumn());
             lastCol.setCellFactory(TextFieldTableCell.forTableColumn());
-            gradeCol.setCellFactory(TextFieldTableCell.forTableColumn());
+            gradCol.setCellFactory(TextFieldTableCell.forTableColumn());
             emailCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
             studentTable.setItems(null);
@@ -131,12 +129,16 @@ public class ManageUsers implements Initializable {
     @FXML
     protected void back(ActionEvent event) throws IOException {
 
-        Stage stage = (Stage) Back.getScene().getWindow();
+        Stage stage = (Stage) back.getScene().getWindow();
         Pane root = FXMLLoader.load(getClass().getResource("/AdvisorInterface/AdvisorUI.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-
-
+    }
+    @FXML
+    protected void backChange(MouseEvent event) { back.setStyle("-fx-text-fill: black"); }
+    @FXML
+    protected void refresh(MouseEvent event) {
+        back.setStyle("-fx-text-fill: white");
     }
 
     @FXML
@@ -147,15 +149,15 @@ public class ManageUsers implements Initializable {
 
         String first = (String) this.newFirst.getText();
         String last = (String) this.newLast.getText();
-        String grade = (String) this.newGrade.getText();
+        String grad = (String) this.newGradYear.getText();
         String email = (String) this.newEmail.getText();
 
         try {
 
-            int numCheck = Integer.parseInt(grade);
+            int numCheck = Integer.parseInt(grad);
         } catch (NumberFormatException e) {
 
-            gradeErr.setText("Need a Numerical Value!");
+            gradErr.setText("Need a Numerical Value!");
             control = false;
 
             err.setText("Change Needed Fields!");
@@ -175,9 +177,9 @@ public class ManageUsers implements Initializable {
 
             err.setText("Need to Fill Required Field!");
         }
-        if (grade.length() < 1) {
+        if (grad.length() < 1) {
 
-            gradeErr.setText("Grade is Required!");
+            gradErr.setText("Graduation Year is Required!");
             control = false;
 
             err.setText("Need to Fill Required Field!");
@@ -196,7 +198,7 @@ public class ManageUsers implements Initializable {
                 String id = Student.GenerateID(first, last);
                 String pass = Student.GeneratePass();
 
-                String sql = "INSERT INTO Persons VALUES ('" + id + "', " + grade + ", '" +
+                String sql = "INSERT INTO Persons VALUES ('" + id + "', " + grad + ", '" +
                         email + "', '" + first + "', '" + last + "', '" + pass + "', false);";
                 try {
 
@@ -206,7 +208,7 @@ public class ManageUsers implements Initializable {
 
                     statement.executeQuery(sql);
 
-                } catch (SQLException e) {
+                } catch (SQLException ignore) {
 
                     setTable();
                     showCreds(id, pass);
@@ -229,7 +231,7 @@ public class ManageUsers implements Initializable {
 
         newFirst.setText("");
         newLast.setText("");
-        newGrade.setText("");
+        newGradYear.setText("");
         newEmail.setText("");
     }
     private void showCreds(String id, String pass) {
@@ -313,7 +315,7 @@ public class ManageUsers implements Initializable {
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
 
-            int grade = rs.getInt(2);
+            int grad = rs.getInt(2);
             String email = rs.getString(3);
             String first = rs.getString(4);
             String last = rs.getString(5);
@@ -321,12 +323,12 @@ public class ManageUsers implements Initializable {
 
             DataUtil.close(rs);
 
-            sql = "INSERT INTO Deleted VALUES ('" + id + "', '" + grade + "', '" + email + "', '" +
+            sql = "INSERT INTO Deleted VALUES ('" + id + "', '" + grad + "', '" + email + "', '" +
                     first + "', '" + last + "', '" + pass + "', false);";
 
             try{
                 statement.executeQuery(sql);
-            } catch (SQLException e) {}
+            } catch (SQLException ignore) {}
 
             sql = "SELECT * FROM Deleted WHERE id='" + id + "';";
 
@@ -340,7 +342,7 @@ public class ManageUsers implements Initializable {
 
                 try {
                     statement.executeQuery(sql);
-                } catch (SQLException e){}
+                } catch (SQLException ignore){}
 
                 setTable();
             } else {
@@ -368,18 +370,18 @@ public class ManageUsers implements Initializable {
     protected void Change(ActionEvent event) {
 
         String id = (String) changeBox.getValue();
-        String grade = changeGrade.getText();
-        String email = changeGrade.getText();
+        String grad = changeGradYear.getText();
+        String email = changeGradYear.getText();
         String first = changeFirst.getText();
         String last = changeLast.getText();
 
-        if (grade.length() > 0) {
+        if (grad.length() > 0) {
 
             try {
 
-                int numCheck = Integer.parseInt(grade);
+                int numCheck = Integer.parseInt(grad);
 
-                String sql = "UPDATE Persons SET grade = " + grade + " WHERE id = '" + id + "';";
+                String sql = "UPDATE Persons SET gradYear = " + grad + " WHERE id = '" + id + "';";
 
                 try {
 
@@ -402,7 +404,7 @@ public class ManageUsers implements Initializable {
                 }
             } catch (NumberFormatException e) {
 
-                gradeCErr.setText("Need a Numerical Value!");
+                gradCErr.setText("Need a Numerical Value!");
                 changeErr.setText("Change Needed Fields!");
             }
         } if (email.length() > 0) {
@@ -508,7 +510,7 @@ public class ManageUsers implements Initializable {
 
         changeFirst.setText("");
         changeLast.setText("");
-        changeGrade.setText("");
+        changeGradYear.setText("");
         changeEmail.setText("");
     }
 }

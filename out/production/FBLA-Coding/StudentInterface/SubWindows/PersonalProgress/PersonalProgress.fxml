@@ -11,7 +11,7 @@
             <Label fx:id="TopLabel" contentDisplay="CENTER" text="Personal Progress" />
         </children>
     </HBox>
-    <Button fx:id="Back" layoutX="20" layoutY="35" text="Back" onAction="#back" />
+    <Button fx:id="back" layoutX="20" layoutY="35" text="Back" onAction="#back" />
     <HBox fx:id="v" prefHeight="500.0" prefWidth="1000.0" layoutY="184" layoutX="183" spacing="50">
         <padding>
             <Insets topRightBottomLeft="30"/>
