@@ -2,62 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc445480-d086-479a-890a-c90d40725123" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Objects/Event.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/AcceptEvents/AcceptEvents.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/AcceptEvents/AcceptEvents.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CommunityService.db" beforeDir="false" afterPath="$PROJECT_DIR$/CommunityService.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdminInterface/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdminInterface/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdminInterface/AdminUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdminInterface/AdminUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/Advisor.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/Advisor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/AdvisorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/AdvisorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/Advisor.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/AdvisorUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/AdvisorUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ContactUsers/ContactUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ContactUsers/ContactUsers.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/StudentHours/StudentHours.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/StudentHours/StudentHours.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/StudentHours/StudentHours.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/StudentHours/StudentHours.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/Login/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/Login/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/Login/LoginApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/Login/LoginApp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/Login/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/Login/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/Objects/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/Objects/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/Objects/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/Objects/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/Student.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/Student.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/META-INF/FBLA-Coding.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/Objects/Event.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/Objects/Event.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/Student.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/StudentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/StudentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/StudentUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/StudentUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/AboutCSA/AboutCSA.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/AboutCSA/AboutCSA.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/AboutCSA/AboutCSA.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/AboutCSA/AboutCSA.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/PeersProgress/PeersProgress.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/PeersProgress/PeersProgress.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/PeersProgress/PeersProgress.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/PeersProgress/PeersProgress.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/PersonalProgress/PersonalProgress.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/PersonalProgress/PersonalProgress.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/PersonalProgress/PersonalProgress.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/PersonalProgress/PersonalProgress.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/StudentContact/StudentContact.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/StudentContact/StudentContact.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/StudentContact/StudentContact.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/StudentContact/StudentContact.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminInterface/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminInterface/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminInterface/AdminUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminInterface/AdminUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/Advisor.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/Advisor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/AdvisorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/AdvisorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/Advisor.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/AdvisorUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/AdvisorUI.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ContactUsers/ContactUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ContactUsers/ContactUsers.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/StudentHours.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/StudentHours.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/StudentHours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/StudentHours.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Login/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login/LoginApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/LoginApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Objects/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Objects/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StudentInterface/Student.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/Student.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Objects/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StudentInterface/Student.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/StudentInterface/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/StudentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/StudentInterface/StudentUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/StudentUI.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/AboutCSA/AboutCSA.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/AboutCSA/AboutCSA.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PeersProgress/PeersProgress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PeersProgress/PeersProgress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PeersProgress/PeersProgress.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PeersProgress/PeersProgress.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PersonalProgress/PersonalProgress.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PersonalProgress/PersonalProgress.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PersonalProgress/PersonalProgress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PersonalProgress/PersonalProgress.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/StudentContact/StudentContact.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/StudentContact/StudentContact.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/StudentContact/StudentContact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/StudentContact/StudentContact.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,6 +74,11 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -97,24 +90,12 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/AcceptEvents" />
       <recent name="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentProgress" />
       <recent name="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours" />
       <recent name="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ContactUsers" />
-      <recent name="$PROJECT_DIR$/src/AdminInterface/SubWindows/ManageUsers" />
-      <recent name="$PROJECT_DIR$/src/AdminInterface/SubWindows" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="Javafx" type="Application" factoryName="Application">
@@ -132,6 +113,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -200,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574643751943</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Only need to finish About CSA and couple other things&#10;&#10;Then I can work on additional stuff&#10;&#10;Also need to make printer compatibility">
+      <created>1576500858370</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1576500858370</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -226,6 +226,45 @@
     <MESSAGE value="did ALOOOT of CRAPP Advisor interface almost complete!&#10;&#10;I still have to work on the progress window" />
     <MESSAGE value="Only need to finish About CSA and couple other things&#10;&#10;Then I can work on additional stuff&#10;&#10;Also need to make printer compatibility" />
     <option name="LAST_COMMIT_MESSAGE" value="Only need to finish About CSA and couple other things&#10;&#10;Then I can work on additional stuff&#10;&#10;Also need to make printer compatibility" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1576982463255">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1576982463255" />
+    <state width="1638" height="310" key="GridCell.Tab.0.bottom" timestamp="1577134829893">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="310" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1577134594679" />
+    <state width="1638" height="310" key="GridCell.Tab.0.bottom/0.23.1680.955@0.0.1680.1050" timestamp="1577134829893" />
+    <state width="1638" height="310" key="GridCell.Tab.0.bottom/0.23.1680.955@0.23.1680.955" timestamp="1577127053994" />
+    <state width="1638" height="310" key="GridCell.Tab.0.center" timestamp="1577134829892">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="310" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1577134594678" />
+    <state width="1638" height="310" key="GridCell.Tab.0.center/0.23.1680.955@0.0.1680.1050" timestamp="1577134829892" />
+    <state width="1638" height="310" key="GridCell.Tab.0.center/0.23.1680.955@0.23.1680.955" timestamp="1577127053993" />
+    <state width="1638" height="310" key="GridCell.Tab.0.left" timestamp="1577134829892">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="310" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1577134594678" />
+    <state width="1638" height="310" key="GridCell.Tab.0.left/0.23.1680.955@0.0.1680.1050" timestamp="1577134829892" />
+    <state width="1638" height="310" key="GridCell.Tab.0.left/0.23.1680.955@0.23.1680.955" timestamp="1577133946615" />
+    <state width="1638" height="310" key="GridCell.Tab.0.right" timestamp="1577134829893">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="310" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1577134594679" />
+    <state width="1638" height="310" key="GridCell.Tab.0.right/0.23.1680.955@0.0.1680.1050" timestamp="1577134829893" />
+    <state width="1638" height="310" key="GridCell.Tab.0.right/0.23.1680.955@0.23.1680.955" timestamp="1577127053993" />
+    <state x="519" y="341" key="com.intellij.ide.util.TipDialog" timestamp="1577079009672">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="519" y="341" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1577079009672" />
+    <state x="519" y="333" key="com.intellij.ide.util.TipDialog/0.23.1680.955@0.23.1680.955" timestamp="1576869877109" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1577039746895">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1577039746895" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FBLA_Coding$Javafx.ic" NAME="Javafx Coverage Results" MODIFIED="1572904544846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

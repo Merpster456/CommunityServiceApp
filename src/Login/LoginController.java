@@ -64,8 +64,6 @@ public class LoginController implements Initializable {
 
         grid.setStyle("-fx-background-color: #3d5878");
         topLabel.setTextFill(Color.WHITE);
-        idLabel.setTextFill(Color.WHITE);
-        passLabel.setTextFill(Color.WHITE);
     }
 
     /**

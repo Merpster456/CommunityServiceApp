@@ -6,13 +6,13 @@
 
 <?import javafx.geometry.Insets?>
 <AnchorPane minHeight="768" minWidth="1366" prefHeight="768" prefWidth="1366" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentInterface.SubWindows.PersonalProgress.PersonalProgress">
-    <HBox fx:id="Box" alignment="CENTER" prefHeight="125" prefWidth="1366">
+    <HBox styleClass="primaryDark" alignment="CENTER" prefHeight="125" prefWidth="1366">
         <children>
-            <Label fx:id="TopLabel" contentDisplay="CENTER" text="Personal Progress" />
+            <Label id="topLabel" contentDisplay="CENTER" text="Personal Progress" />
         </children>
     </HBox>
     <Button fx:id="back" layoutX="20" layoutY="35" text="Back" onAction="#back" />
-    <HBox fx:id="v" prefHeight="500.0" prefWidth="1000.0" layoutY="184" layoutX="183" spacing="50">
+    <HBox fx:id="v" prefHeight="500.0" prefWidth="1000.0" layoutY="184" layoutX="183" spacing="75">
         <padding>
             <Insets topRightBottomLeft="30"/>
         </padding>
@@ -54,8 +54,28 @@
                 </HBox>
             </VBox>
         </VBox>
+        <VBox spacing="10">
+            <Label text="Submit Event"/>
+            <HBox spacing="10">
+                <Label text="Number of Hours: "/>
+                <TextField fx:id="hoursField"/>
+            </HBox>
+            <Label fx:id="hoursErr" styleClass="error"/>
+            <HBox spacing="10">
+                <Label text="Date: "/>
+                <DatePicker fx:id="dateField" editable="false"/>
+            </HBox>
+            <Label fx:id="dateErr" styleClass="error"/>
+            <Label text="Description of Event"/>
+            <TextArea fx:id="descField"/>
+            <HBox spacing="30">
+                <Button text="Cancel" onAction="#cancel"/>
+                <Button text="Submit" onAction="#submit"/>
+            </HBox>
+            <Label fx:id="mainErr" styleClass="error"/>
+        </VBox>
     </HBox>
     <stylesheets>
-        <URL value="@../../Student.css" />
+        <URL value="@../../../Style.css" />
     </stylesheets>
 </AnchorPane>

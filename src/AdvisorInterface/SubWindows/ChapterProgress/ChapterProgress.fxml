@@ -63,6 +63,6 @@
         </VBox>
     </HBox>
     <stylesheets>
-        <URL value="@../../Advisor.css" />
+        <URL value="@../../../Style.css" />
     </stylesheets>
 </AnchorPane>

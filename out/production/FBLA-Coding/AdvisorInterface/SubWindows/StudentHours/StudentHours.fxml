@@ -9,8 +9,8 @@
     <HBox styleClass="primaryDark" alignment="CENTER" prefHeight="125" prefWidth="1366">
         <Label styleClass="topLabel" contentDisplay="CENTER" text="Student Hours"/>
     </HBox>
-    <Button styleClass="back" fx:id="Back" layoutX="20" layoutY="35" text="Back" onAction="#back" onMouseEntered="#backChange" onMouseExited="#refresh"/>
-    <HBox styleClass="primary" prefHeight="500.0" prefWidth="1150.0" layoutY="184" layoutX="118" >
+    <Button styleClass="back" fx:id="back" layoutX="20" layoutY="35" text="Back" onAction="#back" onMouseEntered="#backChange" onMouseExited="#refresh"/>
+    <HBox styleClass="primary" prefHeight="500.0" prefWidth="950.0" layoutY="184" layoutX="183" >
         <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
         </padding>
@@ -45,10 +45,11 @@
                             <Button text="Cancel" onAction="#Cancel"/>
                             <Button text="Specify" onAction="#Specify"/>
                         </HBox>
+                        <Button text="Print" onAction="#print"/>
                     </VBox>
                 </Tab>
                 <Tab text="Add Event" closable="false">
-                    <VBox spacing="30" alignment="CENTER">
+                    <VBox spacing="20" alignment="CENTER">
                         <padding>
                             <Insets top="50" bottom="10" left="30" right="10"/>
                         </padding>
@@ -57,12 +58,11 @@
                             <ChoiceBox fx:id="addChoice"/>
                         </HBox>
                         <HBox spacing="10" alignment="CENTER_LEFT">
-                            <Label text="Amount of Hours:"/>
-                            <TextField fx:id="hoursField"/>
+                            <TextField fx:id="hoursField" promptText="Hours"/>
                         </HBox>
+                        <Label fx:id="hoursErr"/>
                         <HBox spacing="10">
-                            <Label text="Date of Event:"/>
-                            <DatePicker accessibleText="Hey" fx:id="datePicker"/>
+                            <DatePicker fx:id="datePicker" promptText="Date of Event"/>
                         </HBox>
                         <HBox spacing="50" alignment="CENTER">
                             <padding>
@@ -70,18 +70,7 @@
                             </padding>
                             <Button text="Submit" onAction="#addSubmit"/>
                         </HBox>
-                    </VBox>
-                </Tab>
-                <Tab text="Accept Event" closable="false">
-                    <VBox spacing="20" alignment="CENTER">
-                        <padding>
-                            <Insets topRightBottomLeft="30"/>
-                        </padding>
-                        <Label styleClass="blackLabel" text="Student Events"/>
-                        <HBox alignment="TOP_CENTER">
-                            <ListView fx:id="acceptList">
-                            </ListView>
-                        </HBox>
+                        <Button text="Accept Event" onAction="#acceptWindow"/>
                     </VBox>
                 </Tab>
                 <Tab text="Delete Event" closable="false">
@@ -107,6 +96,6 @@
         </VBox>
     </HBox>
     <stylesheets>
-        <URL value="@../../Advisor.css" />
+        <URL value="@../../../Style.css" />
     </stylesheets>
 </AnchorPane>

@@ -15,11 +15,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+
+import static Login.LoginController.id;
 
 public class PersonalProgress implements Initializable {
 
@@ -36,6 +37,12 @@ public class PersonalProgress implements Initializable {
     @FXML private Label serviceLabel;
     @FXML private Label communityHours;
     @FXML private Label communityLabel;
+    @FXML private Label hoursErr;
+    @FXML private Label dateErr;
+    @FXML private Label mainErr;
+    @FXML private TextField hoursField;
+    @FXML private DatePicker dateField;
+    @FXML private TextArea descField;
 
     Connection connection;
     Statement statement;
@@ -58,7 +65,7 @@ public class PersonalProgress implements Initializable {
         serviceProgress.setProgress(0);
         communityProgress.setProgress(0);
 
-        String sql = "SELECT SUM(hours) FROM Hours WHERE id='" + LoginController.id + "' GROUP BY id;";
+        String sql = "SELECT SUM(hours) FROM Hours WHERE id='" + id + "' GROUP BY id;";
         ResultSet rs = null;
 
         try {
@@ -146,5 +153,88 @@ public class PersonalProgress implements Initializable {
         Pane root = FXMLLoader.load(getClass().getResource("/StudentInterface/StudentUI.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+    }
+
+    @FXML
+    protected void cancel(ActionEvent event) {
+
+        hoursField.setText("");
+        dateField.setValue(null);
+        descField.setText("");
+
+        hoursErr.setText("");
+        dateErr.setText("");
+        mainErr.setText("");
+    }
+
+    @FXML
+    protected void submit(ActionEvent event) {
+
+        boolean control = true;
+
+        if (hoursField.getText().length() == 0) {
+
+            hoursErr.setText("Please Specify Number of Hours!");
+            control = false;
         }
+        try {
+
+            dateField.getValue().toString();
+        } catch (NullPointerException e) {
+
+            dateErr.setText("Please Specify Date!");
+            control = false;
         }
+
+        if (control) {
+            try {
+                String h = hoursField.getText();
+                int hours = Integer.parseInt(h);
+
+                String pattern = "yyyy-MM-dd";
+                DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+                LocalDate localDate = dateField.getValue();
+                String date = localDate.format(dateFormatter);
+
+                String desc = descField.getText();
+
+                String sql = "INSERT INTO Pending VALUES (?,?,?,?);";
+
+                try {
+
+                    connection = DataConnect.getConnection();
+                    PreparedStatement submit = connection.prepareStatement(sql);
+                    submit.setString(1, id);
+                    submit.setInt(2, hours);
+                    submit.setString(3, date);
+                    submit.setString(4, desc);
+                    submit.executeUpdate();
+
+                    hoursField.setText("");
+                    dateField.setValue(null);
+                    descField.setText("");
+
+                    hoursErr.setText("");
+                    dateErr.setText("");
+                    mainErr.setText("");
+                } catch (SQLException e) {
+
+                    System.err.println(e.getStackTrace()[0].getLineNumber());
+                    System.out.println("Error: " + e);
+                } finally {
+
+                    DataUtil.close(connection);
+
+                }
+
+            } catch (NumberFormatException e) {
+
+                hoursErr.setText("Please Insert a Numerical Value!");
+            }
+        } else {
+
+            mainErr.setText("Please Change needed fields!");
+        }
+    }
+}

@@ -23,6 +23,11 @@ public class Event {
         this.hours = new SimpleStringProperty(hours);
         this.date = new SimpleStringProperty(date);
     }
+    public Event(String id, String date) {
+
+        this.id = new SimpleStringProperty(id);
+        this.date = new SimpleStringProperty(date);
+    }
 
     public String getId() {
         return id.get();

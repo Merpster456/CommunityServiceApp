@@ -21,6 +21,6 @@
      </root>
    </SubScene>
     <stylesheets>
-        <URL value="@../../Student.css" />
+        <URL value="@../../../Style.css" />
     </stylesheets>
 </AnchorPane>

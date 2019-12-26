@@ -16,11 +16,9 @@
 <GridPane fx:id="grid" fx:controller="Login.LoginController" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
     <padding><Insets top="25" right="50" bottom="25" left="50"/></padding>
     <Label fx:id="topLabel" text="Community Service!" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" />
-    <Label fx:id="idLabel" text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-    <TextField fx:id="textField" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
-    <Label fx:id="passLabel" text="Pass:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.halignment="CENTER"/>
-    <Button fx:id="button" text="Submit" GridPane.rowIndex="4" GridPane.columnSpan="2" onAction="#reactToClick" GridPane.halignment="CENTER" defaultButton="true"/>
+    <TextField fx:id="textField" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="CENTER" promptText="ID" focusTraversable="false"/>
+    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.halignment="CENTER" promptText="Password" focusTraversable="false"/>
+    <Button fx:id="button" text="Login" GridPane.rowIndex="4" GridPane.columnSpan="2" onAction="#reactToClick" GridPane.halignment="CENTER" defaultButton="true"/>
     <Label fx:id="errorMessage" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.columnSpan="4"/>
     <stylesheets>
         <URL value="@LoginCSS.css" />

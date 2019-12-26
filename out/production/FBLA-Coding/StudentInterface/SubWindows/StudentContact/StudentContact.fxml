@@ -26,6 +26,6 @@
     </VBox>
     <Button fx:id="send" layoutX="950" layoutY="250" text="Send" onAction="#send"/>
     <stylesheets>
-        <URL value="@../../Student.css" />
+        <URL value="@../../../Style.css" />
     </stylesheets>
 </AnchorPane>

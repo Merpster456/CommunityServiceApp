@@ -2,7 +2,6 @@ package AdvisorInterface.SubWindows.StudentHours;
 
 import Database.DataConnect;
 import Database.DataUtil;
-import Objects.Event;
 import Objects.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,20 +9,22 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.*;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ import java.util.ResourceBundle;
 
 public class StudentHours implements Initializable {
 
-    @FXML private Button Back;
+    @FXML private Button back;
     @FXML private TableView<Student> studentTable;
     @FXML private TableColumn<Student, String> idCol;
     @FXML private TableColumn<Student, String> firstCol;
@@ -46,8 +47,7 @@ public class StudentHours implements Initializable {
     @FXML private ChoiceBox specifyChoice;
     @FXML private ChoiceBox delChoice;
     @FXML private ChoiceBox dateChoice;
-    @FXML private ObservableList<String> observableList;
-    @FXML private ListView<String> acceptList;
+    @FXML private Label hoursErr;
 
     private Connection connection;
     private Statement statement;
@@ -59,13 +59,6 @@ public class StudentHours implements Initializable {
         setTable();
         setBox();
         setDelBoxes();
-        setLists();
-
-    }
-
-    private void setLists() {
-
-
 
     }
 
@@ -75,7 +68,6 @@ public class StudentHours implements Initializable {
         String SQL = "SELECT * FROM Hours LEFT JOIN Persons ON Hours.id=Persons.id ORDER BY Hours.id;";
         ResultSet rs = null;
         List<Student> list = new ArrayList<Student>();
-        Student student = null;
         ObservableList<Student> students = FXCollections.observableArrayList();
 
         try {
@@ -305,17 +297,42 @@ public class StudentHours implements Initializable {
     @FXML
     protected void back(ActionEvent event) throws IOException {
 
-        Stage stage = (Stage) Back.getScene().getWindow();
+        Stage stage = (Stage) back.getScene().getWindow();
         Pane root = FXMLLoader.load(getClass().getResource("/AdvisorInterface/AdvisorUI.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
 
     @FXML
-    protected void backChange(MouseEvent event) { Back.setStyle("-fx-text-fill: black"); }
+    protected void print(ActionEvent event) {
+
+        Stage stage = (Stage) back.getScene().getWindow();
+
+        Printer printer = Printer.getDefaultPrinter();
+        PrinterJob printerJob = PrinterJob.createPrinterJob();
+
+        PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);
+        printerJob.getJobSettings().setPageLayout(pageLayout);
+
+        final double scaleX = pageLayout.getPrintableWidth() / studentTable.getBoundsInParent().getWidth();
+        final double scaleY = pageLayout.getPrintableHeight() / studentTable.getBoundsInParent().getHeight();
+        Scale scale = new Scale(scaleX, scaleY);
+        studentTable.getTransforms().add(scale);
+
+        if(printerJob.showPrintDialog(stage.getOwner()) && printerJob.printPage(studentTable)){
+            studentTable.getTransforms().remove(scale);
+            printerJob.endJob();
+        }
+        else {
+            studentTable.getTransforms().remove(scale);
+        }
+    }
+
+    @FXML
+    protected void backChange(MouseEvent event) { back.setStyle("-fx-text-fill: black"); }
     @FXML
     protected void refresh(MouseEvent event) {
-        Back.setStyle("-fx-text-fill: white");
+        back.setStyle("-fx-text-fill: white");
     }
 
     @FXML
@@ -325,39 +342,47 @@ public class StudentHours implements Initializable {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
 
         String id = (String) addChoice.getValue();
-        String hours = hoursField.getText();
+        String h = hoursField.getText();
+
         LocalDate localDate = datePicker.getValue();
         String date = localDate.format(dateFormatter);
 
-        String sql = "INSERT INTO Hours VALUES ('" + id + "', " + hours + ", '" + date + "');";
-
         try {
+            int hours = Integer.parseInt(h);
+            String sql = "INSERT INTO Hours VALUES (?,?,?);";
 
-            connection = DataConnect.getConnection();
-            statement = connection.createStatement();
-
-            /**
-             * There will always be an exception thrown
-             * here saying "No result set" however this
-             * is completely fine and expected therefore
-             * we ignore the exception
-             */
             try {
-                statement.executeQuery(sql);
-            } catch (SQLException ignore) {}
 
-        } catch (SQLException e) {
+                connection = DataConnect.getConnection();
+                PreparedStatement submit = connection.prepareStatement(sql);
+                submit.setString(1, id);
+                submit.setInt(2, hours);
+                submit.setString(3, date);
+                submit.executeUpdate();
 
-            System.err.println(e.getStackTrace()[0].getLineNumber());
-            System.out.println("Error: " + e);
-        } finally {
+            } catch (SQLException e) {
 
-            DataUtil.close(statement);
-            DataUtil.close(connection);
+                System.err.println(e.getStackTrace()[0].getLineNumber());
+                System.out.println("Error: " + e);
+            } finally {
+                DataUtil.close(connection);
+            }
+
+            setTable();
+            setDelBoxes();
+        } catch (NumberFormatException e) {
+            hoursErr.setText("Insert a Numerical Value");
         }
+    }
 
-        setTable();
-        setDelBoxes();
+    @FXML
+    protected void acceptWindow(ActionEvent event) throws IOException {
+
+        Pane root = FXMLLoader.load(getClass().getResource("/AdvisorInterface/SubWindows/StudentHours/AcceptEvents/AcceptEvents.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML protected void delCancel(ActionEvent event) {
@@ -371,24 +396,20 @@ public class StudentHours implements Initializable {
         String id = (String) delChoice.getValue();
         String date = (String) dateChoice.getValue();
 
-        String sql = "DELETE FROM Hours WHERE id='" + id + "' and date='" + date + "';";
+        String sql = "DELETE FROM Hours WHERE id=? and date=?;";
 
         try {
 
             connection = DataConnect.getConnection();
-            statement = connection.createStatement();
-
-            try{
-                statement.executeQuery(sql);
-            } catch (SQLException ignored){}
-
+            PreparedStatement deleteEvent = connection.prepareStatement(sql);
+            deleteEvent.setString(1, id);
+            deleteEvent.setString(2, date);
+            deleteEvent.executeUpdate();
         } catch (SQLException e) {
 
             System.err.println(e.getStackTrace()[0].getLineNumber());
             System.out.println("Error: " + e);
         } finally {
-
-            DataUtil.close(statement);
             DataUtil.close(connection);
         }
 

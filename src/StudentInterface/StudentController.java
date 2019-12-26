@@ -9,7 +9,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,25 +22,31 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import static Login.LoginController.*;
+
 public class StudentController implements Initializable {
 
-    @FXML private Label TopLabel;
+    @FXML private Label topLabel;
     @FXML private Button personalProgress;
     @FXML private Button peersProgress;
     @FXML private Button contactUsers;
     @FXML private Button aboutCSA;
+    @FXML private HBox box;
 
     private final String id = LoginController.id;
 
     public void initialize(URL url, ResourceBundle rb){
 
         try {
-            this.TopLabel.setText("Welcome " + getName(id) + "!");
+            this.topLabel.setText("Welcome " + getName(id) + "!");
         } catch (SQLException e) {
 
             System.err.println(e.getStackTrace()[0].getLineNumber());
             System.out.println("Error: " + e);
         }
+        box.setStyle(primaryDark);
+        topLabel.setTextFill(Color.WHITE);
+        refresh(null);
     }
 
     private String getName(String id) throws SQLException {
@@ -47,6 +56,45 @@ public class StudentController implements Initializable {
         Connection connection = DataConnect.getConnection();
         ResultSet rs = connection.createStatement().executeQuery(SQL);
         return rs.getString("first");
+
+    }
+
+    @FXML
+    protected void setPersonalProgress(MouseEvent event) {
+
+        personalProgress.setStyle(primaryLight);
+        personalProgress.setTextFill(Color.BLACK);
+    }
+    @FXML
+    protected void setPeersProgress(MouseEvent event) {
+
+        peersProgress.setStyle(primaryLight);
+        peersProgress.setTextFill(Color.BLACK);
+    }
+    @FXML
+    protected void setContactUsers(MouseEvent event) {
+
+        contactUsers.setStyle(primaryLight);
+        contactUsers.setTextFill(Color.BLACK);
+    }
+    @FXML
+    protected void setAboutCSA(MouseEvent event) {
+
+        aboutCSA.setStyle(primaryLight);
+        aboutCSA.setTextFill(Color.BLACK);
+    }
+    @FXML
+    protected void refresh(MouseEvent event) {
+
+        personalProgress.setStyle(primary);
+        peersProgress.setStyle(primary);
+        contactUsers.setStyle(primary);
+        aboutCSA.setStyle(primary);
+
+        personalProgress.setTextFill(Color.WHITE);
+        peersProgress.setTextFill(Color.WHITE);
+        contactUsers.setTextFill(Color.WHITE);
+        aboutCSA.setTextFill(Color.WHITE);
 
     }
 
