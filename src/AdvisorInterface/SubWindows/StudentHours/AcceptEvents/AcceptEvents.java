@@ -56,7 +56,7 @@ public class AcceptEvents implements Initializable {
                     events.add(rs.getString(1) + ", " + rs.getString(2));
                 }
                 listView.getItems().addAll(events);
-            } catch (SQLException e) {
+            } catch (NullPointerException e) {
                 System.out.println(e.getStackTrace()[0].getLineNumber());
                 System.out.println("Error: " + e);
             }

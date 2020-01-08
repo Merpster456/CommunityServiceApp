@@ -80,7 +80,7 @@
                             <Insets bottom="10" top="50" left="30" right="30"/>
                         </padding>
                         <Label styleClass="blackLabels" text="Select User"/>
-                        <ChoiceBox fx:id="choiceBox" prefWidth="150"/>
+                        <ComboBox fx:id="delCombo" prefWidth="150" promptText="Select User"/>
                         <Label fx:id="delErr"/>
                         <Button text="Delete" onAction="#Delete"/>
                         <Label styleClass="warning" text="WARNING THIS WILL &#10;IMMEDIATELY DELETE USER" alignment="CENTER"/>
@@ -93,7 +93,7 @@
                                 <Insets top="30" bottom="20" left="30" right="10"/>
                             </padding>
                             <Label text="Select User to Change"/>
-                            <ChoiceBox fx:id="changeBox" prefWidth="150"/>
+                            <ComboBox fx:id="changeCombo" prefWidth="150" promptText="Select User"/>
                         </VBox>
                         <HBox spacing="10" alignment="CENTER_LEFT">
                             <padding>

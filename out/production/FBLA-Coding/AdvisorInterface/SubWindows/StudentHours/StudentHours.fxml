@@ -21,7 +21,7 @@
                 <TableColumn fx:id="lastCol" text="Last Name" prefWidth="102"/>
                 <TableColumn fx:id="gradCol" text="Graduation Year" prefWidth="140"/>
                 <TableColumn fx:id="hoursCol" text="Hours" prefWidth="60"/>
-                <TableColumn fx:id="dateCol" text="Date" prefWidth="108"/>
+                <TableColumn fx:id="dateCol" text="Date" prefWidth="84"/>
             </columns>
         </TableView>
         <VBox prefWidth="600">

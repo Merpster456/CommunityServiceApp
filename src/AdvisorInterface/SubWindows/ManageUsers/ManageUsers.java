@@ -22,10 +22,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -36,8 +33,8 @@ import javafx.stage.StageStyle;
 public class ManageUsers implements Initializable {
 
     @FXML private Button back;
-    @FXML private ChoiceBox choiceBox;
-    @FXML private ChoiceBox changeBox;
+    @FXML private ComboBox delCombo;
+    @FXML private ComboBox changeCombo;
     @FXML private TableView<Student> studentTable;
     @FXML private TableColumn<Student, String> idCol;
     @FXML private TableColumn<Student, String> firstCol;
@@ -68,7 +65,6 @@ public class ManageUsers implements Initializable {
     public void initialize(URL url, ResourceBundle rb){
 
         setTable();
-
         setBox();
 
     }
@@ -134,10 +130,8 @@ public class ManageUsers implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-    @FXML
-    protected void backChange(MouseEvent event) { back.setStyle("-fx-text-fill: black"); }
-    @FXML
-    protected void refresh(MouseEvent event) {
+    @FXML protected void backChange(MouseEvent event) { back.setStyle("-fx-text-fill: black"); }
+    @FXML protected void refresh(MouseEvent event) {
         back.setStyle("-fx-text-fill: white");
     }
 
@@ -272,8 +266,8 @@ public class ManageUsers implements Initializable {
 
         try{
 
-            choiceBox.getItems().clear();
-            changeBox.getItems().clear();
+            delCombo.getItems().clear();
+            changeCombo.getItems().clear();
 
             connection = DataConnect.getConnection();
             statement = connection.createStatement();
@@ -281,14 +275,17 @@ public class ManageUsers implements Initializable {
 
             while(rs.next()) {
 
-                choiceBox.getItems().add(rs.getString(1));
-                changeBox.getItems().add(rs.getString(1));
+                delCombo.getItems().add(rs.getString(1));
+                changeCombo.getItems().add(rs.getString(1));
             }
         } catch (SQLException e){
 
             System.out.println("Error: " + e);
             System.err.println(e.getStackTrace()[0].getLineNumber());
         } finally {
+
+            delCombo.setPromptText("Select User");
+            changeCombo.setPromptText("Select User");
 
             DataUtil.close(rs);
             DataUtil.close(statement);
@@ -304,14 +301,13 @@ public class ManageUsers implements Initializable {
     @FXML
     protected void Delete(ActionEvent event) throws IOException{
 
-        String id = (String) choiceBox.getValue();
+        String id = (String) delCombo.getValue();
         String sql = "SELECT * FROM Persons WHERE id='" + id + "';";
         ResultSet rs = null;
 
         try {
 
             connection = DataConnect.getConnection();
-            assert connection != null;
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
 
@@ -321,29 +317,47 @@ public class ManageUsers implements Initializable {
             String last = rs.getString(5);
             String pass = rs.getString(6);
 
+            System.out.println(1);
+
             DataUtil.close(rs);
 
-            sql = "INSERT INTO Deleted VALUES ('" + id + "', '" + grad + "', '" + email + "', '" +
-                    first + "', '" + last + "', '" + pass + "', false);";
+            sql = "SELECT hours FROM Hours WHERE id='" + id + "';";
+            int hours = statement.executeQuery(sql).getInt(1);
+            DataUtil.close(statement);
+
+            sql = "INSERT INTO Deleted VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
             try{
-                statement.executeQuery(sql);
-            } catch (SQLException ignore) {}
+
+
+                PreparedStatement insert = connection.prepareStatement(sql);
+                insert.setString(1, id);
+                insert.setInt(2, grad);
+                insert.setString(3, email);
+                insert.setString(4, first);
+                insert.setString(5, last);
+                insert.setString(6, pass);
+                insert.setString(7, "false");
+                insert.setInt(8, hours);
+
+                DataUtil.close(insert);
+
+            } catch (SQLException e) {
+
+                System.out.println("Error: " + e);
+                System.err.println(e.getStackTrace()[0].getLineNumber());
+            }
 
             sql = "SELECT * FROM Deleted WHERE id='" + id + "';";
-
             rs = statement.executeQuery(sql);
 
             if (rs.getString(1).equals(id)) {
-
                 DataUtil.close(rs);
 
                 sql = "DELETE FROM Persons WHERE id='" + id + "';";
+                statement.executeUpdate(sql);
 
-                try {
-                    statement.executeQuery(sql);
-                } catch (SQLException ignore){}
-
+                DataUtil.close(statement);
                 setTable();
             } else {
 
@@ -369,7 +383,7 @@ public class ManageUsers implements Initializable {
     @FXML
     protected void Change(ActionEvent event) {
 
-        String id = (String) changeBox.getValue();
+        String id = (String) changeCombo.getValue();
         String grad = changeGradYear.getText();
         String email = changeGradYear.getText();
         String first = changeFirst.getText();
@@ -505,7 +519,7 @@ public class ManageUsers implements Initializable {
     @FXML
     protected void changeCancel(ActionEvent event) {
 
-        changeBox.getItems().clear();
+        changeCombo.getItems().clear();
         setBox();
 
         changeFirst.setText("");
