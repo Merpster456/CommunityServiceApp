@@ -27,9 +27,8 @@ import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.function.Predicate;
 
 public class StudentHours implements Initializable {
 
@@ -43,22 +42,33 @@ public class StudentHours implements Initializable {
     @FXML private TableColumn<Student, String> dateCol;
     @FXML private TextField hoursField;
     @FXML private DatePicker datePicker;
-    @FXML private ChoiceBox addChoice;
-    @FXML private ChoiceBox specifyChoice;
-    @FXML private ChoiceBox delChoice;
-    @FXML private ChoiceBox dateChoice;
+    @FXML private ComboBox addCombo;
+    @FXML private ComboBox delCombo;
+    @FXML private ComboBox dateCombo;
+    @FXML private ComboBox idCombo;
+    @FXML private ComboBox timeCombo;
     @FXML private Label hoursErr;
 
     private Connection connection;
     private Statement statement;
 
     private String id = "";
+    private String interval = "";
 
-    public void initialize(URL url, ResourceBundle rs){
+    public void initialize(URL url, ResourceBundle rs) {
 
         setTable();
         setBox();
         setDelBoxes();
+
+        timeCombo.getItems().add("Weekly");
+        timeCombo.getItems().add("Monthly");
+        timeCombo.getItems().add("Yearly");
+    }
+
+    private void specifyTable(){
+
+
 
     }
 
@@ -70,24 +80,103 @@ public class StudentHours implements Initializable {
         List<Student> list = new ArrayList<Student>();
         ObservableList<Student> students = FXCollections.observableArrayList();
 
-        try {
+        if (interval.length() > 0) {
 
-            connection = DataConnect.getConnection();
-            statement = connection.createStatement();
-            rs = statement.executeQuery(SQL);
 
-            while (rs.next()) {
+            switch (interval) {
 
-                if (id.length() > 0) {
-                    if (rs.getString(1).equals(id));
-                    else continue;
+                case "Weekly":
+
+                    SQL = "SELECT *, strftime('%W', date) FROM Hours LEFT JOIN Persons ON Hours.id=Persons.id ORDER BY Hours.id;";
+
+                    try {
+                        connection = DataConnect.getConnection();
+                        statement = connection.createStatement();
+                        rs = statement.executeQuery(SQL);
+
+                        int a = 0;
+
+                        while (rs.next()) {
+                            a++;
+                            System.out.println("a:" + a);
+
+                            if (!students.isEmpty()) {
+                                for (int i = 0; i < students.size(); i++) {
+                                    System.out.println("i:" + i);
+                                    if ( (rs.getString(1).equals(students.get(i).getId())) && (rs.getInt(11) == students.get(i).getTimeInterval())) {
+                                        System.out.println("ResultSet: " + rs.getInt(11) + "    TimeInterval: " + students.get(i).getTimeInterval());
+                                        System.out.println("i: " + i + "\nstudents.size(): " + students.size());
+                                        students.get(i).setIntHours(rs.getInt(2 + students.get(i).getIntHours()));
+                                    } else {
+                                        if (i + 1 == students.size()) {
+                                            students.add(new Student(rs.getString(1),
+                                                    rs.getString(5),
+                                                    rs.getString(3),
+                                                    rs.getString(7),
+                                                    rs.getString(8),
+                                                    rs.getInt(2),
+                                                    rs.getInt(9)));
+                                            break;
+                                        }
+                                    }
+                                }
+                            } else {
+                                students.add(new Student(rs.getString(1),
+                                        rs.getString(5),
+                                        rs.getString(3),
+                                        rs.getString(7),
+                                        rs.getString(8),
+                                        rs.getInt(2),
+                                        rs.getInt(9)));
+                            }
+                        }
+                    } catch (SQLException e) {
+                        System.out.println("Error: " + e);
+                    }
+
+                    break;
+                case "Monthly":
+
+                    break;
+
+                case "Yearly":
+
+                    break;
+            }
+            if (id.length() > 0) {
+                Predicate<Student> studentPredicate = s -> !s.getId().equals(id);
+                students.removeIf(studentPredicate);
+            }
+
+        } else {
+            try {
+
+                connection = DataConnect.getConnection();
+                statement = connection.createStatement();
+                rs = statement.executeQuery(SQL);
+
+                while (rs.next()) {
+
+                    if (id.length() > 0) {
+                        if (!rs.getString(1).equals(id)) continue;
+                    }
+
+                    students.add(new Student(rs.getString(1),
+                            rs.getString(5),
+                            rs.getString(3),
+                            rs.getString(7),
+                            rs.getString(8),
+                            rs.getString(2)));
                 }
-                students.add(new Student(rs.getString(1),
-                        rs.getString(5),
-                        rs.getString(3),
-                        rs.getString(7),
-                        rs.getString(8),
-                        rs.getString(2)));
+            } catch (SQLException e) {
+
+                System.out.println("Error: " + e);
+                System.err.println(e.getStackTrace()[0].getLineNumber());
+            } finally {
+
+                DataUtil.close(rs);
+                DataUtil.close(statement);
+                DataUtil.close(connection);
             }
 
             this.idCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Id"));
@@ -108,16 +197,6 @@ public class StudentHours implements Initializable {
             studentTable.setItems(students);
 
             this.dateCol.setVisible(true);
-
-        } catch (SQLException e) {
-
-            System.out.println("Error: " + e);
-            System.err.println(e.getStackTrace()[0].getLineNumber());
-        } finally {
-
-            DataUtil.close(rs);
-            DataUtil.close(statement);
-            DataUtil.close(connection);
         }
     }
 
@@ -189,8 +268,8 @@ public class StudentHours implements Initializable {
 
         try{
 
-            addChoice.getItems().clear();
-            specifyChoice.getItems().clear();
+            addCombo.getItems().clear();
+            idCombo.getItems().clear();
 
 
             connection = DataConnect.getConnection();
@@ -199,8 +278,8 @@ public class StudentHours implements Initializable {
 
             while(rs.next()) {
 
-                addChoice.getItems().add(rs.getString(1));
-                specifyChoice.getItems().add(rs.getString(1));
+                addCombo.getItems().add(rs.getString(1));
+                idCombo.getItems().add(rs.getString(1));
             }
         } catch (SQLException e){
 
@@ -221,8 +300,8 @@ public class StudentHours implements Initializable {
 
         try {
 
-            delChoice.getItems().clear();
-            dateChoice.getItems().clear();
+            delCombo.getItems().clear();
+            dateCombo.getItems().clear();
 
             connection = DataConnect.getConnection();
             statement = connection.createStatement();
@@ -230,7 +309,7 @@ public class StudentHours implements Initializable {
 
             while (rs.next()) {
 
-                delChoice.getItems().add(rs.getString(1));
+                delCombo.getItems().add(rs.getString(1));
             }
 
         } catch (SQLException e) {
@@ -244,20 +323,26 @@ public class StudentHours implements Initializable {
             DataUtil.close(connection);
         }
     }
+    @FXML
+    protected void timeSpecify(ActionEvent event) {
+
+        interval = (String) timeCombo.getValue();
+        setTable();
+    }
 
     @FXML
     protected void setDateChoice(ActionEvent event) {
 
-        String id = (String) delChoice.getValue();
+        String id = (String) delCombo.getValue();
 
-        if (id != "") {
+        if (!id.equals("")) {
 
             String sql = "SELECT date FROM Hours WHERE id='" + id + "';";
             ResultSet rs = null;
 
             try {
 
-                dateChoice.getItems().clear();
+                dateCombo.getItems().clear();
 
                 connection = DataConnect.getConnection();
                 statement = connection.createStatement();
@@ -265,7 +350,7 @@ public class StudentHours implements Initializable {
 
                 while (rs.next()) {
 
-                    dateChoice.getItems().add(rs.getString(1));
+                    dateCombo.getItems().add(rs.getString(1));
                 }
             } catch (SQLException e) {
 
@@ -290,7 +375,7 @@ public class StudentHours implements Initializable {
     @FXML
     protected void Specify(ActionEvent event) {
 
-        id = (String) specifyChoice.getValue();
+        id = (String) idCombo.getValue();
         setTable();
     }
 
@@ -328,8 +413,8 @@ public class StudentHours implements Initializable {
         }
     }
 
-    @FXML
-    protected void backChange(MouseEvent event) { back.setStyle("-fx-text-fill: black"); }
+    @FXML protected void backChange(MouseEvent event) { back.setStyle("-fx-text-fill: black"); }
+
     @FXML
     protected void refresh(MouseEvent event) {
         back.setStyle("-fx-text-fill: white");
@@ -341,7 +426,7 @@ public class StudentHours implements Initializable {
         String pattern = "yyyy-MM-dd";
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
 
-        String id = (String) addChoice.getValue();
+        String id = (String) addCombo.getValue();
         String h = hoursField.getText();
 
         LocalDate localDate = datePicker.getValue();
@@ -393,8 +478,8 @@ public class StudentHours implements Initializable {
     @FXML
     protected void Delete(ActionEvent event) {
 
-        String id = (String) delChoice.getValue();
-        String date = (String) dateChoice.getValue();
+        String id = (String) delCombo.getValue();
+        String date = (String) dateCombo.getValue();
 
         String sql = "DELETE FROM Hours WHERE id=? and date=?;";
 
@@ -417,5 +502,3 @@ public class StudentHours implements Initializable {
         setDelBoxes();
     }
 }
-
-

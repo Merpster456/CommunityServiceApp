@@ -10,7 +10,7 @@
         <Label styleClass="topLabel" contentDisplay="CENTER" text="Student Hours"/>
     </HBox>
     <Button styleClass="back" fx:id="back" layoutX="20" layoutY="35" text="Back" onAction="#back" onMouseEntered="#backChange" onMouseExited="#refresh"/>
-    <HBox styleClass="primary" prefHeight="500.0" prefWidth="950.0" layoutY="184" layoutX="183" >
+    <HBox styleClass="primary" prefHeight="500.0" prefWidth="950.0" layoutY="184" layoutX="183">
         <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
         </padding>
@@ -27,65 +27,52 @@
         <VBox prefWidth="600">
             <TabPane  prefWidth="600" tabMinWidth="79">
                 <Tab text="View Options" closable="false">
-                    <VBox alignment="TOP_CENTER" spacing="20">
+                    <VBox alignment="TOP_CENTER" spacing="30">
                         <padding>
                             <Insets top="25" bottom="10" left="30" right="10"/>
                         </padding>
                         <Label styleClass="tabLabels" text="Data Organization"/>
                         <HBox spacing="50" alignment="TOP_CENTER">
-                            <Button styleClass="tabToggleButton" fx:id="perEvent" text="Per Events" onAction="#setTable"/>
-                            <Button styleClass="tabToggleButton" fx:id="perPerson" text="Per Person" onAction="#setPTable" />
+                            <Button styleClass="tabToggleButton" text="Per Events" onAction="#setTable"/>
+                            <Button styleClass="tabToggleButton" text="Per Person" onAction="#setPTable" />
                         </HBox>
-                        <Label text="Specify Individuals"/>
+                        <HBox spacing="50" alignment="TOP_CENTER">
+                            <ComboBox fx:id="timeCombo" promptText="Time Interval"/>
+                            <Button text="Specify" onAction="#timeSpecify"/>
+                        </HBox>
                         <HBox spacing="10" alignment="CENTER">
-                            <Label text="ID: "/>
-                            <ChoiceBox fx:id="specifyChoice"/>
-                        </HBox>
-                        <HBox spacing="50" alignment="CENTER">
-                            <Button text="Cancel" onAction="#Cancel"/>
+                            <ComboBox fx:id="idCombo" promptText="Select ID"/>
                             <Button text="Specify" onAction="#Specify"/>
                         </HBox>
-                        <Button text="Print" onAction="#print"/>
+                        <HBox spacing="20" alignment="CENTER">
+                            <Button text="Cancel" onAction="#Cancel"/>
+                            <Button text="Print" onAction="#print"/>
+                        </HBox>
                     </VBox>
                 </Tab>
                 <Tab text="Add Event" closable="false">
-                    <VBox spacing="20" alignment="CENTER">
+                    <VBox spacing="30" alignment="CENTER">
                         <padding>
                             <Insets top="50" bottom="10" left="30" right="10"/>
                         </padding>
-                        <HBox spacing="10">
-                            <Label text="ID:"/>
-                            <ChoiceBox fx:id="addChoice"/>
-                        </HBox>
-                        <HBox spacing="10" alignment="CENTER_LEFT">
-                            <TextField fx:id="hoursField" promptText="Hours"/>
-                        </HBox>
+                        <ComboBox fx:id="addCombo" promptText="Select ID"/>
+                        <TextField fx:id="hoursField" promptText="Hours"/>
                         <Label fx:id="hoursErr"/>
-                        <HBox spacing="10">
-                            <DatePicker fx:id="datePicker" promptText="Date of Event"/>
-                        </HBox>
-                        <HBox spacing="50" alignment="CENTER">
-                            <padding>
-                                <Insets top="30"/>
-                            </padding>
-                            <Button text="Submit" onAction="#addSubmit"/>
-                        </HBox>
+                        <DatePicker fx:id="datePicker" promptText="Date of Event"/>
+                        <padding>
+                            <Insets top="30"/>
+                        </padding>
+                        <Button text="Submit" onAction="#addSubmit"/>
                         <Button text="Accept Event" onAction="#acceptWindow"/>
                     </VBox>
                 </Tab>
                 <Tab text="Delete Event" closable="false">
                     <VBox spacing="30" alignment="CENTER">
                         <padding>
-                            <Insets top="50" bottom="10" left="30" right="10"/>
+                            <Insets bottom="10" left="30" right="10"/>
                         </padding>
-                        <HBox spacing="10">
-                            <Label text="ID:"/>
-                            <ChoiceBox fx:id="delChoice" onAction="#setDateChoice"/>
-                        </HBox>
-                        <HBox spacing="10" alignment="CENTER_LEFT">
-                            <Label text="Date of Event:"/>
-                            <ChoiceBox fx:id="dateChoice"/>
-                        </HBox>
+                        <ComboBox fx:id="delCombo" onAction="#setDateChoice" promptText="Select ID"/>
+                        <ComboBox fx:id="dateCombo" promptText="Date of Event"/>
                         <HBox spacing="50" alignment="CENTER">
                             <Button text="Cancel" onAction="#delCancel"/>
                             <Button text="Delete" onAction="#Delete"/>

@@ -19,81 +19,82 @@ public class Student {
     private StringProperty firstName;
     private StringProperty lastName;
     private StringProperty hours;
-
-    private int Hours;
+    private IntegerProperty timeInterval;
+    private IntegerProperty Hours;
 
     public void setId(String id) {
-
         this.id = new SimpleStringProperty(id);
     }
     public String getId(){
-
         return id.get();
     }
     public StringProperty idProperty() {
-
         return id;
     }
     public void setGradYear(String gradYear){
-
         this.gradYear = new SimpleStringProperty(gradYear);
     }
     public String getGradYear(){
-
         return gradYear.get();
     }
     public StringProperty gradYearProperty() {
-
         return gradYear;
     }
     public void setEmailOrDate(String emailOrDate){
-
         this.emailOrDate = new SimpleStringProperty(emailOrDate);
     }
     public String getEmailOrDate(){
-
         return emailOrDate.get();
     }
     public StringProperty emailOrDateProperty() {
-
         return emailOrDate;
     }
     public void setFirst(String first){
-
         this.firstName = new SimpleStringProperty(first);
     }
     public String getFirst(){
-
         return firstName.get();
     }
     public StringProperty firstNameProperty() {
-
         return firstName;
     }
     public void setLast(String last){
-
         this.lastName = new SimpleStringProperty(last);
     }
     public String getLast(){
-
         return lastName.get();
     }
     public StringProperty lastNameProperty() {
-
         return lastName;
     }
     public void setHours(String numHours){
-
         this.hours = new SimpleStringProperty(numHours);
     }
     public String getHours(){
-
         return hours.get();
     }
     public StringProperty hoursProperty() {
-
         return hours;
     }
+    public void setTimeInterval(int timeInterval){
+        this.timeInterval = new SimpleIntegerProperty(timeInterval);
+    }
+    public int getTimeInterval(){
+        return timeInterval.get();
+    }
+    public IntegerProperty timeIntervalProperty() {
+        return timeInterval;
+    }
+    public void setIntHours(int Hours) {
+        this.Hours = new SimpleIntegerProperty(Hours);
+    }
+    public int getIntHours() {
+        return Hours.get();
+    }
+    public IntegerProperty intHoursProperty() {
+        return Hours;
+    }
+
 
     public Student(String id, String gradYear, String email, String first, String last){
 
@@ -114,6 +115,16 @@ public class Student {
         this.hours = new SimpleStringProperty(hours);
 
     }
+    public Student(String id, String gradYear, String emailOrDate, String first, String last, int Hours, int timeInterval){
+
+        this.id = new SimpleStringProperty(id);
+        this.gradYear = new SimpleStringProperty(gradYear);
+        this.emailOrDate = new SimpleStringProperty(emailOrDate);
+        this.firstName = new SimpleStringProperty(first);
+        this.lastName = new SimpleStringProperty(last);
+        this.Hours = new SimpleIntegerProperty(Hours);
+        this.timeInterval = new SimpleIntegerProperty(timeInterval);
+    }
 
     public Student(String id, String hours) {
 
@@ -124,7 +135,7 @@ public class Student {
     public Student(String id, int Hours) {
 
         this.id = new SimpleStringProperty(id);
-        this.Hours = Hours;
+        this.Hours = new SimpleIntegerProperty();
     }
 /*
     public Student(String id, String grade, String first, String last, String hours, String date){
@@ -236,10 +247,5 @@ public class Student {
         int hours = Integer.parseInt(Hours);
 
         return hours >= 500;
-    }
-
-    public int getIntHours() {
-
-        return Hours;
     }
 }

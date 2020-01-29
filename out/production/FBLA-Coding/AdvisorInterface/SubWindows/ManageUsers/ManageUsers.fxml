@@ -32,36 +32,33 @@
             <TabPane prefWidth="600" tabMinWidth="79">
                 <Tab text="Add User" closable="false">
                     <VBox alignment="CENTER">
-                        <HBox spacing="10">
+                        <Label text="Add User" alignment="TOP_CENTER" styleClass="tabLabel"/>
+                        <HBox spacing="10" alignment="TOP_CENTER">
                             <padding>
                                 <Insets bottom="10" left="30" right="10" top="20"/>
                             </padding>
-                            <Label styleClass="blackLabels" text="First Name:"/>
-                            <TextField fx:id="newFirst"/>
+                            <TextField fx:id="newFirst" promptText="First Name" alignment="TOP_CENTER"/>
                         </HBox>
-                        <Label fx:id="firstErr" textFill="crimson"/>
-                        <HBox spacing="10">
+                        <Label fx:id="firstErr" textFill="crimson" alignment="TOP_CENTER"/>
+                        <HBox spacing="10" alignment="TOP_CENTER">
                             <padding>
                                 <Insets bottom="10" left="30" right="10" top="10"/>
                             </padding>
-                            <Label styleClass="blackLabels" text="Last Name:"/>
-                            <TextField fx:id="newLast"/>
+                            <TextField fx:id="newLast" promptText="Last Name" alignment="TOP_CENTER"/>
                         </HBox>
-                        <Label fx:id="lastErr" textFill="crimson"/>
-                        <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label fx:id="lastErr" textFill="crimson" alignment="TOP_CENTER"/>
+                        <HBox spacing="10" alignment="TOP_CENTER">
                             <padding>
                                 <Insets bottom="10" left="30" right="10" top="10"/>
                             </padding>
-                            <Label styleClass="blackLabels" text="Graduation Year:      "/>
-                            <TextField fx:id="newGradYear" prefWidth="50"/>
+                            <TextField fx:id="newGradYear" promptText="Graduation Year" alignment="TOP_CENTER"/>
                         </HBox>
-                        <Label fx:id="gradErr" textFill="crimson"/>
-                        <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label fx:id="gradErr" textFill="crimson" alignment="TOP_CENTER"/>
+                        <HBox spacing="10" alignment="TOP_CENTER">
                             <padding>
                                 <Insets bottom="10" left="30" right="10" top="10"/>
                             </padding>
-                            <Label styleClass="blackLabels" text="Email:       "/>
-                            <TextField fx:id="newEmail"/>
+                            <TextField fx:id="newEmail" promptText="Email" alignment="TOP_CENTER"/>
                         </HBox>
                         <Label fx:id="emailErr"  text="" textFill="crimson"/>
                         <HBox spacing="70" alignment="CENTER">
@@ -95,36 +92,32 @@
                             <Label text="Select User to Change"/>
                             <ComboBox fx:id="changeCombo" prefWidth="150" promptText="Select User"/>
                         </VBox>
-                        <HBox spacing="10" alignment="CENTER_LEFT">
+                        <HBox spacing="10" alignment="TOP_CENTER">
                             <padding>
                                 <Insets bottom="10" left="30" right="10" top="20"/>
                             </padding>
-                            <Label text="First Name:"/>
-                            <TextField fx:id="changeFirst"/>
+                            <TextField fx:id="changeFirst" promptText="First Name"/>
                         </HBox>
                         <Label fx:id="firstCErr"  text="" textFill="crimson"/>
-                        <HBox spacing="10" alignment="CENTER_LEFT">
+                        <HBox spacing="10" alignment="TOP_CENTER">
                             <padding>
                                 <Insets bottom="10" left="30" right="10" top="10"/>
                             </padding>
-                            <Label text="Last Name:"/>
-                            <TextField fx:id="changeLast"/>
+                            <TextField fx:id="changeLast" promptText="Last Name"/>
                         </HBox>
                         <Label fx:id="lastCErr"  text="" textFill="crimson"/>
-                        <HBox spacing="10" alignment="CENTER_LEFT">
+                        <HBox spacing="10" alignment="TOP_CENTER">
                             <padding>
                                 <Insets bottom="10" left="30" right="10" top="10"/>
                             </padding>
-                            <Label text="Graduation Year:      "/>
-                            <TextField fx:id="changeGradYear" prefWidth="40"/>
+                            <TextField fx:id="changeGradYear" promptText="Graduation Year"/>
                         </HBox>
                         <Label fx:id="gradCErr"  text="" textFill="crimson"/>
-                        <HBox spacing="10" alignment="CENTER_LEFT">
+                        <HBox spacing="10" alignment="TOP_CENTER">
                             <padding>
                                 <Insets bottom="10" left="30" right="10" top="10"/>
                             </padding>
-                            <Label text="Email:       "/>
-                            <TextField fx:id="changeEmail"/>
+                            <TextField fx:id="changeEmail" promptText="Email"/>
                         </HBox>
                         <Label fx:id="emailCErr"  text="" textFill="crimson"/>
                         <HBox spacing="70" alignment="CENTER">

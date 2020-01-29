@@ -316,63 +316,83 @@ public class ManageUsers implements Initializable {
             String first = rs.getString(4);
             String last = rs.getString(5);
             String pass = rs.getString(6);
-
-            System.out.println(1);
-
-            DataUtil.close(rs);
-
-            sql = "SELECT hours FROM Hours WHERE id='" + id + "';";
-            int hours = statement.executeQuery(sql).getInt(1);
-            DataUtil.close(statement);
-
-            sql = "INSERT INTO Deleted VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+            int hours = getHours(id);
 
             try{
 
+                DataUtil.close(rs);
+                DataUtil.close(statement);
 
+                sql = "INSERT INTO Deleted VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
                 PreparedStatement insert = connection.prepareStatement(sql);
+
+
+
                 insert.setString(1, id);
                 insert.setInt(2, grad);
                 insert.setString(3, email);
                 insert.setString(4, first);
                 insert.setString(5, last);
                 insert.setString(6, pass);
-                insert.setString(7, "false");
+                insert.setBoolean(7, false);
                 insert.setInt(8, hours);
+                insert.executeUpdate();
 
                 DataUtil.close(insert);
-
             } catch (SQLException e) {
 
                 System.out.println("Error: " + e);
                 System.err.println(e.getStackTrace()[0].getLineNumber());
             }
 
+            DataUtil.close(rs);
+            DataUtil.close(statement);
+
             sql = "SELECT * FROM Deleted WHERE id='" + id + "';";
+
+            statement = connection.createStatement();
             rs = statement.executeQuery(sql);
 
-            if (rs.getString(1).equals(id)) {
-                DataUtil.close(rs);
-
-                sql = "DELETE FROM Persons WHERE id='" + id + "';";
-                statement.executeUpdate(sql);
+            if (rs.next()) {
 
                 DataUtil.close(statement);
+
+                statement = connection.createStatement();
+                sql = "DELETE FROM Persons WHERE id='" + id + "';";
+                statement.executeUpdate(sql);
                 setTable();
             } else {
 
                 delErr.setText("Error Deleting User!");
             }
-
         } catch (SQLException e) {
 
             System.out.println("Error: " + e);
             System.err.println(e.getStackTrace()[0].getLineNumber());
+
         } finally {
 
             DataUtil.close(rs);
             DataUtil.close(statement);
             DataUtil.close(connection);
+        }
+    }
+
+    private int getHours(String id) {
+
+        String sql = "SELECT hours FROM Hours WHERE id='" + id + "';";
+        ResultSet rs;
+
+        try {
+            connection = DataConnect.getConnection();
+            statement = connection.createStatement();
+            rs = statement.executeQuery(sql);
+
+            return rs.getInt(1);
+
+        } catch (SQLException e) {
+
+            return 0;
         }
     }
 
