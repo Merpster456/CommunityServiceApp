@@ -3,12 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="cc445480-d086-479a-890a-c90d40725123" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommunityService.db" beforeDir="false" afterPath="$PROJECT_DIR$/CommunityService.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/StudentHours/StudentHours.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/StudentHours/StudentHours.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/StudentHours/StudentHours.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/StudentHours/StudentHours.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/Objects/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/Objects/Student.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ManageUsers/ManageUsers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/StudentHours.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/StudentHours.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/StudentHours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/StudentHours.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Objects/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/Event.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Objects/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PeersProgress/PeersProgress.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PeersProgress/PeersProgress.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PeersProgress/PeersProgress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PeersProgress/PeersProgress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PersonalProgress/PersonalProgress.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PersonalProgress/PersonalProgress.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PersonalProgress/PersonalProgress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PersonalProgress/PersonalProgress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580320412846</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Gotta get the prompttext workin">
+      <created>1580355716466</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1580355716466</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -214,7 +232,8 @@
     <MESSAGE value="did ALOOOT of CRAPP Advisor interface almost complete!&#10;&#10;I still have to work on the progress window" />
     <MESSAGE value="Only need to finish About CSA and couple other things&#10;&#10;Then I can work on additional stuff&#10;&#10;Also need to make printer compatibility" />
     <MESSAGE value="Lotta stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lotta stuff" />
+    <MESSAGE value="Gotta get the prompttext workin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gotta get the prompttext workin" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="190" key="#Notifications" timestamp="1579208698086">
@@ -225,57 +244,57 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1576982463255" />
-    <state x="473" y="91" key="CommitChangelistDialog2" timestamp="1580320412494">
+    <state x="473" y="91" key="CommitChangelistDialog2" timestamp="1580355716335">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="473" y="91" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1580320412494" />
-    <state width="1638" height="360" key="GridCell.Tab.0.bottom" timestamp="1580354144441">
+    <state x="473" y="91" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1580355716335" />
+    <state width="1638" height="360" key="GridCell.Tab.0.bottom" timestamp="1581538024868">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.bottom.inPresentationMode" timestamp="1580320121969">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.bottom.inPresentationMode/0.0.1920.1080@0.0.1920.1080" timestamp="1580320121969" />
-    <state width="1638" height="360" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1580354144441" />
+    <state width="1638" height="360" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1581538024868" />
     <state width="1920" height="492" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1580320296702" />
     <state width="1638" height="310" key="GridCell.Tab.0.bottom/0.23.1680.955@0.0.1680.1050" timestamp="1577134829893" />
     <state width="1638" height="310" key="GridCell.Tab.0.bottom/0.23.1680.955@0.23.1680.955" timestamp="1577127053994" />
     <state width="1638" height="310" key="GridCell.Tab.0.bottom/0.23.1680.969@0.0.1680.1050" timestamp="1578449618140" />
     <state width="805" height="310" key="GridCell.Tab.0.bottom/0.23.1680.969@0.23.1680.969" timestamp="1579364851789" />
-    <state width="1638" height="360" key="GridCell.Tab.0.center" timestamp="1580354144440">
+    <state width="1638" height="360" key="GridCell.Tab.0.center" timestamp="1581538024867">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.center.inPresentationMode" timestamp="1580320121968">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.center.inPresentationMode/0.0.1920.1080@0.0.1920.1080" timestamp="1580320121968" />
-    <state width="1638" height="360" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1580354144440" />
+    <state width="1638" height="360" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1581538024867" />
     <state width="1920" height="492" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1580320296700" />
     <state width="1638" height="310" key="GridCell.Tab.0.center/0.23.1680.955@0.0.1680.1050" timestamp="1577134829892" />
     <state width="1638" height="310" key="GridCell.Tab.0.center/0.23.1680.955@0.23.1680.955" timestamp="1577127053993" />
     <state width="1638" height="310" key="GridCell.Tab.0.center/0.23.1680.969@0.0.1680.1050" timestamp="1578449618139" />
     <state width="805" height="310" key="GridCell.Tab.0.center/0.23.1680.969@0.23.1680.969" timestamp="1579364851789" />
-    <state width="1638" height="360" key="GridCell.Tab.0.left" timestamp="1580354144439">
+    <state width="1638" height="360" key="GridCell.Tab.0.left" timestamp="1581538024866">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.left.inPresentationMode" timestamp="1580320121967">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.left.inPresentationMode/0.0.1920.1080@0.0.1920.1080" timestamp="1580320121967" />
-    <state width="1638" height="360" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1580354144439" />
+    <state width="1638" height="360" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1581538024866" />
     <state width="1920" height="492" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1580320296558" />
     <state width="1638" height="310" key="GridCell.Tab.0.left/0.23.1680.955@0.0.1680.1050" timestamp="1577134829892" />
     <state width="1638" height="310" key="GridCell.Tab.0.left/0.23.1680.955@0.23.1680.955" timestamp="1577133946615" />
     <state width="1638" height="310" key="GridCell.Tab.0.left/0.23.1680.969@0.0.1680.1050" timestamp="1578449618139" />
     <state width="805" height="310" key="GridCell.Tab.0.left/0.23.1680.969@0.23.1680.969" timestamp="1579364851788" />
-    <state width="1638" height="360" key="GridCell.Tab.0.right" timestamp="1580354144440">
+    <state width="1638" height="360" key="GridCell.Tab.0.right" timestamp="1581538024867">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.right.inPresentationMode" timestamp="1580320121968">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.right.inPresentationMode/0.0.1920.1080@0.0.1920.1080" timestamp="1580320121968" />
-    <state width="1638" height="360" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1580354144440" />
+    <state width="1638" height="360" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1581538024867" />
     <state width="1920" height="492" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1580320296701" />
     <state width="1638" height="310" key="GridCell.Tab.0.right/0.23.1680.955@0.0.1680.1050" timestamp="1577134829893" />
     <state width="1638" height="310" key="GridCell.Tab.0.right/0.23.1680.955@0.23.1680.955" timestamp="1577127053993" />
@@ -289,10 +308,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="100" y="100" width="1480" height="850" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1579209437232" />
-    <state x="518" y="341" key="com.intellij.ide.util.TipDialog" timestamp="1579554679450">
+    <state x="518" y="341" key="com.intellij.ide.util.TipDialog" timestamp="1580406833194">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="518" y="341" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1579554679450" />
+    <state x="518" y="341" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1580406833194" />
     <state x="519" y="333" key="com.intellij.ide.util.TipDialog/0.23.1680.955@0.23.1680.955" timestamp="1576869877109" />
     <state x="519" y="338" key="com.intellij.ide.util.TipDialog/0.23.1680.969@0.23.1680.969" timestamp="1579024962370" />
     <state x="629" y="449" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579208665647">

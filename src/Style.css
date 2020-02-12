@@ -146,6 +146,20 @@
 .error {
 
     -fx-text-fill: red;
+    -fx-font-weight: bold;
 
+}
+.progressLabels {
+
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+
+}
+.progressHeaders {
+
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 17px;
 }
 

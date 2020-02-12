@@ -3,15 +3,26 @@ package StudentInterface.SubWindows.PersonalProgress;
 import Database.DataConnect;
 import Database.DataUtil;
 import Login.LoginController;
+import Objects.Event;
+import Objects.Student;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
+import org.sqlite.SQLiteErrorCode;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,9 +36,9 @@ import static Login.LoginController.id;
 public class PersonalProgress implements Initializable {
 
     @FXML private Button back;
-    @FXML private TableView personalTable;
-    @FXML private TableColumn hoursCol;
-    @FXML private TableColumn dateCol;
+    @FXML private TableView<Event> personalTable;
+    @FXML private TableColumn<Event, String> hoursCol;
+    @FXML private TableColumn<Event, String> dateCol;
     @FXML private ProgressBar achievementProgress;
     @FXML private ProgressBar serviceProgress;
     @FXML private ProgressBar communityProgress;
@@ -40,6 +51,7 @@ public class PersonalProgress implements Initializable {
     @FXML private Label hoursErr;
     @FXML private Label dateErr;
     @FXML private Label mainErr;
+    @FXML private Label hours;
     @FXML private TextField hoursField;
     @FXML private DatePicker dateField;
     @FXML private TextArea descField;
@@ -52,7 +64,70 @@ public class PersonalProgress implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         setProgress();
+        setTable();
+        totalHours();
+    }
 
+    private void totalHours() {
+
+        String SQL = "SELECT sum(hours) FROM Hours WHERE id='" + id + "';";
+        ResultSet rs = null;
+
+        try {
+
+            connection = DataConnect.getConnection();
+            statement = connection.createStatement();
+            rs = statement.executeQuery(SQL);
+
+            hours.setText(rs.getString(1));
+        } catch (SQLException e){
+
+            System.out.println("Error: " + e);
+            System.err.println(e.getSQLState());
+        } finally {
+
+            DataUtil.close(rs);
+            DataUtil.close(statement);
+            DataUtil.close(connection);
+        }
+    }
+
+    private void setTable() {
+
+        String SQL = "SELECT hours, date FROM Hours WHERE id='" + id + "' ORDER BY julianday(date);";
+        ResultSet rs = null;
+        ObservableList<Event> events = FXCollections.observableArrayList();
+
+        try{
+
+            connection = DataConnect.getConnection();
+            statement = connection.createStatement();
+            rs = statement.executeQuery(SQL);
+
+            while (rs.next()) {
+                events.add(new Event(rs.getString(1), rs.getString(2)));
+            }
+
+            this.hoursCol.setCellValueFactory(new PropertyValueFactory<Event, String>("hours"));
+            this.dateCol.setCellValueFactory(new PropertyValueFactory<Event, String>("date"));
+            hoursCol.setCellFactory(TextFieldTableCell.forTableColumn());
+            dateCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+            personalTable.setItems(null);
+            personalTable.setItems(events);
+
+            this.personalTable.setVisible(true);
+
+        } catch (SQLException e) {
+
+            System.out.println("Error: " + e);
+            System.err.println(e.getSQLState());
+        } finally {
+
+            DataUtil.close(rs);
+            DataUtil.close(statement);
+            DataUtil.close(connection);
+        }
     }
 
     private void setProgress() {
@@ -86,7 +161,7 @@ public class PersonalProgress implements Initializable {
 
                     communityProgress.setProgress(1);
                     communityLabel.setText("AWARD ACCOMPLISHED!");
-                    communityLabel.setTextFill(Color.GREEN);
+                    communityLabel.setStyle("-fx-text-fill: limegreen;");
                 } else {
 
                     communityProgress.setProgress(communityPercent);
@@ -101,7 +176,7 @@ public class PersonalProgress implements Initializable {
 
                     serviceProgress.setProgress(1);
                     serviceLabel.setText("AWARD ACCOMPLISHED!");
-                    serviceLabel.setTextFill(Color.GREEN);
+                    serviceLabel.setStyle("-fx-text-fill: limegreen;");
                 } else {
 
                     serviceProgress.setProgress(servicePercent);
@@ -115,7 +190,7 @@ public class PersonalProgress implements Initializable {
 
                     achievementProgress.setProgress(1);
                     achievementLabel.setText("AWARD ACCOMPLISHED!");
-                    achievementLabel.setTextFill(Color.GREEN);
+                    achievementLabel.setStyle("-fx-text-fill: limegreen;");
                 } else {
 
                     achievementProgress.setProgress(achievementPercent);
@@ -128,11 +203,11 @@ public class PersonalProgress implements Initializable {
             } catch (SQLException ignored) {
 
                 achievementLabel.setText("No Hours Completed!");
-                achievementLabel.setTextFill(Color.RED);
+                achievementLabel.setStyle("-fx-text-fill: red;");
                 serviceLabel.setText("No Hours Completed!");
-                serviceLabel.setTextFill(Color.RED);
+                serviceLabel.setStyle("-fx-text-fill: red;");
                 communityLabel.setText("No Hours Completed!");
-                communityLabel.setTextFill(Color.RED);
+                communityLabel.setStyle("-fx-text-fill: red;");
             }
         } catch (SQLException e) {
 
@@ -236,5 +311,36 @@ public class PersonalProgress implements Initializable {
 
             mainErr.setText("Please Change needed fields!");
         }
+    }
+
+    @FXML
+    protected void print(ActionEvent event) {
+
+        Stage stage = (Stage) back.getScene().getWindow();
+
+        Printer printer = Printer.getDefaultPrinter();
+        PrinterJob printerJob = PrinterJob.createPrinterJob();
+
+        PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.PORTRAIT, Printer.MarginType.DEFAULT);
+        printerJob.getJobSettings().setPageLayout(pageLayout);
+
+        final double scaleX = pageLayout.getPrintableWidth() / personalTable.getBoundsInParent().getWidth();
+        final double scaleY = pageLayout.getPrintableHeight() / personalTable.getBoundsInParent().getHeight();
+        Scale scale = new Scale(scaleX, scaleY);
+        personalTable.getTransforms().add(scale);
+
+        if(printerJob.showPrintDialog(stage.getOwner()) && printerJob.printPage(personalTable)){
+            personalTable.getTransforms().remove(scale);
+            printerJob.endJob();
+        }
+        else {
+            personalTable.getTransforms().remove(scale);
+        }
+    }
+    @FXML protected void backChange(MouseEvent event) { back.setStyle("-fx-text-fill: black"); }
+
+    @FXML
+    protected void refresh(MouseEvent event) {
+        back.setStyle("-fx-text-fill: white");
     }
 }

@@ -94,11 +94,14 @@ public class Student {
     public IntegerProperty intHoursProperty() {
         return Hours;
     }
-    public StringProperty HoursStringProperty() {
+    public StringProperty hoursStringProperty() {
         return new SimpleStringProperty(Hours.getValue().toString());
     }
-    public StringProperty YearWeekProperty() {
+    public StringProperty intervalProperty() {
         return new SimpleStringProperty(emailOrDate.getValue().substring(0,4) + ": " + timeInterval.getValue().toString());
+    }
+    public StringProperty yearProperty() {
+        return new SimpleStringProperty(timeInterval.getValue().toString());
     }
 
 

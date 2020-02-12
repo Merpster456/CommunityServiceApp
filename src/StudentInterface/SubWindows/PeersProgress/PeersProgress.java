@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -249,4 +250,11 @@ public class PeersProgress implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+    @FXML protected void backChange(MouseEvent event) { back.setStyle("-fx-text-fill: black"); }
+
+    @FXML
+    protected void refresh(MouseEvent event) {
+        back.setStyle("-fx-text-fill: white");
+    }
+
 }

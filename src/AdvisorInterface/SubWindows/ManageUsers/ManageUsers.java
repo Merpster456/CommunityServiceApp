@@ -2,6 +2,7 @@ package AdvisorInterface.SubWindows.ManageUsers;
 
 import Database.DataUtil;
 import Objects.Student;
+import Login.LoginController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -66,7 +68,6 @@ public class ManageUsers implements Initializable {
 
         setTable();
         setBox();
-
     }
 
     private void setTable(){
@@ -146,6 +147,12 @@ public class ManageUsers implements Initializable {
         String grad = (String) this.newGradYear.getText();
         String email = (String) this.newEmail.getText();
 
+        firstErr.setText("");
+        lastErr.setText("");
+        gradErr.setText("");
+        emailErr.setText("");
+        err.setText("");
+
         try {
 
             int numCheck = Integer.parseInt(grad);
@@ -153,7 +160,6 @@ public class ManageUsers implements Initializable {
 
             gradErr.setText("Need a Numerical Value!");
             control = false;
-
             err.setText("Change Needed Fields!");
         }
 
@@ -161,28 +167,24 @@ public class ManageUsers implements Initializable {
 
             firstErr.setText("First Name is Required!");
             control = false;
-
             err.setText("Need to Fill Required Field!");
         }
         if (last.length() < 1) {
 
             lastErr.setText("Last Name is Required!");
             control = false;
-
             err.setText("Need to Fill Required Field!");
         }
         if (grad.length() < 1) {
 
             gradErr.setText("Graduation Year is Required!");
             control = false;
-
             err.setText("Need to Fill Required Field!");
         }
         if (email.length() < 1) {
 
             emailErr.setText("Email is Required!");
             control = false;
-
             err.setText("Need to Fill Required Field!");
         }
         if (control) {
@@ -227,14 +229,21 @@ public class ManageUsers implements Initializable {
         newLast.setText("");
         newGradYear.setText("");
         newEmail.setText("");
+
+        firstErr.setText("");
+        lastErr.setText("");
+        gradErr.setText("");
+        emailErr.setText("");
+        err.setText("");
     }
     private void showCreds(String id, String pass) {
 
         Stage newStage = new Stage();
         StackPane pane = new StackPane();
-
         GridPane gridPane = new GridPane();
+
         pane.getChildren().add(gridPane);
+        gridPane.setStyle(LoginController.primary);
 
         Label idLabel = new Label();
         Label passLabel = new Label();
@@ -244,6 +253,9 @@ public class ManageUsers implements Initializable {
 
         idLabel.setText("Users ID: " + id);
         passLabel.setText("Users Password: " + pass);
+
+        idLabel.setTextFill(Color.WHITE);
+        passLabel.setTextFill(Color.WHITE);
 
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setPadding(new Insets(50,50,50,50));
@@ -269,6 +281,9 @@ public class ManageUsers implements Initializable {
             delCombo.getItems().clear();
             changeCombo.getItems().clear();
 
+            delCombo.getItems().add("Select User");
+            changeCombo.getItems().add("Select User");
+
             connection = DataConnect.getConnection();
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
@@ -284,8 +299,8 @@ public class ManageUsers implements Initializable {
             System.err.println(e.getStackTrace()[0].getLineNumber());
         } finally {
 
-            delCombo.setPromptText("Select User");
-            changeCombo.setPromptText("Select User");
+            delCombo.setValue("Select User");
+            changeCombo.setValue("Select User");
 
             DataUtil.close(rs);
             DataUtil.close(statement);
@@ -305,76 +320,78 @@ public class ManageUsers implements Initializable {
         String sql = "SELECT * FROM Persons WHERE id='" + id + "';";
         ResultSet rs = null;
 
-        try {
+        if (delCombo.getValue().equals("Select User")) {
+            delErr.setText("Please Select User");
+        } else {
+            try {
 
-            connection = DataConnect.getConnection();
-            statement = connection.createStatement();
-            rs = statement.executeQuery(sql);
+                connection = DataConnect.getConnection();
+                statement = connection.createStatement();
+                rs = statement.executeQuery(sql);
 
-            int grad = rs.getInt(2);
-            String email = rs.getString(3);
-            String first = rs.getString(4);
-            String last = rs.getString(5);
-            String pass = rs.getString(6);
-            int hours = getHours(id);
+                int grad = rs.getInt(2);
+                String email = rs.getString(3);
+                String first = rs.getString(4);
+                String last = rs.getString(5);
+                String pass = rs.getString(6);
+                int hours = getHours(id);
 
-            try{
+                try{
+
+                    DataUtil.close(rs);
+                    DataUtil.close(statement);
+
+                    sql = "INSERT INTO Deleted VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+                    PreparedStatement insert = connection.prepareStatement(sql);
+
+                    insert.setString(1, id);
+                    insert.setInt(2, grad);
+                    insert.setString(3, email);
+                    insert.setString(4, first);
+                    insert.setString(5, last);
+                    insert.setString(6, pass);
+                    insert.setBoolean(7, false);
+                    insert.setInt(8, hours);
+                    insert.executeUpdate();
+
+                    DataUtil.close(insert);
+                } catch (SQLException e) {
+
+                    System.out.println("Error: " + e);
+                    System.err.println(e.getStackTrace()[0].getLineNumber());
+                }
 
                 DataUtil.close(rs);
                 DataUtil.close(statement);
 
-                sql = "INSERT INTO Deleted VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
-                PreparedStatement insert = connection.prepareStatement(sql);
+                sql = "SELECT * FROM Deleted WHERE id='" + id + "';";
 
+                statement = connection.createStatement();
+                rs = statement.executeQuery(sql);
 
+                if (rs.next()) {
 
-                insert.setString(1, id);
-                insert.setInt(2, grad);
-                insert.setString(3, email);
-                insert.setString(4, first);
-                insert.setString(5, last);
-                insert.setString(6, pass);
-                insert.setBoolean(7, false);
-                insert.setInt(8, hours);
-                insert.executeUpdate();
+                    DataUtil.close(statement);
 
-                DataUtil.close(insert);
+                    statement = connection.createStatement();
+                    sql = "DELETE FROM Persons WHERE id='" + id + "';";
+                    statement.executeUpdate(sql);
+                    setTable();
+                } else {
+
+                    delErr.setText("Error Deleting User!");
+                }
             } catch (SQLException e) {
 
                 System.out.println("Error: " + e);
                 System.err.println(e.getStackTrace()[0].getLineNumber());
-            }
 
-            DataUtil.close(rs);
-            DataUtil.close(statement);
+            } finally {
 
-            sql = "SELECT * FROM Deleted WHERE id='" + id + "';";
-
-            statement = connection.createStatement();
-            rs = statement.executeQuery(sql);
-
-            if (rs.next()) {
-
+                DataUtil.close(rs);
                 DataUtil.close(statement);
-
-                statement = connection.createStatement();
-                sql = "DELETE FROM Persons WHERE id='" + id + "';";
-                statement.executeUpdate(sql);
-                setTable();
-            } else {
-
-                delErr.setText("Error Deleting User!");
+                DataUtil.close(connection);
             }
-        } catch (SQLException e) {
-
-            System.out.println("Error: " + e);
-            System.err.println(e.getStackTrace()[0].getLineNumber());
-
-        } finally {
-
-            DataUtil.close(rs);
-            DataUtil.close(statement);
-            DataUtil.close(connection);
         }
     }
 
@@ -391,7 +408,6 @@ public class ManageUsers implements Initializable {
             return rs.getInt(1);
 
         } catch (SQLException e) {
-
             return 0;
         }
     }
@@ -405,29 +421,63 @@ public class ManageUsers implements Initializable {
 
         String id = (String) changeCombo.getValue();
         String grad = changeGradYear.getText();
-        String email = changeGradYear.getText();
+        String email = changeEmail.getText();
         String first = changeFirst.getText();
         String last = changeLast.getText();
 
-        if (grad.length() > 0) {
+        changeErr.setText("");
+        gradCErr.setText("");
 
-            try {
+        changeGradYear.setText("");
+        changeEmail.setText("");
+        changeFirst.setText("");
+        changeLast.setText("");
 
-                int numCheck = Integer.parseInt(grad);
+        if (id.equals("Select User")) {
+            changeErr.setText("Please Select User");
+        } else {
+            if (grad.length() > 0) {
 
-                String sql = "UPDATE Persons SET gradYear = " + grad + " WHERE id = '" + id + "';";
+                try {
+
+                    int numCheck = Integer.parseInt(grad);
+
+                    String sql = "UPDATE Persons SET gradYear = " + grad + " WHERE id = '" + id + "';";
+
+                    try {
+
+                        connection = DataConnect.getConnection();
+                        statement = connection.createStatement();
+
+                        /**
+                         * There will always be an exception thrown
+                         * here saying "No result set" however this
+                         * is completely fine and expected therefore
+                         * we ignore the exception
+                         */
+                        try {
+                            statement.executeQuery(sql);
+                        } catch (SQLException ignore) {}
+                    } catch (SQLException e) {
+
+                        System.err.println(e.getStackTrace()[0].getLineNumber());
+                        System.out.println("Error: " + e);
+                    }
+                } catch (NumberFormatException e) {
+
+                    gradCErr.setText("Need a Numerical Value!");
+                    changeErr.setText("Change Needed Fields!");
+
+                }
+            } if (email.length() > 0) {
+
+                String sql = "UPDATE Persons SET email = '" + email + "' WHERE id = '" + id + "';";
 
                 try {
 
                     connection = DataConnect.getConnection();
                     statement = connection.createStatement();
 
-                    /**
-                     * There will always be an exception thrown
-                     * here saying "No result set" however this
-                     * is completely fine and expected therefore
-                     * we ignore the exception
-                     */
                     try {
                         statement.executeQuery(sql);
                     } catch (SQLException ignore) {}
@@ -436,69 +486,49 @@ public class ManageUsers implements Initializable {
                     System.err.println(e.getStackTrace()[0].getLineNumber());
                     System.out.println("Error: " + e);
                 }
-            } catch (NumberFormatException e) {
+            } if (first.length() > 0) {
 
-                gradCErr.setText("Need a Numerical Value!");
-                changeErr.setText("Change Needed Fields!");
-            }
-        } if (email.length() > 0) {
-
-            String sql = "UPDATE Persons SET email = '" + email + "' WHERE id = '" + id + "';";
-
-            try {
-
-                connection = DataConnect.getConnection();
-                statement = connection.createStatement();
+                String sql = "UPDATE Persons SET first = '" + first + "' WHERE id = '" + id + "';";
 
                 try {
-                    statement.executeQuery(sql);
-                } catch (SQLException ignore) {}
-            } catch (SQLException e) {
 
-                System.err.println(e.getStackTrace()[0].getLineNumber());
-                System.out.println("Error: " + e);
-            }
-        } if (first.length() > 0) {
+                    connection = DataConnect.getConnection();
+                    statement = connection.createStatement();
 
-            String sql = "UPDATE Persons SET first = '" + first + "' WHERE id = '" + id + "';";
+                    try {
+                        statement.executeQuery(sql);
+                    } catch (SQLException ignore) {}
+                } catch (SQLException e) {
 
-            try {
+                    System.err.println(e.getStackTrace()[0].getLineNumber());
+                    System.out.println("Error: " + e);
+                } finally {
 
-                connection = DataConnect.getConnection();
-                statement = connection.createStatement();
-
-                try {
-                    statement.executeQuery(sql);
-                } catch (SQLException ignore) {}
-            } catch (SQLException e) {
-
-                System.err.println(e.getStackTrace()[0].getLineNumber());
-                System.out.println("Error: " + e);
-            } finally {
-
-                DataUtil.close(statement);
-                DataUtil.close(connection);
-            }
-        } if (last.length() > 0) {
-
-            String sql = "UPDATE Persons SET last = '" + last + "' WHERE id = '" + id + "';";
-
-            try {
-
-                connection = DataConnect.getConnection();
-                statement = connection.createStatement();
-
-                try {
-                    statement.executeQuery(sql);
-                } catch (SQLException ignore) {
+                    DataUtil.close(statement);
+                    DataUtil.close(connection);
                 }
-            } catch (SQLException e) {
+            } if (last.length() > 0) {
 
-                System.err.println(e.getStackTrace()[0].getLineNumber());
-                System.out.println("Error: " + e);
+                String sql = "UPDATE Persons SET last = '" + last + "' WHERE id = '" + id + "';";
+
+                try {
+
+                    connection = DataConnect.getConnection();
+                    statement = connection.createStatement();
+
+                    try {
+                        statement.executeQuery(sql);
+                    } catch (SQLException ignore) {
+                    }
+                } catch (SQLException e) {
+
+                    System.err.println(e.getStackTrace()[0].getLineNumber());
+                    System.out.println("Error: " + e);
+                }
             }
         }
         setTable();
+        setBox();
     }
 
     /**
@@ -546,5 +576,8 @@ public class ManageUsers implements Initializable {
         changeLast.setText("");
         changeGradYear.setText("");
         changeEmail.setText("");
+
+        changeErr.setText("");
+        gradCErr.setText("");
     }
 }

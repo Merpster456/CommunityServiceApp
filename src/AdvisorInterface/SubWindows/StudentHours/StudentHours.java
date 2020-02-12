@@ -3,6 +3,7 @@ package AdvisorInterface.SubWindows.StudentHours;
 import Database.DataConnect;
 import Database.DataUtil;
 import Objects.Student;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -48,7 +49,8 @@ public class StudentHours implements Initializable {
     @FXML private ComboBox dateCombo;
     @FXML private ComboBox idCombo;
     @FXML private ComboBox timeCombo;
-    @FXML private Label hoursErr;
+    @FXML private Label addErr;
+    @FXML private Label delErr;
     @FXML private HBox primaryBox;
 
     private Connection connection;
@@ -62,20 +64,18 @@ public class StudentHours implements Initializable {
         setTable();
         setBox();
         setDelBoxes();
-    }
 
-    private void specifyTable(){
-
-
-
+        timeCombo.getItems().add("Time Interval");
+        timeCombo.getItems().add("Weekly");
+        timeCombo.getItems().add("Monthly");
+        timeCombo.getItems().add("Yearly");
     }
 
     @FXML
     private void setTable() {
 
-        String SQL = "SELECT * FROM Hours LEFT JOIN Persons ON Hours.id=Persons.id ORDER BY Hours.id;";
+        String SQL = "SELECT * FROM Hours LEFT JOIN Persons ON Hours.id=Persons.id ORDER BY julianday(date);";
         ResultSet rs = null;
-        List<Student> list = new ArrayList<Student>();
         ObservableList<Student> students = FXCollections.observableArrayList();
 
         if (interval.length() > 0) {
@@ -85,9 +85,9 @@ public class StudentHours implements Initializable {
 
                 case "Weekly":
 
-                    SQL = "SELECT *, strftime('%W', date) FROM Hours LEFT JOIN Persons ON Hours.id=Persons.id ORDER BY Hours.id;";
+                    SQL = "SELECT *, strftime('%W', date) FROM Hours LEFT JOIN Persons ON Hours.id=Persons.id ORDER BY julianday(date);";
 
-                    dateCol.setText("Year + Week #");
+                    dateCol.setText("Year & Week #");
                     dateCol.setPrefWidth(114);
                     studentTable.setPrefWidth(910);
                     primaryBox.setPrefWidth(1000);
@@ -135,9 +135,102 @@ public class StudentHours implements Initializable {
                     break;
                 case "Monthly":
 
+                    SQL = "SELECT *, strftime('%m', date) FROM Hours LEFT JOIN Persons ON Hours.id=Persons.id ORDER BY julianday(date);";
+
+                    dateCol.setText("Year & Month #");
+                    dateCol.setPrefWidth(114);
+                    studentTable.setPrefWidth(910);
+                    primaryBox.setPrefWidth(1000);
+
+                    try {
+                        connection = DataConnect.getConnection();
+                        statement = connection.createStatement();
+                        rs = statement.executeQuery(SQL);
+
+
+                        while (rs.next()) {
+                            if (!students.isEmpty()) {
+                                for (int i = 0; i < students.size(); i++) {
+                                    if ((rs.getString(1).equals(students.get(i).getId())) && (rs.getInt(11) == students.get(i).getTimeInterval())
+                                            && (rs.getString(3).substring(0,4).equals(students.get(i).getEmailOrDate().substring(0,4)))) {
+                                        students.get(i).setIntHours(rs.getInt(2) + students.get(i).getIntHours());
+                                        break;
+                                    } else {
+                                        if (i + 1 == students.size()) {
+                                            students.add(new Student(rs.getString(1),
+                                                    rs.getString(5),
+                                                    rs.getString(3),
+                                                    rs.getString(7),
+                                                    rs.getString(8),
+                                                    rs.getInt(2),
+                                                    rs.getInt(11)));
+                                            break;
+                                        }
+                                    }
+                                }
+                            } else {
+                                students.add(new Student(rs.getString(1),
+                                        rs.getString(5),
+                                        rs.getString(3),
+                                        rs.getString(7),
+                                        rs.getString(8),
+                                        rs.getInt(2),
+                                        rs.getInt(11)));
+                            }
+                        }
+                    } catch (SQLException e) {
+                        System.out.println("Error: " + e);
+                    }
+
                     break;
 
                 case "Yearly":
+                    SQL = "SELECT *, strftime('%Y', date) FROM Hours LEFT JOIN Persons ON Hours.id=Persons.id ORDER BY julianday(date);";
+
+                    dateCol.setText("Year");
+                    dateCol.setPrefWidth(114);
+                    studentTable.setPrefWidth(910);
+                    primaryBox.setPrefWidth(1000);
+
+                    try {
+                        connection = DataConnect.getConnection();
+                        statement = connection.createStatement();
+                        rs = statement.executeQuery(SQL);
+
+
+                        while (rs.next()) {
+                            if (!students.isEmpty()) {
+                                for (int i = 0; i < students.size(); i++) {
+                                    if ((rs.getString(1).equals(students.get(i).getId())) && (rs.getInt(11) == students.get(i).getTimeInterval())
+                                            && (rs.getString(3).substring(0,4).equals(students.get(i).getEmailOrDate().substring(0,4)))) {
+                                        students.get(i).setIntHours(rs.getInt(2) + students.get(i).getIntHours());
+                                        break;
+                                    } else {
+                                        if (i + 1 == students.size()) {
+                                            students.add(new Student(rs.getString(1),
+                                                    rs.getString(5),
+                                                    rs.getString(3),
+                                                    rs.getString(7),
+                                                    rs.getString(8),
+                                                    rs.getInt(2),
+                                                    rs.getInt(11)));
+                                            break;
+                                        }
+                                    }
+                                }
+                            } else {
+                                students.add(new Student(rs.getString(1),
+                                        rs.getString(5),
+                                        rs.getString(3),
+                                        rs.getString(7),
+                                        rs.getString(8),
+                                        rs.getInt(2),
+                                        rs.getInt(11)));
+                            }
+                        }
+                    } catch (SQLException e) {
+                        System.out.println("Error: " + e);
+                    }
 
                     break;
             }
@@ -146,13 +239,13 @@ public class StudentHours implements Initializable {
                 students.removeIf(studentPredicate);
             }
 
-            this.idCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Id"));
-            this.firstCol.setCellValueFactory(new PropertyValueFactory<Student, String>("First"));
-            this.lastCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Last"));
-            this.gradCol.setCellValueFactory(new PropertyValueFactory<Student, String>("GradYear"));
-            this.hoursCol.setCellValueFactory(new PropertyValueFactory<Student, String>("HoursString"));
-            this.dateCol.setCellValueFactory(new PropertyValueFactory<Student, String>("YearWeek"));
-
+            this.idCol.setCellValueFactory(new PropertyValueFactory<Student, String>("id"));
+            this.firstCol.setCellValueFactory(new PropertyValueFactory<Student, String>("first"));
+            this.lastCol.setCellValueFactory(new PropertyValueFactory<Student, String>("last"));
+            this.gradCol.setCellValueFactory(new PropertyValueFactory<Student, String>("gradYear"));
+            this.hoursCol.setCellValueFactory(new PropertyValueFactory<Student, String>("hoursString"));
+            if (interval.equals("Yearly")) { this.dateCol.setCellValueFactory(new PropertyValueFactory<Student, String>("year")); }
+            else { this.dateCol.setCellValueFactory(new PropertyValueFactory<Student, String>("interval")); }
             idCol.setCellFactory(TextFieldTableCell.forTableColumn());
             firstCol.setCellFactory(TextFieldTableCell.forTableColumn());
             lastCol.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -191,12 +284,12 @@ public class StudentHours implements Initializable {
                             rs.getString(8),
                             rs.getString(2)));
 
-                    this.idCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Id"));
-                    this.firstCol.setCellValueFactory(new PropertyValueFactory<Student, String>("First"));
-                    this.lastCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Last"));
-                    this.gradCol.setCellValueFactory(new PropertyValueFactory<Student, String>("GradYear"));
-                    this.hoursCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Hours"));
-                    this.dateCol.setCellValueFactory(new PropertyValueFactory<Student, String>("EmailOrDate"));
+                    this.idCol.setCellValueFactory(new PropertyValueFactory<Student, String>("id"));
+                    this.firstCol.setCellValueFactory(new PropertyValueFactory<Student, String>("first"));
+                    this.lastCol.setCellValueFactory(new PropertyValueFactory<Student, String>("last"));
+                    this.gradCol.setCellValueFactory(new PropertyValueFactory<Student, String>("gradYear"));
+                    this.hoursCol.setCellValueFactory(new PropertyValueFactory<Student, String>("hours"));
+                    this.dateCol.setCellValueFactory(new PropertyValueFactory<Student, String>("emailOrDate"));
 
                     idCol.setCellFactory(TextFieldTableCell.forTableColumn());
                     firstCol.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -255,11 +348,11 @@ public class StudentHours implements Initializable {
                         rs.getString(2)));
             }
 
-            this.idCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Id"));
-            this.firstCol.setCellValueFactory(new PropertyValueFactory<Student, String>("First"));
-            this.lastCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Last"));
-            this.gradCol.setCellValueFactory(new PropertyValueFactory<Student, String>("GradYear"));
-            this.hoursCol.setCellValueFactory(new PropertyValueFactory<Student, String>("Hours"));
+            this.idCol.setCellValueFactory(new PropertyValueFactory<Student, String>("id"));
+            this.firstCol.setCellValueFactory(new PropertyValueFactory<Student, String>("first"));
+            this.lastCol.setCellValueFactory(new PropertyValueFactory<Student, String>("last"));
+            this.gradCol.setCellValueFactory(new PropertyValueFactory<Student, String>("gradYear"));
+            this.hoursCol.setCellValueFactory(new PropertyValueFactory<Student, String>("hours"));
             this.dateCol.setCellValueFactory(null);
 
             idCol.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -272,7 +365,10 @@ public class StudentHours implements Initializable {
             studentTable.setItems(null);
             studentTable.setItems(students);
 
+            dateCol.setPrefWidth(84);
             this.dateCol.setVisible(false);
+            studentTable.setPrefWidth(900);
+            primaryBox.setPrefWidth(950);
 
         } catch (SQLException e) {
 
@@ -295,7 +391,9 @@ public class StudentHours implements Initializable {
 
             addCombo.getItems().clear();
             idCombo.getItems().clear();
-            timeCombo.getItems().clear();
+            idCombo.getItems().add("Select ID");
+            addCombo.getItems().add("Select ID");
+
 
             connection = DataConnect.getConnection();
             statement = connection.createStatement();
@@ -307,13 +405,9 @@ public class StudentHours implements Initializable {
                 idCombo.getItems().add(rs.getString(1));
             }
 
-            timeCombo.getItems().add("Weekly");
-            timeCombo.getItems().add("Monthly");
-            timeCombo.getItems().add("Yearly");
-
-            timeCombo.setPromptText("Time Interval");
-            idCombo.setPromptText("Select ID");
-
+            timeCombo.setValue("Time Interval");
+            idCombo.setValue("Select ID");
+            addCombo.setValue("Select ID");
         } catch (SQLException e){
 
             System.out.println("Error: " + e);
@@ -335,6 +429,9 @@ public class StudentHours implements Initializable {
 
             delCombo.getItems().clear();
             dateCombo.getItems().clear();
+            delCombo.getItems().add("Select ID");
+            dateCombo.getItems().add("Date of Event");
+
 
             connection = DataConnect.getConnection();
             statement = connection.createStatement();
@@ -354,12 +451,23 @@ public class StudentHours implements Initializable {
             DataUtil.close(rs);
             DataUtil.close(statement);
             DataUtil.close(connection);
+
+            delCombo.setValue("Select ID");
+            dateCombo.setValue("Date of Event");
         }
     }
     @FXML
-    protected void timeSpecify(ActionEvent event) {
+    protected void specify(ActionEvent event) {
 
         interval = (String) timeCombo.getValue();
+        id = (String) idCombo.getValue();
+
+        if (interval.equals("Time Interval")) {
+            interval = "";
+        }
+        if (id.equals("Select ID")) {
+            id = "";
+        }
         setTable();
     }
 
@@ -368,50 +476,50 @@ public class StudentHours implements Initializable {
 
         String id = (String) delCombo.getValue();
 
-        if (!id.equals("")) {
+        try {
+            if (!id.equals("")) {
 
-            String sql = "SELECT date FROM Hours WHERE id='" + id + "';";
-            ResultSet rs = null;
+                String sql = "SELECT date FROM Hours WHERE id='" + id + "' GROUP BY date;";
+                ResultSet rs = null;
 
-            try {
+                try {
 
-                dateCombo.getItems().clear();
+                    dateCombo.getItems().clear();
+                    dateCombo.getItems().add("Date of Event");
+                    dateCombo.setValue("Date of Event");
 
-                connection = DataConnect.getConnection();
-                statement = connection.createStatement();
-                rs = statement.executeQuery(sql);
+                    connection = DataConnect.getConnection();
+                    statement = connection.createStatement();
+                    rs = statement.executeQuery(sql);
 
-                while (rs.next()) {
+                    while (rs.next()) {
 
-                    dateCombo.getItems().add(rs.getString(1));
+                        dateCombo.getItems().add(rs.getString(1));
+                    }
+                } catch (SQLException e) {
+
+                    System.err.println(e.getStackTrace()[0].getLineNumber());
+                    System.out.println("Error: " + e);
+                } finally {
+
+                    DataUtil.close(rs);
+                    DataUtil.close(statement);
+                    DataUtil.close(connection);
                 }
-            } catch (SQLException e) {
-
-                System.err.println(e.getStackTrace()[0].getLineNumber());
-                System.out.println("Error: " + e);
-            } finally {
-
-                DataUtil.close(rs);
-                DataUtil.close(statement);
-                DataUtil.close(connection);
             }
+        } catch (NullPointerException e) {
+            System.out.println("Error: " + e);
         }
+
     }
 
     @FXML
-    protected void Cancel(ActionEvent event) {
+    protected void cancel(ActionEvent event) {
 
         id = "";
         interval = "";
         setTable();
         setBox();
-    }
-
-    @FXML
-    protected void Specify(ActionEvent event) {
-
-        id = (String) idCombo.getValue();
-        setTable();
     }
 
     @FXML
@@ -461,37 +569,46 @@ public class StudentHours implements Initializable {
         String pattern = "yyyy-MM-dd";
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
 
-        String id = (String) addCombo.getValue();
-        String h = hoursField.getText();
+        if (addCombo.getValue().equals("Select ID")) {
+            addErr.setText("Please Select ID");
+        } else if (hoursField.getText().equals("") || datePicker.getValue().toString().equals("")) {
+            addErr.setText("Please Insert Number of Hours and Date ");
+        } else {
 
-        LocalDate localDate = datePicker.getValue();
-        String date = localDate.format(dateFormatter);
+            String id = (String) addCombo.getValue();
+            String h = hoursField.getText();
 
-        try {
-            int hours = Integer.parseInt(h);
-            String sql = "INSERT INTO Hours VALUES (?,?,?);";
+            LocalDate localDate = datePicker.getValue();
+            String date = localDate.format(dateFormatter);
 
             try {
+                int hours = Integer.parseInt(h);
+                String sql = "INSERT INTO Hours VALUES (?,?,?);";
 
-                connection = DataConnect.getConnection();
-                PreparedStatement submit = connection.prepareStatement(sql);
-                submit.setString(1, id);
-                submit.setInt(2, hours);
-                submit.setString(3, date);
-                submit.executeUpdate();
+                try {
 
-            } catch (SQLException e) {
+                    connection = DataConnect.getConnection();
+                    PreparedStatement submit = connection.prepareStatement(sql);
+                    submit.setString(1, id);
+                    submit.setInt(2, hours);
+                    submit.setString(3, date);
+                    submit.executeUpdate();
 
-                System.err.println(e.getStackTrace()[0].getLineNumber());
-                System.out.println("Error: " + e);
-            } finally {
-                DataUtil.close(connection);
+                } catch (SQLException e) {
+
+                    System.err.println(e.getStackTrace()[0].getLineNumber());
+                    System.out.println("Error: " + e);
+                } finally {
+                    DataUtil.close(connection);
+                    addErr.setText("");
+                }
+
+                setTable();
+                setDelBoxes();
+                addCombo.setValue("Select ID");
+            } catch (NumberFormatException e) {
+                addErr.setText("Insert a Numerical Value");
             }
-
-            setTable();
-            setDelBoxes();
-        } catch (NumberFormatException e) {
-            hoursErr.setText("Insert a Numerical Value");
         }
     }
 
@@ -508,6 +625,7 @@ public class StudentHours implements Initializable {
     @FXML protected void delCancel(ActionEvent event) {
 
         setDelBoxes();
+        delErr.setText("");
     }
 
     @FXML
@@ -518,22 +636,28 @@ public class StudentHours implements Initializable {
 
         String sql = "DELETE FROM Hours WHERE id=? and date=?;";
 
-        try {
+        if (id.equals("Select ID")) {
+            delErr.setText("Please Select ID");
+        } else if (date.equals("Date of Event")) {
+            delErr.setText("Please Select the Date of Event");
+        } else {
+            try {
 
-            connection = DataConnect.getConnection();
-            PreparedStatement deleteEvent = connection.prepareStatement(sql);
-            deleteEvent.setString(1, id);
-            deleteEvent.setString(2, date);
-            deleteEvent.executeUpdate();
-        } catch (SQLException e) {
+                connection = DataConnect.getConnection();
+                PreparedStatement deleteEvent = connection.prepareStatement(sql);
+                deleteEvent.setString(1, id);
+                deleteEvent.setString(2, date);
+                deleteEvent.executeUpdate();
+            } catch (SQLException e) {
 
-            System.err.println(e.getStackTrace()[0].getLineNumber());
-            System.out.println("Error: " + e);
-        } finally {
-            DataUtil.close(connection);
+                System.err.println(e.getStackTrace()[0].getLineNumber());
+                System.out.println("Error: " + e);
+            } finally {
+                DataUtil.close(connection);
+            }
+
+            setTable();
+            setDelBoxes();
         }
-
-        setTable();
-        setDelBoxes();
     }
 }

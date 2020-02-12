@@ -37,31 +37,27 @@
                             <Button styleClass="tabToggleButton" text="Per Person" onAction="#setPTable" />
                         </HBox>
                         <HBox spacing="50" alignment="TOP_CENTER">
-                            <ComboBox fx:id="timeCombo" promptText="Time Interval"/>
-                            <Button text="Specify" onAction="#timeSpecify"/>
+                            <ComboBox fx:id="timeCombo"/>
                         </HBox>
                         <HBox spacing="10" alignment="CENTER">
-                            <ComboBox fx:id="idCombo" promptText="Select ID"/>
-                            <Button text="Specify" onAction="#Specify"/>
+                            <ComboBox fx:id="idCombo"/>
                         </HBox>
                         <HBox spacing="20" alignment="CENTER">
-                            <Button text="Cancel" onAction="#Cancel"/>
+                            <Button text="Cancel" onAction="#cancel"/>
+                            <Button text="Specify" onAction="#specify"/>
                             <Button text="Print" onAction="#print"/>
                         </HBox>
                     </VBox>
                 </Tab>
                 <Tab text="Add Event" closable="false">
-                    <VBox spacing="30" alignment="CENTER">
+                    <VBox spacing="20" alignment="CENTER">
                         <padding>
-                            <Insets top="50" bottom="10" left="30" right="10"/>
+                            <Insets top="50" bottom="20" left="30" right="10"/>
                         </padding>
                         <ComboBox fx:id="addCombo" promptText="Select ID"/>
                         <TextField fx:id="hoursField" promptText="Hours"/>
-                        <Label fx:id="hoursErr"/>
                         <DatePicker fx:id="datePicker" promptText="Date of Event"/>
-                        <padding>
-                            <Insets top="30"/>
-                        </padding>
+                        <Label styleClass="error" fx:id="addErr"/>
                         <Button text="Submit" onAction="#addSubmit"/>
                         <Button text="Accept Event" onAction="#acceptWindow"/>
                     </VBox>
@@ -73,6 +69,7 @@
                         </padding>
                         <ComboBox fx:id="delCombo" onAction="#setDateChoice" promptText="Select ID"/>
                         <ComboBox fx:id="dateCombo" promptText="Date of Event"/>
+                        <Label styleClass="error" fx:id="delErr"/>
                         <HBox spacing="50" alignment="CENTER">
                             <Button text="Cancel" onAction="#delCancel"/>
                             <Button text="Delete" onAction="#Delete"/>

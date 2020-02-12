@@ -32,7 +32,7 @@
             <TabPane prefWidth="600" tabMinWidth="79">
                 <Tab text="Add User" closable="false">
                     <VBox alignment="CENTER">
-                        <Label text="Add User" alignment="TOP_CENTER" styleClass="tabLabel"/>
+                        <Label text="Add User" alignment="TOP_CENTER" styleClass="blackLabels"/>
                         <HBox spacing="10" alignment="TOP_CENTER">
                             <padding>
                                 <Insets bottom="10" left="30" right="10" top="20"/>
@@ -60,7 +60,7 @@
                             </padding>
                             <TextField fx:id="newEmail" promptText="Email" alignment="TOP_CENTER"/>
                         </HBox>
-                        <Label fx:id="emailErr"  text="" textFill="crimson"/>
+                        <Label fx:id="emailErr" textFill="crimson"/>
                         <HBox spacing="70" alignment="CENTER">
                             <padding>
                                 <Insets bottom="10" left="30" right="10" top="20"/>
@@ -78,7 +78,7 @@
                         </padding>
                         <Label styleClass="blackLabels" text="Select User"/>
                         <ComboBox fx:id="delCombo" prefWidth="150" promptText="Select User"/>
-                        <Label fx:id="delErr"/>
+                        <Label fx:id="delErr" styleClass=""/>
                         <Button text="Delete" onAction="#Delete"/>
                         <Label styleClass="warning" text="WARNING THIS WILL &#10;IMMEDIATELY DELETE USER" alignment="CENTER"/>
                     </VBox>
@@ -89,7 +89,7 @@
                             <padding>
                                 <Insets top="30" bottom="20" left="30" right="10"/>
                             </padding>
-                            <Label text="Select User to Change"/>
+                            <Label text="Select User to Change" styleClass="blackLabels"/>
                             <ComboBox fx:id="changeCombo" prefWidth="150" promptText="Select User"/>
                         </VBox>
                         <HBox spacing="10" alignment="TOP_CENTER">
@@ -98,28 +98,28 @@
                             </padding>
                             <TextField fx:id="changeFirst" promptText="First Name"/>
                         </HBox>
-                        <Label fx:id="firstCErr"  text="" textFill="crimson"/>
+                        <Label fx:id="firstCErr" textFill="crimson"/>
                         <HBox spacing="10" alignment="TOP_CENTER">
                             <padding>
                                 <Insets bottom="10" left="30" right="10" top="10"/>
                             </padding>
                             <TextField fx:id="changeLast" promptText="Last Name"/>
                         </HBox>
-                        <Label fx:id="lastCErr"  text="" textFill="crimson"/>
+                        <Label fx:id="lastCErr" textFill="crimson"/>
                         <HBox spacing="10" alignment="TOP_CENTER">
                             <padding>
                                 <Insets bottom="10" left="30" right="10" top="10"/>
                             </padding>
                             <TextField fx:id="changeGradYear" promptText="Graduation Year"/>
                         </HBox>
-                        <Label fx:id="gradCErr"  text="" textFill="crimson"/>
+                        <Label fx:id="gradCErr" textFill="crimson"/>
                         <HBox spacing="10" alignment="TOP_CENTER">
                             <padding>
                                 <Insets bottom="10" left="30" right="10" top="10"/>
                             </padding>
                             <TextField fx:id="changeEmail" promptText="Email"/>
                         </HBox>
-                        <Label fx:id="emailCErr"  text="" textFill="crimson"/>
+                        <Label fx:id="emailCErr" textFill="crimson"/>
                         <HBox spacing="70" alignment="CENTER">
                             <padding>
                                 <Insets bottom="10" left="30" right="10" top="20"/>
@@ -127,7 +127,10 @@
                             <Button text="Cancel" onAction="#changeCancel"/>
                             <Button text="Change" defaultButton="true" onAction="#Change"/>
                         </HBox>
-                        <Label fx:id="changeErr" text="" textFill="crimson"/>
+                        <Label fx:id="changeErr" textFill="crimson"/>
+                        <padding>
+                            <Insets bottom="20"/>
+                        </padding>
                     </VBox>
                 </Tab>
             </TabPane>
