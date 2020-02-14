@@ -140,12 +140,6 @@ public class Student {
         this.id =  new SimpleStringProperty(id);
         this.hours = new SimpleStringProperty(hours);
     }
-
-    public Student(String id, int Hours) {
-
-        this.id = new SimpleStringProperty(id);
-        this.Hours = new SimpleIntegerProperty();
-    }
 /*
     public Student(String id, String grade, String first, String last, String hours, String date){
 

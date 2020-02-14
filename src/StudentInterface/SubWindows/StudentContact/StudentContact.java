@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -27,9 +28,9 @@ import Login.LoginController;
 public class StudentContact implements Initializable {
 
     @FXML private Button back;
-    @FXML private ChoiceBox recipients;
-    @FXML private TextField subjectF;
-    @FXML private TextArea bodyF;
+    @FXML private ChoiceBox<String> recipients;
+    @FXML private TextField subject;
+    @FXML private TextArea body;
 
     private Connection connection;
     private Statement statement;
@@ -37,13 +38,20 @@ public class StudentContact implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb){
 
+        setBox();
+    }
+
+    private void setBox() {
+
         String sql = "SELECT id FROM Persons;";
         ResultSet rs = null;
+        recipients.getItems().removeAll();
+        recipients.getItems().add("Select Recipient");
+
 
         try{
 
             connection = DataConnect.getConnection();
-            assert connection != null;
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
 
@@ -56,6 +64,8 @@ public class StudentContact implements Initializable {
             System.err.println(e.getStackTrace()[0].getLineNumber());
             System.out.println("Error: " + e);
         }
+
+        recipients.setValue("Select Recipient");
     }
 
     @FXML
@@ -70,18 +80,17 @@ public class StudentContact implements Initializable {
     @FXML
     protected void send(ActionEvent event) throws IOException {
 
-        String id = (String) recipients.getValue();
-        String subject = subjectF.toString();
-        String body = bodyF.toString();
+        String id = recipients.getValue();
+        String _subject = subject.toString();
+        String _body = body.toString();
 
         LocalDate date =  LocalDate.now();
 
-        String sql = "INSERT INTO Inbox VALUES ('" + id + "', '" + LoginController.id + "', '" + subject + "', '" + body + "', '" + date + "');";
+        String sql = "INSERT INTO Inbox VALUES ('" + id + "', '" + LoginController.id + "', '" + _subject + "', '" + _body + "', '" + date + "');";
 
         try {
 
             connection = DataConnect.getConnection();
-            assert connection != null;
             statement = connection.createStatement();
             try {
                 statement.executeQuery(sql);
@@ -96,7 +105,9 @@ public class StudentContact implements Initializable {
             DataUtil.close(statement);
             DataUtil.close(connection);
         }
-
     }
+
+    @FXML protected void backChange(MouseEvent event) { back.setStyle("-fx-text-fill: black"); }
+    @FXML protected void refresh(MouseEvent event) { back.setStyle("-fx-text-fill: white"); }
 }
 

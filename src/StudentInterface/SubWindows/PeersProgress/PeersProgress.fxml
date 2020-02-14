@@ -8,11 +8,11 @@
 <?import javafx.scene.shape.Line?>
 <AnchorPane minHeight="768" minWidth="1366" prefHeight="768" prefWidth="1366" xmlns="http://javafx.com/javafx/10.0.2-internal"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentInterface.SubWindows.PeersProgress.PeersProgress">
-    <HBox styleClass="primary" fx:id="Box" alignment="CENTER" prefHeight="125" prefWidth="1366">
+    <HBox styleClass="primaryDark" fx:id="Box" alignment="CENTER" prefHeight="125" prefWidth="1366">
         <Label styleClass="topLabel" contentDisplay="CENTER" text="Peers CSA Progress"/>
     </HBox>
     <Button styleClass="back" fx:id="back" layoutX="20" layoutY="35" text="Back" onAction="#back" onMouseEntered="#backChange" onMouseExited="#refresh" />
-    <HBox fx:id="v" prefHeight="500.0" prefWidth="1000.0" layoutY="184" layoutX="183" spacing="10" styleClass="primary">
+    <HBox fx:id="mainBox" prefHeight="500.0" prefWidth="1000.0" layoutY="184" layoutX="183" spacing="10" styleClass="primary">
         <padding>
             <Insets left="40" top="40" right="40"/>
         </padding>
@@ -62,6 +62,7 @@
             </HBox>
         </VBox>
     </HBox>
+    <Button text="Print" onAction="#print" layoutX="658" layoutY="628" prefWidth="50"/>
     <stylesheets>
         <URL value="@../../../Style.css" />
     </stylesheets>

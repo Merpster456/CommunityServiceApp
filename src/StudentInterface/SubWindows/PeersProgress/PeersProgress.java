@@ -7,11 +7,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.*;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,6 +23,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class PeersProgress implements Initializable {
@@ -33,6 +37,7 @@ public class PeersProgress implements Initializable {
     @FXML private Label firstStudent;
     @FXML private Label secondStudent;
     @FXML private Label thirdStudent;
+    @FXML private HBox mainBox;
 
     private Connection connection;
     private Statement statement;
@@ -143,16 +148,9 @@ public class PeersProgress implements Initializable {
 
     private void setTop3() {
 
-        String sql = "SELECT id, SUM(hours) FROM Hours GROUP BY id;";
+        String sql = "SELECT Persons.first, SUM(hours) FROM Hours LEFT JOIN Persons on Hours.id=Persons.id GROUP BY Persons.first ORDER BY hours DESC";
         ResultSet rs = null;
-
-        int first = 0;
-        int second = 0;
-        int third = 0;
-
-        String firstID = "";
-        String secondID = "";
-        String thirdID = "";
+        ArrayList<Student> students = new ArrayList<>();
 
         try {
 
@@ -162,32 +160,9 @@ public class PeersProgress implements Initializable {
 
             while (rs.next()) {
 
-                Student student = new Student(rs.getString(1), rs.getInt(2));
-
-                if (student.getIntHours() > first) {
-
-                    third = second;
-                    thirdID = secondID;
-
-                    second = first;
-                    secondID = firstID;
-
-                    first = student.getIntHours();
-                    firstID = student.getId();
-
-                } else if (student.getIntHours() > second) {
-
-                    third = second;
-                    thirdID = secondID;
-
-                    second = student.getIntHours();
-                    secondID = student.getId();
-
-                } else if (student.getIntHours() > third) {
-
-                    third = student.getIntHours();
-                    thirdID = student.getId();
-                }
+                Student student = new Student(rs.getString(1), rs.getString(2));
+                students.add(student);
+                if (students.size() == 3) { break; }
             }
         } catch (SQLException e) {
 
@@ -200,45 +175,42 @@ public class PeersProgress implements Initializable {
             DataUtil.close(connection);
         }
 
-        sql = "SELECT id, first, last FROM Persons;";
-
-        String firstName = "";
-        String secondName = "";
-        String thirdName = "";
-
         try {
+            firstStudent.setText(students.get(0).getId() + " with " + students.get(0).getHours() + " hours");
+            secondStudent.setText (students.get(1).getId() + " with " + students.get(1).getHours() + " hours");
+            thirdStudent.setText(students.get(2).getId() + " with " + students.get(2).getHours() + " hours");
+        } catch (IndexOutOfBoundsException ignore) {}
+    }
+    @FXML
+    protected void print(ActionEvent event) {
 
-            connection = DataConnect.getConnection();
-            statement = connection.createStatement();
-            rs = statement.executeQuery(sql);
+        Stage stage = (Stage) back.getScene().getWindow();
 
-            while (rs.next()) {
+        Printer printer = Printer.getDefaultPrinter();
+        PrinterJob printerJob = PrinterJob.createPrinterJob();
 
-                if (rs.getString(1).equals(firstID)) {
+        PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);
+        printerJob.getJobSettings().setPageLayout(pageLayout);
 
-                    firstName = rs.getString(2) + " " + rs.getString(3);
-                } else if (rs.getString(1).equals(secondID)) {
+        mainBox.setLayoutX(0);
+        mainBox.setLayoutY(0);
 
-                    secondName = rs.getString(2) + " " + rs.getString(3);
-                } else if (rs.getString(1).equals(thirdID)) {
+        final double scaleX = pageLayout.getPrintableWidth() / mainBox.getBoundsInParent().getWidth();
+        final double scaleY = pageLayout.getPrintableHeight() / mainBox.getBoundsInParent().getHeight();
+        Scale scale = new Scale(scaleX, scaleY);
+        mainBox.getTransforms().add(scale);
 
-                    thirdName = rs.getString(2) + " " + rs.getString(3);
-                }
-            }
+        if(printerJob.showPrintDialog(stage.getOwner()) && printerJob.printPage(mainBox)){
+            mainBox.getTransforms().remove(scale);
+            mainBox.setLayoutX(183);
+            mainBox.setLayoutY(184);
+            printerJob.endJob();
 
-            firstStudent.setText(firstName + " with " + first + " hours");
-            secondStudent.setText(secondName + " with " + second + " hours");
-            thirdStudent.setText(thirdName + " with " + third + " hours");
-
-        } catch (SQLException e){
-
-            System.err.println(e.getStackTrace()[0].getLineNumber());
-            System.out.println("Error: " + e);
-        } finally {
-
-            DataUtil.close(rs);
-            DataUtil.close(statement);
-            DataUtil.close(connection);
+        }
+        else {
+            mainBox.getTransforms().remove(scale);
+            mainBox.setLayoutX(183);
+            mainBox.setLayoutY(184);
         }
     }
 

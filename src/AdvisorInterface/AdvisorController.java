@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -13,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 import java.net.URL;
@@ -28,8 +31,8 @@ public class AdvisorController implements Initializable {
     @FXML private Button studentHours;
     @FXML private Button chapterProgress;
     @FXML private Button manageUsers;
-    @FXML private Button contactUsers;
-    @FXML private HBox box;
+    //@FXML private Button contactUsers;
+    @FXML private ImageView imageView;
 
     private final String id = LoginController.id;
 
@@ -41,8 +44,10 @@ public class AdvisorController implements Initializable {
             e.printStackTrace();
         }
         refresh(null);
-        box.setStyle(primaryDark);
-        topLabel.setTextFill(Color.WHITE);
+
+        File file = new File("src/FBLA.png");
+        Image image = new Image(file.toURI().toString());
+        imageView.setImage(image);
     }
 
     @FXML
@@ -65,24 +70,24 @@ public class AdvisorController implements Initializable {
         manageUsers.setStyle(primaryLight);
         manageUsers.setTextFill(Color.BLACK);
     }
-    @FXML
+    /*@FXML
     protected void setContactUsers(MouseEvent event) {
 
         contactUsers.setStyle(primaryLight);
         contactUsers.setTextFill(Color.BLACK);
 
-    }
+    }*/
     @FXML
     protected void refresh(MouseEvent event) {
         studentHours.setStyle(primary);
         chapterProgress.setStyle(primary);
         manageUsers.setStyle(primary);
-        contactUsers.setStyle(primary);
+        //contactUsers.setStyle(primary);
 
         studentHours.setTextFill(Color.WHITE);
         chapterProgress.setTextFill(Color.WHITE);
         manageUsers.setTextFill(Color.WHITE);
-        contactUsers.setTextFill(Color.WHITE);
+        //contactUsers.setTextFill(Color.WHITE);
     }
 
     private String getName(String id) throws SQLException {
@@ -92,7 +97,6 @@ public class AdvisorController implements Initializable {
         Connection connection = DataConnect.getConnection();
         ResultSet rs = connection.createStatement().executeQuery(SQL);
         return rs.getString("first");
-
     }
 
     @FXML
