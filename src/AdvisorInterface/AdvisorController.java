@@ -125,6 +125,7 @@ public class AdvisorController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+    /*
     @FXML
     protected void contactUsers(ActionEvent event) throws IOException {
 
@@ -133,4 +134,5 @@ public class AdvisorController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+     */
 }

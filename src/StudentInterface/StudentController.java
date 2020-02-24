@@ -9,12 +9,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -29,24 +32,24 @@ public class StudentController implements Initializable {
     @FXML private Label topLabel;
     @FXML private Button personalProgress;
     @FXML private Button peersProgress;
-    @FXML private Button contactUsers;
+    //@FXML private Button contactUsers;
     @FXML private Button aboutCSA;
-    @FXML private HBox box;
+    @FXML private ImageView imageView;
 
     private final String id = LoginController.id;
 
     public void initialize(URL url, ResourceBundle rb){
-
         try {
-            this.topLabel.setText("Welcome " + getName(id) + "!");
+            String label = "Welcome " + getName(id) + "!";
+            this.topLabel.setText(label);
         } catch (SQLException e) {
-
-            System.err.println(e.getStackTrace()[0].getLineNumber());
-            System.out.println("Error: " + e);
+            e.printStackTrace();
         }
-        box.setStyle(primaryDark);
-        topLabel.setTextFill(Color.WHITE);
         refresh(null);
+
+        File file = new File("src/FBLA.png");
+        Image image = new Image(file.toURI().toString());
+        imageView.setImage(image);
     }
 
     private String getName(String id) throws SQLException {
@@ -71,12 +74,14 @@ public class StudentController implements Initializable {
         peersProgress.setStyle(primaryLight);
         peersProgress.setTextFill(Color.BLACK);
     }
+    /*
     @FXML
     protected void setContactUsers(MouseEvent event) {
 
         contactUsers.setStyle(primaryLight);
         contactUsers.setTextFill(Color.BLACK);
     }
+     */
     @FXML
     protected void setAboutCSA(MouseEvent event) {
 
@@ -88,12 +93,12 @@ public class StudentController implements Initializable {
 
         personalProgress.setStyle(primary);
         peersProgress.setStyle(primary);
-        contactUsers.setStyle(primary);
+        //contactUsers.setStyle(primary);
         aboutCSA.setStyle(primary);
 
         personalProgress.setTextFill(Color.WHITE);
         peersProgress.setTextFill(Color.WHITE);
-        contactUsers.setTextFill(Color.WHITE);
+        //contactUsers.setTextFill(Color.WHITE);
         aboutCSA.setTextFill(Color.WHITE);
 
     }
@@ -115,7 +120,7 @@ public class StudentController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-
+    /*
     @FXML
     protected void ContactUsers(ActionEvent event) throws IOException {
 
@@ -124,6 +129,7 @@ public class StudentController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+     */
 
     @FXML
     protected void AboutCSA(ActionEvent event) throws IOException {

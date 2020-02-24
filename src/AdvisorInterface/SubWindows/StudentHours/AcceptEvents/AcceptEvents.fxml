@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.geometry.Insets?>
+<?import java.net.URL?>
 <AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
             fx:controller="AdvisorInterface.SubWindows.StudentHours.AcceptEvents.AcceptEvents" prefHeight="400.0" prefWidth="600.0">
     <HBox spacing="20">
@@ -24,11 +25,14 @@
             <Label fx:id="hoursLabel"/>
             <Label text="Description"/>
             <Label fx:id="description"/>
-            <Label fx:id="errorLabel" styleClass="errorLabel"/>
+            <Label fx:id="errorLabel" styleClass="error"/>
             <HBox spacing="30">
                 <Button text="Reject" onAction="#reject"/>
                 <Button text="Accept" onAction="#accept"/>
             </HBox>
         </VBox>
     </HBox>
+    <stylesheets>
+        <URL value="@../../../../Style.css" />
+    </stylesheets>
 </AnchorPane>

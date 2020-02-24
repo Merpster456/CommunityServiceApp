@@ -47,6 +47,7 @@
                             <Button text="Specify" onAction="#specify"/>
                             <Button text="Print" onAction="#print"/>
                         </HBox>
+                        <Button text="Refresh" onAction="#setTable"/>
                     </VBox>
                 </Tab>
                 <Tab text="Add Event" closable="false">

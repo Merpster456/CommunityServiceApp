@@ -120,92 +120,101 @@ public class AcceptEvents implements Initializable {
     }
     @FXML
     protected void reject(ActionEvent event) {
+        try {
+            String[] selectedItems = listView.getSelectionModel().getSelectedItem().split(", ");
+            String id = selectedItems[0];
+            String date = selectedItems[1];
 
-        String[] selectedItems = listView.getSelectionModel().getSelectedItem().split(", ");
-        String id = selectedItems[0];
-        String date = selectedItems[1];
+            String sql = "DELETE FROM Pending WHERE id = ? and date = ?;";
 
-        String sql = "DELETE FROM Pending WHERE id = ? and date = ?;";
+            try{
 
-        try{
+                connection = DataConnect.getConnection();
+                PreparedStatement delete = connection.prepareStatement(sql);
+                delete.setString(1, id);
+                delete.setString(2, date);
+                delete.executeUpdate();
+            } catch (SQLException e) {
 
-            connection = DataConnect.getConnection();
-            PreparedStatement delete = connection.prepareStatement(sql);
-            delete.setString(1, id);
-            delete.setString(2, date);
-            delete.executeUpdate();
-        } catch (SQLException e) {
+                System.out.println(e.getStackTrace()[0].getLineNumber());
+                System.out.println("Error: " + e);
+            } finally {
 
-            System.out.println(e.getStackTrace()[0].getLineNumber());
-            System.out.println("Error: " + e);
-        } finally {
+                DataUtil.close(connection);
+                listView.getItems().clear();
+                setList();
+            }
+        } catch (NullPointerException ignore) {
 
-            DataUtil.close(connection);
-            listView.getItems().clear();
-            setList();
+            errorLabel.setText("Please Select Event!");
         }
     }
     @FXML
     protected void accept(ActionEvent event) {
 
-        String[] selectedItems = listView.getSelectionModel().getSelectedItem().split(", ");
-        String id = selectedItems[0];
-        String date = selectedItems[1];
-
-        String sql = "SELECT hours FROM Pending WHERE id='" + id + "' and date='" + date + "';";
-        ResultSet rs = null;
-
         try {
+            String[] selectedItems = listView.getSelectionModel().getSelectedItem().split(", ");
+            String id = selectedItems[0];
+            String date = selectedItems[1];
 
-            connection = DataConnect.getConnection();
-            statement = connection.createStatement();
-            rs = statement.executeQuery(sql);
-
-            int hours = rs.getInt(1);
-
-            DataUtil.close(rs);
-            DataUtil.close(statement);
+            String sql = "SELECT hours FROM Pending WHERE id='" + id + "' and date='" + date + "';";
+            ResultSet rs = null;
 
             try {
 
-                sql = "INSERT INTO Hours VALUES (?,?,?);";
+                connection = DataConnect.getConnection();
+                statement = connection.createStatement();
+                rs = statement.executeQuery(sql);
 
-                PreparedStatement insert = connection.prepareStatement(sql);
-                insert.setString(1, id);
-                insert.setInt(2, hours);
-                insert.setString(3, date);
-                insert.executeUpdate();
+                int hours = rs.getInt(1);
 
-                DataUtil.close(insert);
-                try{
+                DataUtil.close(rs);
+                DataUtil.close(statement);
 
-                    sql = "DELETE FROM Pending WHERE id=? and date=?;";
+                try {
 
-                    PreparedStatement delete = connection.prepareStatement(sql);
-                    delete.setString(1, id);
-                    delete.setString(2, date);
-                    delete.executeUpdate();
+                    sql = "INSERT INTO Hours VALUES (?,?,?);";
 
-                    DataUtil.close(delete);
+                    PreparedStatement insert = connection.prepareStatement(sql);
+                    insert.setString(1, id);
+                    insert.setInt(2, hours);
+                    insert.setString(3, date);
+                    insert.executeUpdate();
+
+                    DataUtil.close(insert);
+                    try{
+
+                        sql = "DELETE FROM Pending WHERE id=? and date=?;";
+
+                        PreparedStatement delete = connection.prepareStatement(sql);
+                        delete.setString(1, id);
+                        delete.setString(2, date);
+                        delete.executeUpdate();
+
+                        DataUtil.close(delete);
+                    } catch (SQLException e) {
+
+                        System.out.println(e.getStackTrace()[0].getLineNumber());
+                        System.out.println("Error: " + e);
+                    } finally {
+
+                        DataUtil.close(connection);
+                        listView.getItems().clear();
+                        setList();
+                    }
                 } catch (SQLException e) {
 
                     System.out.println(e.getStackTrace()[0].getLineNumber());
                     System.out.println("Error: " + e);
-                } finally {
-
-                    DataUtil.close(connection);
-                    listView.getItems().clear();
-                    setList();
                 }
             } catch (SQLException e) {
 
                 System.out.println(e.getStackTrace()[0].getLineNumber());
                 System.out.println("Error: " + e);
             }
-        } catch (SQLException e) {
+        } catch (NullPointerException ignore) {
 
-            System.out.println(e.getStackTrace()[0].getLineNumber());
-            System.out.println("Error: " + e);
+            errorLabel.setText("Please Select Event!");
         }
     }
 }

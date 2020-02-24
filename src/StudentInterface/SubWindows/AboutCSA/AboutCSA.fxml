@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane minHeight="768" minWidth="1366" prefHeight="768" prefWidth="1366" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentInterface.SubWindows.AboutCSA.AboutCSA">
-    <HBox fx:id="Box" alignment="CENTER" prefHeight="125" prefWidth="1366">
-        <children>
-            <Label fx:id="TopLabel" contentDisplay="CENTER" text="About CSA" />
-        </children>
+    <HBox alignment="CENTER" prefHeight="125" prefWidth="1366" styleClass="primaryDark">
+        <Label contentDisplay="CENTER" styleClass="topLabel" text="About CSA" />
     </HBox>
-    <Button fx:id="back" layoutX="20" layoutY="35" onAction="#back" text="Back" />
-    <VBox fx:id="about" layoutX="100" layoutY="193" prefHeight="507" prefWidth="1166">
-
+    <Button fx:id="back" layoutX="20" layoutY="35" onAction="#back" onMouseEntered="#backChange" onMouseExited="#refresh" styleClass="back" text="Back" />
+    <VBox layoutX="75" layoutY="593" prefWidth="1216">
+        
     </VBox>
-   <SubScene height="200.0" width="200.0">
-     <root>
-       <Region />
-     </root>
-   </SubScene>
     <stylesheets>
         <URL value="@../../../Style.css" />
     </stylesheets>

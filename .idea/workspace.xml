@@ -1,31 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc445480-d086-479a-890a-c90d40725123" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/FBLA.png" afterDir="false" />
+    <list default="true" id="cc445480-d086-479a-890a-c90d40725123" name="Default Changelist" comment="I have to finish about CSA on student portal, and I have to figure out what to do in the main home screen of both portals">
+      <change afterPath="$PROJECT_DIR$/src/LG-FBLA.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CommunityService.db" beforeDir="false" afterPath="$PROJECT_DIR$/CommunityService.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/AdvisorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/AdvisorController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/AdvisorUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/AdvisorUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/Objects/Event.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/Objects/Event.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/Objects/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/Objects/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/PeersProgress/PeersProgress.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/PeersProgress/PeersProgress.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/PeersProgress/PeersProgress.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/PeersProgress/PeersProgress.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/PersonalProgress/PersonalProgress.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/PersonalProgress/PersonalProgress.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/PersonalProgress/PersonalProgress.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/PersonalProgress/PersonalProgress.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/StudentContact/StudentContact.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/StudentContact/StudentContact.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/StudentContact/StudentContact.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/StudentContact/StudentContact.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/StudentHours/StudentHours.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/SubWindows/StudentHours/StudentHours.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/StudentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/StudentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/StudentUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/StudentUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/AboutCSA/AboutCSA.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/AboutCSA/AboutCSA.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/AboutCSA/AboutCSA.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/AboutCSA/AboutCSA.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/AdvisorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/AdvisorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/AdvisorUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/AdvisorUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/ChapterProgress/ChapterProgress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Objects/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objects/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PeersProgress/PeersProgress.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PeersProgress/PeersProgress.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PeersProgress/PeersProgress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/PeersProgress/PeersProgress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/StudentContact/StudentContact.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/StudentContact/StudentContact.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/StudentContact/StudentContact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/StudentContact/StudentContact.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/AcceptEvents/AcceptEvents.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/AcceptEvents/AcceptEvents.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/AcceptEvents/AcceptEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/AcceptEvents/AcceptEvents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/StudentHours.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/SubWindows/StudentHours/StudentHours.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FBLA.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/FBLA.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StudentInterface/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StudentInterface/StudentUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/StudentUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/AboutCSA/AboutCSA.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/AboutCSA/AboutCSA.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/AboutCSA/AboutCSA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/AboutCSA/AboutCSA.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581538084937</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Taking contact user option out of the application&#10;&#10;Working on replacing empty space with a picture">
+      <created>1581709861100</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1581709861100</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -246,7 +249,9 @@
     <MESSAGE value="Only need to finish About CSA and couple other things&#10;&#10;Then I can work on additional stuff&#10;&#10;Also need to make printer compatibility" />
     <MESSAGE value="Lotta stuff" />
     <MESSAGE value="Gotta get the prompttext workin" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gotta get the prompttext workin" />
+    <MESSAGE value="Taking contact user option out of the application&#10;&#10;Working on replacing empty space with a picture" />
+    <MESSAGE value="I have to finish about CSA on student portal, and I have to figure out what to do in the main home screen of both portals" />
+    <option name="LAST_COMMIT_MESSAGE" value="I have to finish about CSA on student portal, and I have to figure out what to do in the main home screen of both portals" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="190" key="#Notifications" timestamp="1579208698086">
@@ -257,60 +262,60 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1576982463255" />
-    <state x="473" y="91" key="CommitChangelistDialog2" timestamp="1581538084730">
+    <state x="473" y="91" key="CommitChangelistDialog2" timestamp="1582253902023">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="473" y="91" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1581538084730" />
-    <state width="1638" height="360" key="GridCell.Tab.0.bottom" timestamp="1581709739960">
+    <state x="473" y="91" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1582253902023" />
+    <state width="1638" height="360" key="GridCell.Tab.0.bottom" timestamp="1582574067925">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.bottom.inPresentationMode" timestamp="1580320121969">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.bottom.inPresentationMode/0.0.1920.1080@0.0.1920.1080" timestamp="1580320121969" />
-    <state width="1638" height="360" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1581709739960" />
+    <state width="1638" height="360" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1582574067925" />
     <state width="1920" height="492" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1580320296702" />
     <state width="1638" height="310" key="GridCell.Tab.0.bottom/0.23.1680.955@0.0.1680.1050" timestamp="1577134829893" />
     <state width="1638" height="310" key="GridCell.Tab.0.bottom/0.23.1680.955@0.23.1680.955" timestamp="1577127053994" />
     <state width="1638" height="310" key="GridCell.Tab.0.bottom/0.23.1680.969@0.0.1680.1050" timestamp="1578449618140" />
     <state width="805" height="310" key="GridCell.Tab.0.bottom/0.23.1680.969@0.23.1680.969" timestamp="1579364851789" />
     <state width="1638" height="360" key="GridCell.Tab.0.bottom/0.23.1680.974@0.23.1680.974" timestamp="1581563414371" />
-    <state width="1638" height="360" key="GridCell.Tab.0.center" timestamp="1581709739959">
+    <state width="1638" height="360" key="GridCell.Tab.0.center" timestamp="1582574067924">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.center.inPresentationMode" timestamp="1580320121968">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.center.inPresentationMode/0.0.1920.1080@0.0.1920.1080" timestamp="1580320121968" />
-    <state width="1638" height="360" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1581709739959" />
+    <state width="1638" height="360" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1582574067924" />
     <state width="1920" height="492" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1580320296700" />
     <state width="1638" height="310" key="GridCell.Tab.0.center/0.23.1680.955@0.0.1680.1050" timestamp="1577134829892" />
     <state width="1638" height="310" key="GridCell.Tab.0.center/0.23.1680.955@0.23.1680.955" timestamp="1577127053993" />
     <state width="1638" height="310" key="GridCell.Tab.0.center/0.23.1680.969@0.0.1680.1050" timestamp="1578449618139" />
     <state width="805" height="310" key="GridCell.Tab.0.center/0.23.1680.969@0.23.1680.969" timestamp="1579364851789" />
     <state width="1638" height="360" key="GridCell.Tab.0.center/0.23.1680.974@0.23.1680.974" timestamp="1581563414370" />
-    <state width="1638" height="360" key="GridCell.Tab.0.left" timestamp="1581709739959">
+    <state width="1638" height="360" key="GridCell.Tab.0.left" timestamp="1582574067923">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.left.inPresentationMode" timestamp="1580320121967">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.left.inPresentationMode/0.0.1920.1080@0.0.1920.1080" timestamp="1580320121967" />
-    <state width="1638" height="360" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1581709739959" />
+    <state width="1638" height="360" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1582574067923" />
     <state width="1920" height="492" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1580320296558" />
     <state width="1638" height="310" key="GridCell.Tab.0.left/0.23.1680.955@0.0.1680.1050" timestamp="1577134829892" />
     <state width="1638" height="310" key="GridCell.Tab.0.left/0.23.1680.955@0.23.1680.955" timestamp="1577133946615" />
     <state width="1638" height="310" key="GridCell.Tab.0.left/0.23.1680.969@0.0.1680.1050" timestamp="1578449618139" />
     <state width="805" height="310" key="GridCell.Tab.0.left/0.23.1680.969@0.23.1680.969" timestamp="1579364851788" />
     <state width="1638" height="360" key="GridCell.Tab.0.left/0.23.1680.974@0.23.1680.974" timestamp="1581563414369" />
-    <state width="1638" height="360" key="GridCell.Tab.0.right" timestamp="1581709739960">
+    <state width="1638" height="360" key="GridCell.Tab.0.right" timestamp="1582574067924">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.right.inPresentationMode" timestamp="1580320121968">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.right.inPresentationMode/0.0.1920.1080@0.0.1920.1080" timestamp="1580320121968" />
-    <state width="1638" height="360" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1581709739960" />
+    <state width="1638" height="360" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1582574067924" />
     <state width="1920" height="492" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1580320296701" />
     <state width="1638" height="310" key="GridCell.Tab.0.right/0.23.1680.955@0.0.1680.1050" timestamp="1577134829893" />
     <state width="1638" height="310" key="GridCell.Tab.0.right/0.23.1680.955@0.23.1680.955" timestamp="1577127053993" />
@@ -339,10 +344,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="625" y="255" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1580319460903" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1577039746895">
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1582236872899">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1577039746895" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1582236872899" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FBLA_Coding$Javafx.ic" NAME="Javafx Coverage Results" MODIFIED="1572904544846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
