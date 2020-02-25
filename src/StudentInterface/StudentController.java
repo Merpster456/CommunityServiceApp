@@ -35,6 +35,7 @@ public class StudentController implements Initializable {
     //@FXML private Button contactUsers;
     @FXML private Button aboutCSA;
     @FXML private ImageView imageView;
+    @FXML private ImageView mainImage;
 
     private final String id = LoginController.id;
 
@@ -50,6 +51,10 @@ public class StudentController implements Initializable {
         File file = new File("src/FBLA.png");
         Image image = new Image(file.toURI().toString());
         imageView.setImage(image);
+
+        File lgFBLA = new File("src/LG-FBLA.png");
+        Image lgImage = new Image(lgFBLA.toURI().toString());
+        mainImage.setImage(lgImage);
     }
 
     private String getName(String id) throws SQLException {

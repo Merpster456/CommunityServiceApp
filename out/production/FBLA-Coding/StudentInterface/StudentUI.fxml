@@ -15,6 +15,8 @@
     <Button fx:id="aboutCSA" layoutY="446.5" prefHeight="160.75" prefWidth="225" styleClass="Columns" text="About&#10;CSA" textAlignment="CENTER" onAction="#AboutCSA" onMouseEntered="#setAboutCSA" onMouseExited="#refresh"/>
     <Rectangle fill="#5377a1" height="160.75" layoutY="607.25" width="225" />
     <ImageView fx:id="imageView" fitHeight="125.0" fitWidth="198.0" layoutX="12" layoutY="627.0" />
+    <ImageView fx:id="mainImage" fitHeight="420.0" fitWidth="575.0" layoutX="510.0" layoutY="155.0" />
+    <Label text="Community Service Awards&#10;               Tracker" alignment="CENTER" layoutX="475" layoutY="610" styleClass="title"/>
     <stylesheets>
         <URL value="@../Style.css" />
     </stylesheets>

@@ -125,10 +125,13 @@ public class LoginController implements Initializable {
                 DataUtil.close(rs);
                 rs = statement.executeQuery(sql);
 
+
                 if (rs.getString(1).equals(id)) {
 
                     control = true;
                 }
+
+
             } catch (SQLException e) {
 
                 System.err.println(e.getStackTrace()[0].getLineNumber());
@@ -190,6 +193,7 @@ public class LoginController implements Initializable {
      *
      * @throws IOException
      */
+
     private void adminLogin() throws IOException {
 
         Stage stage = (Stage) button.getScene().getWindow();

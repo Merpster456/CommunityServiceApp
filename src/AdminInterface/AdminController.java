@@ -22,10 +22,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -236,7 +233,6 @@ public class AdminController implements Initializable {
         String last = (String) this.newLast.getText();
         String grad = (String) this.newGradYear.getText();
         String email = (String) this.newEmail.getText();
-        String isAdmin = String.valueOf(isAdvisor);
 
         if (!isAdvisor) {
 
@@ -279,25 +275,35 @@ public class AdminController implements Initializable {
                 String id = Student.GenerateID(first, last);
                 String pass = Student.GeneratePass();
 
-                String sql = "INSERT INTO Persons VALUES ('" + id + "', " + grad + ", '" +
-                        email + "', '" + first + "', '" + last + "', '" + pass + "', " + isAdmin + ");";
+                String sql = "INSERT INTO Persons VALUES (?,?,?,?,?,?,?);";
                 try {
 
                     connection = DataConnect.getConnection();
-                    statement = connection.createStatement();
+                    PreparedStatement insert = connection.prepareStatement(sql);
+                    insert.setString(1, id);
+                    if (!isAdvisor) {
+                        insert.setString(2,grad);
+                    } else {
+                        insert.setString(2,"");
+                    }
+                    insert.setString(3, email);
+                    insert.setString(4, first);
+                    insert.setString(5, last);
+                    insert.setString(6, pass);
+                    insert.setBoolean(7, isAdvisor);
+                    insert.executeUpdate();
 
-                    statement.executeQuery(sql);
+                    setTable();
+                    showCreds(id, pass);
 
                 } catch (SQLException e) {
 
-                    setTable();
-
-                    showCreds(id, pass);
+                    System.err.println("Error: " + e);
+                    System.err.println(e.getSQLState());
                 }
             } catch (Exception e){
 
                 System.err.println("Error: " + e);
-
                 err.setText("Error!");
             } finally {
 

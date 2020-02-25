@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -9,8 +10,28 @@
         <Label contentDisplay="CENTER" styleClass="topLabel" text="About CSA" />
     </HBox>
     <Button fx:id="back" layoutX="20" layoutY="35" onAction="#back" onMouseEntered="#backChange" onMouseExited="#refresh" styleClass="back" text="Back" />
-    <VBox layoutX="75" layoutY="593" prefWidth="1216">
-        
+    <VBox alignment="TOP_CENTER" layoutX="300" layoutY="175" spacing="25">
+        <padding>
+            <Insets bottom="50" top="25"/>
+        </padding>
+        <Label styleClass="title" text="Community Service Awards" />
+        <Label styleClass="subHeader" text="• CSA Community = 50" />
+        <Label styleClass="subHeader" text="• CSA Service = 200" />
+        <Label styleClass="subHeader" text="• CSA Achievement = 500" />
+        <Label styleClass="subHeader" text="• Community and Service Awards Deadline is March 1st" />
+        <Label styleClass="subHeader" text="• Achievement Awards Deadline is April 25th" />
+        <HBox alignment="BOTTOM_CENTER">
+            <Label styleClass="grayFont" text="For any questions regarding registration click " />
+            <Hyperlink onAction="#link" styleClass="link" text="here">
+                <padding>
+                   <Insets top="10.0" />
+                </padding>
+            </Hyperlink>
+            <Label styleClass="grayFont" text="!" />
+        </HBox>
+        <padding>
+            <Insets top="25" />
+        </padding>
     </VBox>
     <stylesheets>
         <URL value="@../../../Style.css" />

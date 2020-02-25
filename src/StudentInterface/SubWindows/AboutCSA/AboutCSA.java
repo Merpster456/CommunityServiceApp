@@ -11,6 +11,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -22,6 +24,19 @@ public class AboutCSA implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
 
+    }
+
+    @FXML
+    protected void link(ActionEvent e) {
+
+        try {
+            URI uri = new URI("https://www.fbla-pbl.org/fbla/programs/recognition-awards/csa/");
+            java.awt.Desktop.getDesktop().browse(uri);
+
+        } catch (Exception i){
+            System.err.println(i.getStackTrace());
+            System.err.println("Error: " + i);
+        }
     }
 
 

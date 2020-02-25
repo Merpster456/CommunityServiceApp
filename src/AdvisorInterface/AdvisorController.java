@@ -33,6 +33,7 @@ public class AdvisorController implements Initializable {
     @FXML private Button manageUsers;
     //@FXML private Button contactUsers;
     @FXML private ImageView imageView;
+    @FXML private ImageView mainImage;
 
     private final String id = LoginController.id;
 
@@ -48,6 +49,10 @@ public class AdvisorController implements Initializable {
         File file = new File("src/FBLA.png");
         Image image = new Image(file.toURI().toString());
         imageView.setImage(image);
+
+        File lgFBLA = new File("src/LG-FBLA.png");
+        Image lgImage = new Image(lgFBLA.toURI().toString());
+        mainImage.setImage(lgImage);
     }
 
     @FXML
