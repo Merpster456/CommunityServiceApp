@@ -6,32 +6,70 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc445480-d086-479a-890a-c90d40725123" name="Default Changelist" comment="FIN!!!">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/FBLA_Coding_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FBLA-Coding.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mac_start.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+    <list default="true" id="cc445480-d086-479a-890a-c90d40725123" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.base/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.base/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.base/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.controls/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.controls/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.controls/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.fxml/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.fxml/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.fxml/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.graphics/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.graphics/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.graphics/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.graphics/jpeg_fx.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.graphics/mesa3d.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.graphics/opengl_fx.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.media/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.media/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.media/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.media/applecoreaudio.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.media/glib.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.media/gstreamer.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.media/libffi.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.swing/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.swing/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.swing/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.web/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.web/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.web/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.web/icu_web.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.web/libxml2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.web/libxslt.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/legal/javafx.web/webkit.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/javafx-swt.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/javafx.base.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/javafx.controls.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/javafx.fxml.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/javafx.graphics.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/javafx.media.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/javafx.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/javafx.swing.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/javafx.web.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/libdecora_sse.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/libfxplugins.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/libglass.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/libglib-lite.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/libgstreamer-lite.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/libjavafx_font.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/libjavafx_iio.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/libjfxmedia.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/libjfxmedia_avf.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/libjfxwebkit.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/libprism_common.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/libprism_es2.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/libprism_sw.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javafx-sdk-13/lib/src.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sqlite-jdbc-3.27.2.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/FBLA_Coding_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_27_2_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_27_2_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommunityService.db" beforeDir="false" afterPath="$PROJECT_DIR$/CommunityService.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdminInterface/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdminInterface/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdminInterface/AdminUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdminInterface/AdminUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/AdvisorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/AdvisorController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/AdvisorUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/AdvisorInterface/AdvisorUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/Login/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/Login/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/StudentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/StudentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/StudentUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/StudentUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/AboutCSA/AboutCSA.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/AboutCSA/AboutCSA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/AboutCSA/AboutCSA.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FBLA-Coding/StudentInterface/SubWindows/AboutCSA/AboutCSA.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminInterface/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminInterface/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminInterface/AdminUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminInterface/AdminUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/AdvisorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/AdvisorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdvisorInterface/AdvisorUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdvisorInterface/AdvisorUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StudentInterface/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/StudentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StudentInterface/StudentUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/StudentUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/AboutCSA/AboutCSA.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/AboutCSA/AboutCSA.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StudentInterface/SubWindows/AboutCSA/AboutCSA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentInterface/SubWindows/AboutCSA/AboutCSA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FBLA-Coding.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FBLA-Coding.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FBLA-Coding.jar" beforeDir="false" afterPath="$PROJECT_DIR$/FBLA-Coding.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mac_start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/mac_start.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +111,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="full.screen.before.presentation.mode" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.User-Defined File Types" />
@@ -91,7 +129,7 @@
     <configuration name="Javafx" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Login.LoginApp" />
       <module name="FBLA-Coding" />
-      <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/Downloads/javafx-sdk-13/lib --add-modules=javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path Users/ryan/IdeaProjects/FBLA-Coding/javafx-sdk-13/lib --add-modules=javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -239,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582574259858</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="FIN!!!">
+      <created>1582669009269</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1582669009269</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -277,28 +322,36 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="440" y="190" key="#Notifications/0.0.1680.1050@0.0.1680.1050" timestamp="1579208698086" />
+    <state x="304" y="172" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582734690689">
+      <screen x="0" y="23" width="1680" height="974" />
+    </state>
+    <state x="304" y="172" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.974@0.23.1680.974" timestamp="1582734690689" />
     <state x="588" y="353" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1582658614404">
       <screen x="0" y="23" width="1680" height="974" />
     </state>
     <state x="588" y="353" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.23.1680.974@0.23.1680.974" timestamp="1582658614404" />
-    <state x="757" y="369" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1582667641024">
+    <state x="757" y="369" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1582735003706">
       <screen x="0" y="23" width="1680" height="974" />
     </state>
-    <state x="757" y="369" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1680.974@0.23.1680.974" timestamp="1582667641024" />
+    <state x="757" y="369" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1680.974@0.23.1680.974" timestamp="1582735003706" />
+    <state x="856" y="296" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1582734704932">
+      <screen x="0" y="23" width="1680" height="974" />
+    </state>
+    <state x="856" y="296" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.23.1680.974@0.23.1680.974" timestamp="1582734704932" />
     <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1576982463255">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1576982463255" />
-    <state x="339" y="105" key="CommitChangelistDialog2" timestamp="1582668970375">
+    <state x="339" y="105" key="CommitChangelistDialog2" timestamp="1582669008872">
       <screen x="0" y="23" width="1680" height="974" />
     </state>
     <state x="339" y="88" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1582574259624" />
-    <state x="339" y="105" key="CommitChangelistDialog2/0.23.1680.974@0.23.1680.974" timestamp="1582668970375" />
+    <state x="339" y="105" key="CommitChangelistDialog2/0.23.1680.974@0.23.1680.974" timestamp="1582669008872" />
     <state x="34" y="102" key="DiffContextDialog" timestamp="1582668939051">
       <screen x="0" y="23" width="1680" height="974" />
     </state>
     <state x="34" y="102" key="DiffContextDialog/0.23.1680.974@0.23.1680.974" timestamp="1582668939051" />
-    <state width="1638" height="321" key="GridCell.Tab.0.bottom" timestamp="1582666949228">
+    <state width="1638" height="321" key="GridCell.Tab.0.bottom" timestamp="1582735875854">
       <screen x="0" y="23" width="1680" height="974" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.bottom.inPresentationMode" timestamp="1580320121969">
@@ -312,8 +365,8 @@
     <state width="1638" height="310" key="GridCell.Tab.0.bottom/0.23.1680.955@0.23.1680.955" timestamp="1577127053994" />
     <state width="1638" height="310" key="GridCell.Tab.0.bottom/0.23.1680.969@0.0.1680.1050" timestamp="1578449618140" />
     <state width="805" height="310" key="GridCell.Tab.0.bottom/0.23.1680.969@0.23.1680.969" timestamp="1579364851789" />
-    <state width="1638" height="321" key="GridCell.Tab.0.bottom/0.23.1680.974@0.23.1680.974" timestamp="1582666949228" />
-    <state width="1638" height="321" key="GridCell.Tab.0.center" timestamp="1582666949227">
+    <state width="1638" height="321" key="GridCell.Tab.0.bottom/0.23.1680.974@0.23.1680.974" timestamp="1582735875854" />
+    <state width="1638" height="321" key="GridCell.Tab.0.center" timestamp="1582735875853">
       <screen x="0" y="23" width="1680" height="974" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.center.inPresentationMode" timestamp="1580320121968">
@@ -327,8 +380,8 @@
     <state width="1638" height="310" key="GridCell.Tab.0.center/0.23.1680.955@0.23.1680.955" timestamp="1577127053993" />
     <state width="1638" height="310" key="GridCell.Tab.0.center/0.23.1680.969@0.0.1680.1050" timestamp="1578449618139" />
     <state width="805" height="310" key="GridCell.Tab.0.center/0.23.1680.969@0.23.1680.969" timestamp="1579364851789" />
-    <state width="1638" height="321" key="GridCell.Tab.0.center/0.23.1680.974@0.23.1680.974" timestamp="1582666949227" />
-    <state width="1638" height="321" key="GridCell.Tab.0.left" timestamp="1582666949227">
+    <state width="1638" height="321" key="GridCell.Tab.0.center/0.23.1680.974@0.23.1680.974" timestamp="1582735875853" />
+    <state width="1638" height="321" key="GridCell.Tab.0.left" timestamp="1582735875852">
       <screen x="0" y="23" width="1680" height="974" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.left.inPresentationMode" timestamp="1580320121967">
@@ -342,8 +395,8 @@
     <state width="1638" height="310" key="GridCell.Tab.0.left/0.23.1680.955@0.23.1680.955" timestamp="1577133946615" />
     <state width="1638" height="310" key="GridCell.Tab.0.left/0.23.1680.969@0.0.1680.1050" timestamp="1578449618139" />
     <state width="805" height="310" key="GridCell.Tab.0.left/0.23.1680.969@0.23.1680.969" timestamp="1579364851788" />
-    <state width="1638" height="321" key="GridCell.Tab.0.left/0.23.1680.974@0.23.1680.974" timestamp="1582666949227" />
-    <state width="1638" height="321" key="GridCell.Tab.0.right" timestamp="1582666949227">
+    <state width="1638" height="321" key="GridCell.Tab.0.left/0.23.1680.974@0.23.1680.974" timestamp="1582735875852" />
+    <state width="1638" height="321" key="GridCell.Tab.0.right" timestamp="1582735875853">
       <screen x="0" y="23" width="1680" height="974" />
     </state>
     <state width="1920" height="164" key="GridCell.Tab.0.right.inPresentationMode" timestamp="1580320121968">
@@ -357,12 +410,16 @@
     <state width="1638" height="310" key="GridCell.Tab.0.right/0.23.1680.955@0.23.1680.955" timestamp="1577127053993" />
     <state width="1638" height="310" key="GridCell.Tab.0.right/0.23.1680.969@0.0.1680.1050" timestamp="1578449618140" />
     <state width="805" height="310" key="GridCell.Tab.0.right/0.23.1680.969@0.23.1680.969" timestamp="1579364851789" />
-    <state width="1638" height="321" key="GridCell.Tab.0.right/0.23.1680.974@0.23.1680.974" timestamp="1582666949227" />
-    <state x="506" y="160" key="SettingsEditor" timestamp="1582667771774">
+    <state width="1638" height="321" key="GridCell.Tab.0.right/0.23.1680.974@0.23.1680.974" timestamp="1582735875853" />
+    <state x="506" y="160" key="SettingsEditor" timestamp="1582735063963">
       <screen x="0" y="23" width="1680" height="974" />
     </state>
     <state x="507" y="229" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1578443785276" />
-    <state x="506" y="160" key="SettingsEditor/0.23.1680.974@0.23.1680.974" timestamp="1582667771774" />
+    <state x="506" y="160" key="SettingsEditor/0.23.1680.974@0.23.1680.974" timestamp="1582735063963" />
+    <state x="440" y="250" key="Vcs.Push.Dialog.v2" timestamp="1582669020583">
+      <screen x="0" y="23" width="1680" height="974" />
+    </state>
+    <state x="440" y="250" key="Vcs.Push.Dialog.v2/0.23.1680.974@0.23.1680.974" timestamp="1582669020583" />
     <state x="100" y="100" width="1480" height="850" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1579209437232">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
