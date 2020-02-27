@@ -6,10 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc445480-d086-479a-890a-c90d40725123" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mac_start.command" afterDir="false" />
+    <list default="true" id="cc445480-d086-479a-890a-c90d40725123" name="Default Changelist" comment="Added admin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mac_start.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommunityService.db" beforeDir="false" afterPath="$PROJECT_DIR$/CommunityService.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Database/DataConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/DataConnect.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582738846806</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="FIN!!!">
+      <created>1582746587073</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1582746587073</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -289,11 +296,11 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="578" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1576982463255" />
-    <state x="339" y="105" key="CommitChangelistDialog2" timestamp="1582738845693">
+    <state x="0" y="23" width="1680" height="974" key="CommitChangelistDialog2" timestamp="1582813961453">
       <screen x="0" y="23" width="1680" height="974" />
     </state>
     <state x="339" y="88" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1582574259624" />
-    <state x="339" y="105" key="CommitChangelistDialog2/0.23.1680.974@0.23.1680.974" timestamp="1582738845693" />
+    <state x="0" y="23" width="1680" height="974" key="CommitChangelistDialog2/0.23.1680.974@0.23.1680.974" timestamp="1582813961453" />
     <state x="34" y="102" key="DiffContextDialog" timestamp="1582668939051">
       <screen x="0" y="23" width="1680" height="974" />
     </state>
@@ -371,12 +378,13 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="100" y="100" width="1480" height="850" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1579209437232" />
-    <state x="518" y="341" key="com.intellij.ide.util.TipDialog" timestamp="1580406833194">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="518" y="339" key="com.intellij.ide.util.TipDialog" timestamp="1582813583321">
+      <screen x="0" y="23" width="1680" height="974" />
     </state>
     <state x="518" y="341" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1580406833194" />
     <state x="519" y="333" key="com.intellij.ide.util.TipDialog/0.23.1680.955@0.23.1680.955" timestamp="1576869877109" />
     <state x="519" y="338" key="com.intellij.ide.util.TipDialog/0.23.1680.969@0.23.1680.969" timestamp="1579024962370" />
+    <state x="518" y="339" key="com.intellij.ide.util.TipDialog/0.23.1680.974@0.23.1680.974" timestamp="1582813583321" />
     <state x="629" y="449" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579208665647">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
