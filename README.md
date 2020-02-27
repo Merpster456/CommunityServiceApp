@@ -46,7 +46,7 @@ Pass: student
 
 * [Intellij](https://www.jetbrains.com/idea/) - The IDE I used
 * [Javafx](https://openjfx.io/) - The external library I used
-* [Sqlite] (https://sqlite.org/index.html) - The document based database I used
+* [Sqlite](https://sqlite.org/index.html) - The document based database I used
 
 ## Authors
 
@@ -55,6 +55,6 @@ Pass: student
 ## Acknowledgments
 
 * [Previous Winners](https://github.com/fbla-competitive-events/coding-programming) - Drew much of my inspiration
-* [Tutorials Point] (https://www.tutorialspoint.com/javafx/index.htm) - Help when I did not know something
+* [Tutorials Point](https://www.tutorialspoint.com/javafx/index.htm) - Help when I did not know something
 * Lastly, my advisors and parents for giving me the best advice!
 
