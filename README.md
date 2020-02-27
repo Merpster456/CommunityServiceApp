@@ -56,5 +56,5 @@ Pass: student
 
 * [Previous Winners](https://github.com/fbla-competitive-events/coding-programming) - Drew much of my inspiration
 * [Tutorials Point](https://www.tutorialspoint.com/javafx/index.htm) - Help when I did not know something
-* Lastly, my advisors and parents for giving me the best advice!
+* **Lastly, my advisors and parents for giving me the best advice!**
 
