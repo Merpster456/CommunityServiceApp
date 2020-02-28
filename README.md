@@ -20,6 +20,10 @@ When you click the link, the download process is very simple, scroll down to whe
 
 Once downloaded extract the zip and proceed to Mac Start.
 
+### NOTE
+
+**If you clone this repository using git on the command line make sure to rename the directory from FBLA-Coding to FBLA-Coding-master**
+
 ### Mac Start
 
 To run the program on a mac is very simple. Choose between the GUI start or the command line start, the GUI start is recommended. 
