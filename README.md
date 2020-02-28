@@ -22,7 +22,7 @@ Download this repository anywhere on your computer. If you downloaded it as a zi
 
 ### Mac Start
 
-To run the program on a mac is very simple. 
+To run the program on a mac is very simple. Choose between the GUI start or the command line start, the GUI start is recommended.
 
 #### GUI Start (Easiest)
 
