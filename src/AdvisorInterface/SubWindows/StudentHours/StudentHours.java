@@ -59,6 +59,7 @@ public class StudentHours implements Initializable {
     private String id = "";
     private String interval = "";
 
+    @Override
     public void initialize(URL url, ResourceBundle rs) {
 
         setTable();
