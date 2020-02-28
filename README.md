@@ -18,6 +18,8 @@ When you click the link, the download process is very simple, scroll down to whe
 
 Download this repository anywhere on your computer. If you downloaded it as a zip file extract the file so you get the FBLA-Coding-master folder. 
 
+The download button can be found in green at the top of the page.
+
 ### Mac Start
 
 To run the program on a mac is very simple. 
