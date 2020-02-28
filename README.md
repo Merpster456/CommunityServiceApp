@@ -10,9 +10,8 @@ Dual compatibility will be coming in the near future!
 ## Prerequisites
 
 Please download and install the latest version of jdk (jdk-13.0.2) the link to you will find below.
-When you click the link, the download process is very simple, scroll down to where you see MacOS installer, click the link on the right, 
+When you click the link, the download process is very simple, scroll down to where you see MacOS installer, click the link to the right of it to download the developer kit. A window will pop up, accept the license agreement then click the download button. Once downloaded follow the on screen installation instructions.
 
-[here](https://www.oracle.com/java/technologies/javase-jdk13-downloads.html#license-lightbox)
 ## Getting Started
 
 Download this repository anywhere on your computer. If you downloaded it as a zip file extract the file so you get the FBLA-Coding-master folder. 
