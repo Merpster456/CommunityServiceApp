@@ -26,7 +26,7 @@ To run the program on a mac is very simple. Choose between the GUI start or the 
 
 #### GUI Start (Easiest)
 
-Open finder, go into the FBLA-Coding-master folder, then double click on the mac_start.command file.
+Open finder, go into the FBLA-Coding-master folder, then two finger click the mac_start.command file and click open. You will then be prompted saying this is from an "unidentified developer" disregard this and click open.
 
 #### Command Line Start (Still Easy)
 
