@@ -50,9 +50,9 @@ ID: advisor
 Pass: advisor
 
 ### Student Credentials
-ID: student
+ID: ava.quirk872
 
-Pass: student
+Pass: 00001474
 
 ## Built With
 
