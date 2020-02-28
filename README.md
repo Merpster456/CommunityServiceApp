@@ -2,6 +2,12 @@
 
 This project is for the Coding & Programming competition in Future Business Leaders of America. This program tracks community service hours of chapter members, and also automatically tracks progress for the Community Service Awards.
 
+## Prerequisites
+
+Please download and install the latest version of jdk (jdk-13.0.2)
+You can do that [here](https://www.oracle.com/java/technologies/javase-jdk13-downloads.html)
+The download process is very simple just select the download that correlates with your system then follow the installation guide when done downloading.
+
 ## Getting Started
 
 Download this repository anywhere on your computer. If you downloaded it as a zip file extract the file so you get the FBLA-Coding-master folder. 
