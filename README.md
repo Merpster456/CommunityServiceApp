@@ -2,6 +2,11 @@
 
 This project is for the Coding & Programming competition in Future Business Leaders of America. This program tracks community service hours of chapter members, and also automatically tracks progress for the Community Service Awards.
 
+## NOTE
+
+**This project is only compatible with MacOS at the moment.**
+Dual compatibility will be coming in the near future!
+
 ## Prerequisites
 
 Please download and install the latest version of jdk (jdk-13.0.2)
@@ -32,20 +37,18 @@ cd ~/Downloads/FBLA-Coding-master
 ./mac_start.command
 ```
 
-### Windows Start
-
-
-
 ## Login
 
 Once you start the application you will be greated by a login portal
 
 ### Advisor Credentials
 ID: advisor
+
 Pass: advisor
 
 ### Student Credentials
 ID: student
+
 Pass: student
 
 ## Built With
