@@ -12,7 +12,7 @@ Dual compatibility will be coming in the near future!
 Please download and install the latest version of jdk (jdk-13.0.2) the link to you will find below.
 When you click the link, the download process is very simple, scroll down to where you see MacOS installer, click the link to the right of it to download the developer kit. A window will pop up, accept the license agreement then click the download button. Once downloaded follow the on screen installation instructions.
 
-[JDK Link] (https://www.oracle.com/java/technologies/javase-jdk13-downloads.html)
+[JDK Link](https://www.oracle.com/java/technologies/javase-jdk13-downloads.html)
 
 ## Getting Started
 
