@@ -42,7 +42,7 @@ cd ~/Downloads/FBLA-Coding-master
 
 ## Login
 
-Once you start the application you will be greated by a login portal
+Once you start the application you will be greeted by a login portal
 
 ### Advisor Credentials
 ID: advisor
