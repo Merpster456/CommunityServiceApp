@@ -50,9 +50,9 @@ ID: advisor
 Pass: advisor
 
 ### Student Credentials
-ID: ava.quirk872
+ID: alice.fox845
 
-Pass: 00001474
+Pass: 00007836
 
 ## Built With
 
