@@ -2,7 +2,7 @@
 
 path=$(find ~/ -type d -name FBLA-Coding-master 2>/dev/null)
 
-cd $path
+cd "$path"
 
 test -d /Library/Java/JavaVirtualMachines/jdk-13* && java_path="/Library/Java/JavaVirtualMachines/jdk-13*.jdk" || java_path=$(find / -type d -name jdk-13*.jdk 2>/dev/null)
 
